@@ -1,0 +1,1544 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Konsültasyon Asistanı – AŞEAH Çocuk Enfeksiyon</title>
+<meta name="theme-color" content="#9A3412">
+<meta name="description" content="AŞEAH Çocuk Enfeksiyon Hastalıkları konsültasyon asistanı: sesli dikte, şablon, yerel arşiv, doğrulanmış rehber kütüphanesi, Word/PDF.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Konsültasyon">
+<style>
+:root{
+  --band:#9A3412; --head:#C2410C; --amber:#F59E0B; --badge:#FDE68A; --cream:#FFFBEB; --brown:#7C2D12;
+  --ink:#2B1D14; --ink2:#5B4636; --muted:#8A7563; --line:#EAD9C4; --paper:#FBF7F2; --card:#FFFFFF;
+  --link:#1B6EC2; --red:#9B2226; --redbg:#FBE9E9; --green:#1E6B45; --greenbg:#E5F3EA; --blue:#1F3F94; --bluebg:#E8EDFA;
+  --r:10px;
+  font-family:"Segoe UI",system-ui,-apple-system,Roboto,"Helvetica Neue",Arial,sans-serif;
+  color:var(--ink); background:var(--paper);
+}
+*{box-sizing:border-box}
+body{margin:0;font-size:15px;line-height:1.5;padding-bottom:env(safe-area-inset-bottom,0px)}
+h1,h2,h3{margin:0;line-height:1.2}
+a{color:var(--link)}
+button{font:inherit;cursor:pointer;border-radius:8px;border:1px solid var(--band);background:var(--band);color:#fff;padding:7px 12px;font-weight:600}
+button.ghost{background:#fff;color:var(--band)}
+button.small{padding:3px 9px;font-size:.82rem}
+button.link{background:none;border:none;color:var(--link);padding:0;font-weight:600;text-decoration:underline}
+button.x{background:none;border:none;color:var(--muted);padding:2px 6px;font-size:1.05rem;line-height:1}
+button:disabled{opacity:.5;cursor:default}
+input,select,textarea{font:inherit;color:var(--ink);background:#fff;border:1px solid #D9C3A7;border-radius:8px;padding:7px 9px;width:100%;min-width:0;max-width:100%}
+textarea{resize:vertical;min-height:62px;line-height:1.45}
+input:focus-visible,select:focus-visible,textarea:focus-visible,button:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid #F8B26A;outline-offset:1px}
+label{display:block;font-size:.8rem;font-weight:650;color:var(--ink2);margin:8px 0 3px}
+.hint{font-size:.8rem;color:var(--muted);margin:4px 0 0}
+.band{background:var(--band);color:#fff;padding:8px 18px 0;padding-top:calc(8px + env(safe-area-inset-top,0px))}
+.band .l1{font-size:.78rem;font-weight:700;letter-spacing:.04em;text-align:center}
+.band .l2{background:var(--amber);color:var(--brown);font-size:.74rem;font-weight:800;letter-spacing:.05em;text-align:center;margin:6px -18px 0;padding:3px 10px}
+.topbar{display:flex;flex-wrap:wrap;gap:8px 14px;align-items:center;justify-content:space-between;padding:10px 18px;background:#fff;border-bottom:1px solid var(--line)}
+.topbar h1{font-size:1.2rem;color:var(--band)}
+.topbar .tools{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.pill{display:inline-block;font-size:.74rem;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--badge);color:var(--brown);white-space:nowrap}
+.pill.g{background:var(--greenbg);color:var(--green)} .pill.r{background:var(--redbg);color:var(--red)} .pill.b{background:var(--bluebg);color:var(--blue)} .pill.m{background:#F1ECE6;color:var(--ink2)}
+.banner{margin:12px 18px 0;padding:9px 12px;border-radius:8px;background:var(--cream);border:1px solid #F3D9A4;color:var(--brown);font-size:.88rem;display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.app{display:grid;grid-template-columns:290px 1fr;gap:16px;padding:14px 18px 60px;max-width:1500px;margin:0 auto;align-items:start}
+.app>*{min-width:0}
+@media (max-width:900px){.app{grid-template-columns:1fr}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px;margin-bottom:14px}
+.card>h2{font-size:1rem;color:var(--head);margin-bottom:8px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.card>h2 .sp{margin-left:auto}
+aside .card{position:sticky;top:10px}
+@media (max-width:900px){aside .card{position:static}}
+.plist{list-style:none;margin:8px 0 0;padding:0;max-height:65vh;overflow:auto}
+.plist li{border:1px solid var(--line);border-radius:8px;padding:8px 10px;margin-bottom:6px;cursor:pointer;background:#fff}
+.plist li:hover{border-color:var(--amber)}
+.plist li.on{border-color:var(--band);background:var(--cream)}
+.plist .n{font-weight:650}
+.plist .m{font-size:.78rem;color:var(--muted)}
+.empty{padding:20px;border:1px dashed #E2C7A6;border-radius:var(--r);background:#fff;color:var(--ink2)}
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0 10px}
+.tl{list-style:none;margin:0;padding:0}
+.tl li{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;border-bottom:1px solid var(--line);padding:7px 0;font-size:.88rem}
+.tl li.on{background:var(--cream)}
+.tl .d{font-weight:700;min-width:120px}
+.tl .s{color:var(--ink2);flex:1;min-width:180px}
+.sticky{position:sticky;top:0;z-index:5;background:var(--paper);padding:8px 0;margin-bottom:6px;display:flex;flex-wrap:wrap;gap:8px;align-items:center;border-bottom:1px solid var(--line)}
+.saved{font-size:.78rem;color:var(--muted)}
+.mic{display:inline-flex;gap:8px;align-items:center}
+.mic button.rec{background:var(--red);border-color:var(--red)}
+.dot{width:10px;height:10px;border-radius:50%;background:var(--red);display:inline-block;animation:pulse 1.2s infinite}
+@keyframes pulse{0%{opacity:1}50%{opacity:.25}100%{opacity:1}}
+.interim{font-size:.85rem;color:var(--muted);font-style:italic;min-height:1.2em;margin-top:4px}
+.sumbox{margin-top:8px;padding:8px 10px;border-radius:8px;background:var(--greenbg);color:var(--green);font-size:.85rem}
+.sec{margin-top:12px}
+.sec>label:not(.chk){font-size:.85rem;color:var(--head)}
+.tbl{width:100%;border-collapse:collapse;font-size:.85rem}
+.tblwrap{overflow-x:auto}
+.tbl th{font-size:.74rem;text-align:left;color:var(--brown);background:var(--badge);padding:5px 6px}
+.tbl td{padding:3px 4px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td input{padding:5px 6px;font-size:.85rem}
+.tbl.ro td{padding:5px 6px}
+.vit{display:grid;grid-template-columns:repeat(5,minmax(80px,1fr));gap:0 8px}
+@media (max-width:560px){.vit{grid-template-columns:repeat(2,1fr)}}
+.refl{list-style:none;margin:6px 0 0;padding:0;font-size:.85rem}
+.refl li{display:flex;gap:8px;align-items:flex-start;border-bottom:1px solid var(--line);padding:6px 0}
+.refl li .t{flex:1;min-width:0;overflow-wrap:anywhere}
+.refl .src{font-size:.7rem;font-weight:700;color:var(--muted);text-transform:uppercase;white-space:nowrap}
+.chk{display:flex;gap:8px;align-items:flex-start;font-size:.85rem;margin:4px 0}
+.chk input{width:16px;height:16px;margin-top:3px;accent-color:var(--band);flex:0 0 auto}
+details.lib{border:1px solid var(--line);border-radius:8px;padding:0 10px;margin-top:8px;background:#FFFDF9}
+details.lib summary{cursor:pointer;padding:8px 0;font-weight:650;font-size:.88rem}
+.btns{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.prev{background:var(--cream);border:1px solid #F3D9A4;border-radius:8px;padding:10px 12px;font-size:.88rem}
+.prev h3{font-size:.9rem;color:var(--brown);margin-bottom:4px}
+.prev .blk{white-space:pre-wrap;margin:2px 0 6px}
+.ro textarea,textarea[readonly],input[readonly]{background:#F7F2EC}
+dialog{border:none;border-radius:12px;padding:0;max-width:min(760px,96vw);width:100%;box-shadow:0 18px 60px rgba(43,29,20,.35)}
+dialog::backdrop{background:rgba(43,29,20,.45)}
+.dlg-h{background:var(--band);color:#fff;padding:10px 16px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.dlg-h button{background:none;border:none;color:#fff;font-size:1.3rem;padding:0 4px}
+.dlg-b{padding:14px 16px;max-height:72vh;overflow:auto}
+.dlg-f{padding:10px 16px;border-top:1px solid var(--line);display:flex;gap:8px;justify-content:flex-end;flex-wrap:wrap}
+#lock{position:fixed;inset:0;background:var(--paper);display:none;z-index:50;align-items:center;justify-content:center;padding:20px}
+#lock.show{display:flex}
+#lock .card{max-width:420px;width:100%}
+.res{list-style:none;padding:0;margin:8px 0 0;font-size:.85rem}
+.res li{border-bottom:1px solid var(--line);padding:7px 0;display:flex;gap:8px;align-items:flex-start}
+.res li .t{flex:1;min-width:0}
+.res .j{color:var(--muted);font-size:.78rem}
+.err{color:var(--red);font-size:.85rem}
+#printArea{display:none}
+.chips{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin:6px 0}
+.chip{display:inline-flex;gap:6px;align-items:center;border:1px solid #E5C9A8;border-radius:99px;padding:3px 10px;font-size:.82rem;background:#fff;cursor:pointer}
+.chip input{width:15px;height:15px;accent-color:var(--band);margin:0}
+.chip.auto{background:var(--cream)}
+.og{margin:10px 0 2px;font-weight:700;font-size:.78rem;color:var(--brown);text-transform:uppercase;letter-spacing:.03em}
+.ref-a{font-size:.74rem;white-space:nowrap}
+.items{list-style:none;margin:4px 0;padding:0}
+.items li{display:flex;gap:6px;align-items:flex-start;margin-bottom:4px}
+.items li .src{font-size:.68rem;font-weight:700;color:var(--muted);text-transform:uppercase;white-space:nowrap;margin-top:8px;min-width:46px}
+.items textarea{min-height:34px;padding:5px 8px;font-size:.88rem;field-sizing:content}
+.pcat{margin:6px 0 8px;padding-left:8px;border-left:3px solid var(--badge)}
+.pcat>b{font-size:.82rem;color:var(--brown)}
+.adn{border:1px solid var(--line);border-left:4px solid var(--amber);border-radius:8px;padding:8px 10px;margin:8px 0;background:#FFFDF9}
+.adh{display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center;font-size:.86rem}
+.adn .blk{white-space:pre-wrap;font-size:.88rem;margin:6px 0}
+.adform{border:1px dashed var(--amber);border-radius:8px;padding:10px;margin-top:10px;background:var(--cream)}
+@media print{
+  html,body,:root{background:#fff!important}
+  .band,.topbar,.banner,.app,#lock,dialog{display:none!important}
+  #printArea{display:block;font-size:10.5pt;color:#111}
+  @page{size:A4;margin:14mm 13mm 16mm}
+}
+#printArea .pb1{background:#9A3412;color:#fff;text-align:center;font-weight:700;font-size:9pt;padding:3px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printArea .pb2{background:#F59E0B;color:#7C2D12;text-align:center;font-weight:800;font-size:8.5pt;padding:2px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printArea .pt{background:#9A3412;color:#fff;font-weight:700;font-size:14pt;padding:5px 8px;margin:10px 0 8px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printArea h2{color:#C2410C;font-size:11.5pt;border-bottom:2px solid #F59E0B;padding-bottom:2px;margin:12px 0 5px;break-after:avoid}
+#printArea table{width:100%;border-collapse:collapse;margin:4px 0 8px;font-size:9pt;break-inside:auto}
+#printArea th{background:#FDE68A;color:#7C2D12;text-align:left;padding:3px 5px;border:1px solid #E5C9A8;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printArea td{padding:3px 5px;border:1px solid #E5C9A8;vertical-align:top}
+#printArea td.k{color:#7C2D12;font-weight:700;width:30%}
+#printArea p{margin:3px 0 5px;white-space:pre-wrap}
+#printArea ol{padding-left:18px;font-size:9pt} #printArea ol li{margin-bottom:3px;overflow-wrap:anywhere}
+#printArea ul{padding-left:18px;margin:3px 0}
+#printArea .note{background:#FFFBEB;color:#7C2D12;font-style:italic;font-size:8.5pt;padding:5px 7px;margin-top:10px;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+#printArea .ft{font-size:8pt;color:#6B5A4E;text-align:center;margin-top:12px;border-top:1px solid #E5C9A8;padding-top:4px}
+@media (max-width:560px){.app{padding:10px 10px 50px}.band{padding-left:10px;padding-right:10px}.band .l2{margin-left:-10px;margin-right:-10px}.topbar{padding:8px 10px}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="band"><div class="l1">T.C. SAĞLIK BAKANLIĞI • ADANA ŞEHİR EĞİTİM VE ARAŞTIRMA HASTANESİ</div><div class="l2">ÇOCUK ENFEKSİYON HASTALIKLARI KLİNİĞİ</div></div>
+<div class="topbar">
+  <div><h1>Konsültasyon Asistanı</h1><div class="hint" id="verLine"></div></div>
+  <div class="tools">
+    <span id="lockPill" class="pill m">Arşiv: yerel</span>
+    <button class="ghost small" id="bBackup" type="button">Yedek al</button>
+    <button class="ghost small" id="bSettings" type="button">Ayarlar</button>
+    <button class="ghost small install" id="installBtn" type="button" hidden>Bu cihaza yükle</button>
+  </div>
+</div>
+<div id="banners"></div>
+<div class="app">
+  <aside><div class="card">
+    <h2>Hasta arşivi</h2>
+    <input id="q" type="search" placeholder="Ad veya protokol no ile ara" aria-label="Hasta ara">
+    <div class="btns"><button id="bNewPatient" type="button">Yeni hasta</button></div>
+    <ul class="plist" id="plist"></ul>
+  </div></aside>
+  <main id="main"></main>
+</div>
+<div id="lock"><div class="card"><h2>Arşiv kilitli</h2><p class="hint">Hasta kayıtları bu cihazda parolayla şifreli. Devam etmek için parolanızı girin.</p><label for="lockPass">Parola</label><input id="lockPass" type="password" autocomplete="current-password"><p class="err" id="lockErr"></p><div class="btns"><button id="bUnlock" type="button">Kilidi aç</button></div></div></div>
+<dialog id="dlg"><div class="dlg-h"><span id="dlgT"></span><button type="button" id="dlgX" aria-label="Kapat">×</button></div><div class="dlg-b" id="dlgB"></div><div class="dlg-f" id="dlgF"></div></dialog>
+<div id="printArea"></div>
+
+<script>
+const APP_VERSION='1.1.0';
+const RULES_DATE='20.11.2026';
+// ===== LIB START =====
+// Doğrulanmış rehber kütüphanesi. Her URL 20.11.2026 (veya *10.11.2026) tarihinde arama/ziyaretle doğrulandı.
+// k: konu anahtarı, kw: dikte metninde aranacak ifadeler (küçük harf, Türkçe/İngilizce), en: PubMed sorgusu için İngilizce terim
+const TOPICS={
+  fn:{t:'Febril nötropeni / onkoloji hastası',en:'febrile neutropenia children',kw:['febril nötropeni','nötropeni','nötropenik','mutlak nötrofil','kemoterapi','lösemi','lenfoma','onkoloji','nöroblastom','kemik iliği nakli','kök hücre nakli','hsct','febrile neutropenia']},
+  ifd:{t:'İnvaziv fungal enfeksiyon',en:'invasive fungal infection children',kw:['aspergill','galaktomannan','kandida','candida','fungal','fungemi','mantar','beta-d-glukan','beta d glukan','mukor','vorikonazol','kaspofungin','mikafungin','amfoterisin','flukonazol','posakonazol']},
+  crbsi:{t:'Kateter ilişkili kan dolaşımı enfeksiyonu',en:'catheter-related bloodstream infection children',kw:['kateter','port kateter','port','santral venöz','santral kateter','cvk','hickman','broviac','picc']},
+  mening:{t:'Bakteriyel menenjit',en:'bacterial meningitis children',kw:['menenjit','ense sertliği','meningeal','lomber ponksiyon','meningitis']},
+  enceph:{t:'Ensefalit',en:'encephalitis children',kw:['ensefalit','encephalitis','bilinç bulanıklığı','bilinç değişikliği']},
+  cap:{t:'Toplum kökenli pnömoni',en:'community-acquired pneumonia children',kw:['pnömoni','konsolidasyon','ampiyem','plevral efüzyon','parapnömonik']},
+  osteo:{t:'Osteomiyelit',en:'acute hematogenous osteomyelitis children',kw:['osteomiyelit','osteomyelitis','kemik enfeksiyonu']},
+  arth:{t:'Septik artrit',en:'septic arthritis children',kw:['septik artrit','bakteriyel artrit','eklem sıvısı','septic arthritis']},
+  uti:{t:'İdrar yolu enfeksiyonu',en:'febrile urinary tract infection children',kw:['idrar yolu','iye','piyelonefrit','pyelonefrit','idrar kültürü','piyüri','pyüri','urinary tract']},
+  ssti:{t:'Deri ve yumuşak doku enfeksiyonu',en:'skin and soft tissue infection children',kw:['selülit','apse','abse','yumuşak doku','fasiit','impetigo','erizipel','cellulitis']},
+  mrsa:{t:'MRSA',en:'methicillin-resistant Staphylococcus aureus children',kw:['mrsa','metisilin dirençli','metisiline dirençli']},
+  amr:{t:'Dirençli gram-negatif enfeksiyon',en:'carbapenem-resistant Enterobacterales treatment',kw:['esbl','karbapenem dirençli','karbapeneme dirençli','kpc','oxa-48','oxa 48','ndm','dtr','acinetobacter','kolistin','seftazidim-avibaktam','seftazidim avibaktam','çoklu ilaç dirençli']},
+  cdiff:{t:'Clostridioides difficile',en:'Clostridioides difficile infection children',kw:['difficile','c. difficile','c difficile','toksin a','toksin b']},
+  diar:{t:'İnfeksiyöz ishal',en:'infectious diarrhea children',kw:['ishal','gastroenterit','dizanteri','kanlı ishal','diarrhea']},
+  phar:{t:'Grup A streptokok farenjiti',en:'group A streptococcal pharyngitis',kw:['farenjit','tonsillit','tonsillofarenjit','streptokok antijen','pharyngitis']},
+  febinf:{t:'Febril bebek (8–60 gün)',en:'febrile infant 8 to 60 days',kw:['febril bebek','ateşli bebek','günlük bebek','yenidoğan ateş']},
+  eos:{t:'Yenidoğan erken başlangıçlı sepsis',en:'early-onset neonatal sepsis',kw:['erken başlangıçlı sepsis','neonatal sepsis','koryoamniyonit','gbs','grup b streptokok','erken membran rüptürü']},
+  sepsis:{t:'Sepsis / septik şok',en:'pediatric septic shock',kw:['sepsis','septik şok','septik','vazopressör','inotrop','laktat']},
+  kawa:{t:'Kawasaki hastalığı',en:'Kawasaki disease',kw:['kawasaki','koroner arter','çilek dil']},
+  ie:{t:'İnfektif endokardit',en:'infective endocarditis children',kw:['endokardit','vejetasyon','endocarditis']},
+  vacc:{t:'İmmün yetmezlikte aşılama',en:'vaccination immunocompromised host',kw:['aşılama','aşı takvimi','aşı durumu','splenektomi','solid organ nakli','immünsüpresif']},
+  tb:{t:'Tüberküloz',en:'tuberculosis children',kw:['tüberküloz','tbc','verem','ppd','tüberkülin','igra','quantiferon','quantiFERON']},
+  rabies:{t:'Kuduz profilaksisi',en:'rabies post-exposure prophylaxis',kw:['kuduz','ısırık','ısırığı','ısırılma','köpek','kedi','hayvan teması']},
+  kkka:{t:'Kırım-Kongo kanamalı ateşi',en:'Crimean-Congo hemorrhagic fever',kw:['kkka','kırım kongo','kırım-kongo','kene']},
+  surg:{t:'Cerrahi antimikrobiyal profilaksi',en:'surgical antimicrobial prophylaxis',kw:['cerrahi profilaksi','profilaksi','preoperatif','ameliyat öncesi']},
+  cong:{t:'Konjenital / perinatal enfeksiyon',en:'congenital infection',kw:['konjenital','cmv','sitomegalovirüs','toksoplazma','toxoplasma','sifiliz','hsv','herpes','perinatal']}
+};
+const LIB=[
+  {id:'fn2023',k:['fn'],o:'IPFNG',y:2023,t:'Lehrnbecher T ve ark. Guideline for the management of fever and neutropenia in pediatric patients with cancer and hematopoietic cell transplantation recipients: 2023 update. J Clin Oncol 2023;41:1774–85.',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC10022858/'},
+  {id:'ecil8abx',k:['fn','amr'],o:'ECIL',y:2021,t:'Lehrnbecher T ve ark. 8th European Conference on Infections in Leukaemia: 2020 guidelines for the use of antibiotics in paediatric patients with cancer or post-haematopoietic cell transplantation. Lancet Oncol 2021.',u:'https://pubmed.ncbi.nlm.nih.gov/33811814/'},
+  {id:'ecil8ifd',k:['ifd','fn'],o:'ECIL',y:2021,t:'Groll AH ve ark. 8th European Conference on Infections in Leukaemia: 2020 guidelines for the diagnosis, prevention, and treatment of invasive fungal diseases in paediatric patients with cancer or post-haematopoietic cell transplantation. Lancet Oncol 2021.',u:'https://doi.org/10.1016/S1470-2045(20)30723-3'},
+  {id:'candida2016',k:['ifd'],o:'IDSA',y:2016,t:'Pappas PG ve ark. Clinical practice guideline for the management of candidiasis: 2016 update by the Infectious Diseases Society of America. Clin Infect Dis 2016.',u:'https://pubmed.ncbi.nlm.nih.gov/26679628/'},
+  {id:'asp2016',k:['ifd'],o:'IDSA',y:2016,t:'Patterson TF ve ark. Practice guidelines for the diagnosis and management of aspergillosis: 2016 update by the Infectious Diseases Society of America. Clin Infect Dis 2016.',u:'https://pubmed.ncbi.nlm.nih.gov/27365388/'},
+  {id:'amr2024',k:['amr'],o:'IDSA',y:2024,t:'Tamma PD ve ark. Infectious Diseases Society of America 2024 guidance on the treatment of antimicrobial-resistant gram-negative infections. Clin Infect Dis 2024.',u:'https://pubmed.ncbi.nlm.nih.gov/39108079/'},
+  {id:'crbsi2009',k:['crbsi'],o:'IDSA',y:2009,t:'Mermel LA ve ark. Clinical practice guidelines for the diagnosis and management of intravascular catheter-related infection: 2009 update by the Infectious Diseases Society of America. Clin Infect Dis 2009;49:1–45.',u:'https://pubmed.ncbi.nlm.nih.gov/19489710/'},
+  {id:'mening2004',k:['mening'],o:'IDSA',y:2004,t:'Tunkel AR ve ark. Practice guidelines for the management of bacterial meningitis. Clin Infect Dis 2004;39:1267–84.',u:'https://academic.oup.com/cid/article/39/9/1267/402080'},
+  {id:'mening2016',k:['mening'],o:'ESCMID',y:2016,t:'van de Beek D ve ark. ESCMID guideline: diagnosis and treatment of acute bacterial meningitis. Clin Microbiol Infect 2016;22 Suppl 3:S37–62.',u:'https://doi.org/10.1016/j.cmi.2016.01.007'},
+  {id:'enceph2008',k:['enceph'],o:'IDSA',y:2008,t:'Tunkel AR ve ark. The management of encephalitis: clinical practice guidelines by the Infectious Diseases Society of America. Clin Infect Dis 2008;47:303–27.',u:'https://pubmed.ncbi.nlm.nih.gov/18582201/'},
+  {id:'cap2011',k:['cap'],o:'PIDS/IDSA',y:2011,t:'Bradley JS ve ark. The management of community-acquired pneumonia in infants and children older than 3 months of age: clinical practice guidelines by PIDS and IDSA. Clin Infect Dis 2011;53:e25–76.',u:'https://academic.oup.com/cid/article/53/7/617/424575'},
+  {id:'osteo2021',k:['osteo'],o:'PIDS/IDSA',y:2021,t:'Woods CR ve ark. Clinical practice guideline by PIDS and IDSA: 2021 guideline on diagnosis and management of acute hematogenous osteomyelitis in pediatrics. J Pediatric Infect Dis Soc 2021.',u:'https://pubmed.ncbi.nlm.nih.gov/34350458/'},
+  {id:'arth2023',k:['arth'],o:'PIDS/IDSA',y:2023,t:'Woods CR ve ark. Clinical practice guideline by PIDS and IDSA: 2023 guideline on diagnosis and management of acute bacterial arthritis in pediatrics. J Pediatric Infect Dis Soc 2024.',u:'https://pubmed.ncbi.nlm.nih.gov/37941444/'},
+  {id:'uti2011',k:['uti'],o:'AAP',y:2011,t:'AAP Subcommittee on Urinary Tract Infection. Urinary tract infection: clinical practice guideline for the diagnosis and management of the initial UTI in febrile infants and children 2 to 24 months. Pediatrics 2011;128:595–610.',u:'https://pubmed.ncbi.nlm.nih.gov/21873693/'},
+  {id:'uti2016',k:['uti'],o:'AAP',y:2016,t:'AAP Subcommittee on Urinary Tract Infection. Reaffirmation of AAP clinical practice guideline: the diagnosis and management of the initial UTI in febrile infants and young children 2–24 months of age. Pediatrics 2016.',u:'https://pubmed.ncbi.nlm.nih.gov/27940735/'},
+  {id:'ssti2014',k:['ssti'],o:'IDSA',y:2014,t:'Stevens DL ve ark. Practice guidelines for the diagnosis and management of skin and soft tissue infections: 2014 update by the Infectious Diseases Society of America. Clin Infect Dis 2014;59:e10–52.',u:'https://pubmed.ncbi.nlm.nih.gov/24973422/'},
+  {id:'mrsa2011',k:['mrsa','ssti'],o:'IDSA',y:2011,t:'Liu C ve ark. Clinical practice guidelines by the Infectious Diseases Society of America for the treatment of MRSA infections in adults and children: executive summary. Clin Infect Dis 2011;52:285–92.',u:'https://doi.org/10.1093/cid/cir034'},
+  {id:'cdiff2017',k:['cdiff'],o:'IDSA/SHEA',y:2018,t:'McDonald LC ve ark. Clinical practice guidelines for Clostridium difficile infection in adults and children: 2017 update by IDSA and SHEA. Clin Infect Dis 2018;66:e1–48.',u:'https://pubmed.ncbi.nlm.nih.gov/29462280/'},
+  {id:'diar2017',k:['diar'],o:'IDSA',y:2017,t:'Shane AL ve ark. 2017 Infectious Diseases Society of America clinical practice guidelines for the diagnosis and management of infectious diarrhea. Clin Infect Dis 2017;65:1963–73.',u:'https://pmc.ncbi.nlm.nih.gov/articles/PMC5848254/'},
+  {id:'phar2012',k:['phar'],o:'IDSA',y:2012,t:'Shulman ST ve ark. Clinical practice guideline for the diagnosis and management of group A streptococcal pharyngitis: 2012 update by the Infectious Diseases Society of America. Clin Infect Dis 2012.',u:'https://pubmed.ncbi.nlm.nih.gov/22965026/'},
+  {id:'febinf2021',k:['febinf'],o:'AAP',y:2021,t:'Pantell RH ve ark. Evaluation and management of well-appearing febrile infants 8 to 60 days old. Pediatrics 2021;148:e2021052228.',u:'https://pubmed.ncbi.nlm.nih.gov/34281996/'},
+  {id:'eos2018',k:['eos'],o:'AAP',y:2018,t:'Puopolo KM ve ark. Management of neonates born at ≥35 0/7 weeks\' gestation with suspected or proven early-onset bacterial sepsis. Pediatrics 2018;142:e20182894.',u:'https://pubmed.ncbi.nlm.nih.gov/30455342/'},
+  {id:'ssc2020',k:['sepsis'],o:'SSC',y:2020,t:'Weiss SL ve ark. Surviving Sepsis Campaign international guidelines for the management of septic shock and sepsis-associated organ dysfunction in children. Pediatr Crit Care Med 2020.',u:'https://pubmed.ncbi.nlm.nih.gov/32032273/'},
+  {id:'phoenix2024',k:['sepsis'],o:'SCCM',y:2024,t:'Sanchez-Pinto LN ve ark. Development and validation of the Phoenix criteria for pediatric sepsis and septic shock. JAMA 2024.',u:'https://pubmed.ncbi.nlm.nih.gov/38245897/'},
+  {id:'kawa2017',k:['kawa'],o:'AHA',y:2017,t:'McCrindle BW ve ark. Diagnosis, treatment, and long-term management of Kawasaki disease: a scientific statement for health professionals from the American Heart Association. Circulation 2017;135:e927–99.',u:'https://pubmed.ncbi.nlm.nih.gov/28356445/'},
+  {id:'ie2015',k:['ie'],o:'AHA',y:2015,t:'Baltimore RS ve ark. Infective endocarditis in childhood: 2015 update. A scientific statement from the American Heart Association. Circulation 2015.',u:'https://professional.heart.org/en/science-news/infective-endocarditis-in-childhood-2015-update'},
+  {id:'vacc2013',k:['vacc'],o:'IDSA',y:2013,t:'Rubin LG ve ark. 2013 IDSA clinical practice guideline for vaccination of the immunocompromised host. Clin Infect Dis 2014;58:e44–100.',u:'https://www.qxmd.com/r/24311479'},
+  {id:'trasi2025',k:['vacc'],o:'T.C. SB',y:2025,t:'T.C. Sağlık Bakanlığı. Ulusal Çocukluk Dönemi Aşılama Takvimi (2025).*',u:'https://asi.saglik.gov.tr/depo/2025/asi_takvimi/asi_takvimi_2025.pdf'},
+  {id:'tb2022',k:['tb'],o:'WHO',y:2022,t:'WHO. WHO consolidated guidelines on tuberculosis: module 5: management of tuberculosis in children and adolescents. Geneva: WHO; 2022.',u:'https://iris.who.int/handle/10665/352522'},
+  {id:'kuduz',k:['rabies'],o:'T.C. SB',y:null,t:'T.C. Sağlık Bakanlığı Halk Sağlığı Genel Müdürlüğü. Kuduz Profilaksi Rehberi.',u:'https://hsgm.saglik.gov.tr/depo/Yayinlarimiz/Rehberler/Kuduz_Profilaksi_Rehberi.pdf'},
+  {id:'kkka2023',k:['kkka'],o:'T.C. SB',y:2023,t:'T.C. Sağlık Bakanlığı HSGM. Kırım-Kongo Kanamalı Ateşi – hekimlere yönelik eğitim sunumu (2023).',u:'https://hsgm.saglik.gov.tr/depo/birimler/zoonotik-ve-vektorel-hastaliklar-db/Dokumanlar/Sunumlar/KKKA_Sunum_Hekimlere_Yonelik_2023.pdf'},
+  {id:'surg2013',k:['surg'],o:'ASHP/IDSA/SIS/SHEA',y:2013,t:'Bratzler DW ve ark. Clinical practice guidelines for antimicrobial prophylaxis in surgery. Am J Health Syst Pharm 2013;70:195–283.',u:'https://shea-online.org/guidance/antimicrobial-prophylaxis-in-surgery/'},
+  {id:'espidcmv',k:['cong'],o:'ESPID',y:2017,t:'Luck SE ve ark. Congenital cytomegalovirus: a European expert consensus statement on diagnosis and management. Pediatr Infect Dis J 2017;36:1205–13.*',u:'https://www.espid.org/data/files/Guideline%20Sub-Committee/OD-ESPID-18%20Congenital%20Cytomegalovirus%20-%20A%20European%20Expert%20Consensus%20Statement%20on%20Diagnosis%20and%20Management.pdf'},
+  {id:'cdcsyph',k:['cong'],o:'CDC',y:2021,t:'CDC. Sexually Transmitted Infections Treatment Guidelines, 2021 – Congenital Syphilis.*',u:'https://www.cdc.gov/std/treatment-guidelines/congenital-syphilis.htm'},
+  {id:'aaptoxo',k:['cong'],o:'AAP',y:2017,t:'Maldonado YA, Read JS; AAP COID. Diagnosis, treatment, and prevention of congenital toxoplasmosis in the United States. Pediatrics 2017;139:e20163860.*',u:'https://pubmed.ncbi.nlm.nih.gov/28138010/'},
+  {id:'redbook',k:[],o:'AAP',y:2024,t:'American Academy of Pediatrics. Red Book: 2024–2027 Report of the Committee on Infectious Diseases, 33rd ed.',u:'https://aap.org/Red-Book-2024-Report-of-the-Committee-on-Infectious-Diseases-33rd-Edition-eBook'}
+];
+// Arama kısayolları: yalnız sorgu kelimeleri cihazdan çıkar (hasta verisi gönderilmez)
+const SEARCH_SITES=[
+  {id:'pubmed',t:'PubMed',f:q=>'https://pubmed.ncbi.nlm.nih.gov/?term='+encodeURIComponent(q)},
+  {id:'uptodate',t:'UpToDate',f:q=>'https://www.google.com/search?q='+encodeURIComponent('site:uptodate.com '+q)},
+  {id:'redbook',t:'Red Book (AAP)',f:q=>'https://www.google.com/search?q='+encodeURIComponent('site:publications.aap.org redbook '+q)},
+  {id:'idsa',t:'IDSA',f:q=>'https://www.google.com/search?q='+encodeURIComponent('site:idsociety.org guideline '+q)},
+  {id:'ecil',t:'ECIL',f:q=>'https://www.google.com/search?q='+encodeURIComponent('ECIL guidelines '+q)},
+  {id:'sb',t:'T.C. Sağlık Bakanlığı',f:q=>'https://www.google.com/search?q='+encodeURIComponent('site:saglik.gov.tr '+q)},
+  {id:'who',t:'WHO',f:q=>'https://www.google.com/search?q='+encodeURIComponent('site:who.int '+q)},
+  {id:'cdc',t:'CDC',f:q=>'https://www.google.com/search?q='+encodeURIComponent('site:cdc.gov '+q)}
+];
+// ===== LIB END =====
+// ===== OPTS START =====
+// Öneri seçenekleri kütüphanesi: konu başına ayırıcı tanı, tetkik, tedavi, izlem, enfeksiyon kontrolü.
+// Kural: Doz yalnız kılavuz metninden doğrulananlarda yazılır (20.11.2026; bkz. notes.md). Diğerlerinde ilaç adı + "dozu kaynaktan doğrulayın".
+// d: {r:yol, lo, hi, per:'gün'|'doz', u:'mg'|'U'|'mL', ul:etiket, div:günlük doz sayısı (belirsizse yok), freq:metin, max, maxPer:'gün'|'doz', pl:özel etiket, phases:[...]}
+const NODOSE='dozu kaynaktan doğrulayın';
+const OPT_CATS=[['ddx','Ayırıcı tanı'],['tet','Tetkik'],['tx','Tedavi seçenekleri'],['izl','İzlem'],['ek','Enfeksiyon kontrolü / halk sağlığı']];
+const CAT_LABEL={tet:'Tetkik',tx:'Tedavi',izl:'İzlem',ek:'Enfeksiyon kontrolü'};
+const PLAN_CATS=['Tetkik','Tedavi','İzlem','Enfeksiyon kontrolü'];
+const OPTS={
+ genel:{t:'Genel antimikrobiyal yönetim',
+  tet:[['Kültür ve antibiyogram sonuçlarının takibi']],
+  tx:[{t:'Kültür sonucuna göre de-eskalasyon / hedefe yönelik tedaviye geçiş'},{t:'Klinik yanıt ve oral alım uygunsa IV→oral ardışık tedavi değerlendirmesi'},{t:'Böbrek/karaciğer fonksiyonuna göre doz ayarı'}],
+  izl:[['48–72. saatte klinik ve mikrobiyolojik yeniden değerlendirme (antibiyotik gözden geçirme)'],['Ateş eğrisi ve akut faz reaktanlarının izlemi'],['Gerekli ilaçlarda terapötik ilaç düzeyi izlemi (kurum protokolüne göre)']],
+  ek:[['Standart önlemler ve el hijyeni']]},
+ fn:{ddx:['Bakteriyel kan dolaşımı enfeksiyonu (gram-negatif / gram-pozitif)','Kateter ilişkili kan dolaşımı enfeksiyonu','İnvaziv fungal enfeksiyon (uzamış nötropeni, kalıcı ateş)','Viral enfeksiyon (solunum virüsleri vb.)','Nötropenik enterokolit (tiflit)','Enfeksiyon dışı: ilaç/transfüzyon ateşi, altta yatan hastalık'],
+  tet:[['Ateş başlangıcında santral kateterin tüm lümenlerinden kan kültürü','fn2023'],['Tam kan sayımı, CRP, böbrek ve karaciğer fonksiyonları'],['İdrar tetkiki ve kültürü (tedaviyi geciktirmeden alınabiliyorsa)','fn2023'],['Akciğer grafisi yalnız solunum bulgusu varsa','fn2023']],
+  tx:[{t:'Ampirik monoterapi: antipsödomonal β-laktam, 4. kuşak sefalosporin veya karbapenem – '+NODOSE,ref:'fn2023'},{t:'Klinik instabilite veya dirençli etken şüphesinde ikinci gram-negatif ajan eklenmesi',ref:'fn2023'},{t:'Glikopeptid ampirik başlangıçta yalnız özel durumlarda (hemodinamik instabilite, şüpheli kateter veya deri-yumuşak doku enfeksiyonu, pnömoni vb.)',ref:'fn2023'},{t:'Dirençli gram-negatif kolonizasyonu/enfeksiyonu öyküsünde ampirik seçimi yerel epidemiyolojiye göre genişletme',ref:'ecil8abx'}],
+  izl:[['Yüksek riskli hastada 96. saatte süren ateşte ampirik antifungal değerlendirmesi','fn2023'],['Kan kültürü negatif ve en az 24 saat ateşsiz hastada, kemik iliği yanıtından bağımsız olarak ampirik tedavinin kesilmesi düşünülebilir','fn2023']],
+  ek:[['Dirençli etken kolonizasyonunda temas izolasyonu']]},
+ ifd:{ddx:['Kandidemi / invaziv kandidiyaz','İnvaziv aspergilloz','Mukormikoz','Pneumocystis jirovecii pnömonisi'],
+  tet:[['Kan kültürü (kandidemide günlük/gün aşırı kontrol kültürleriyle negatifleşmenin gösterilmesi)','candida2016'],['Serum (ve BAL) galaktomannan','ecil8ifd'],['Toraks BT','ecil8ifd'],['Kandidemide tanıdan sonraki ilk hafta içinde dilate göz dibi muayenesi','candida2016']],
+  tx:[{t:'Kandidemi (nötropenik olmayan): başlangıç tedavisinde ekinokandin – '+NODOSE,ref:'candida2016'},{t:'Kandidemide santral venöz kateterin mümkün olan en kısa sürede çıkarılması',ref:'candida2016'},{t:'Yenidoğan kandidiyazı: amfoterisin B deoksikolat veya flukonazol – '+NODOSE,ref:'candida2016'},{t:'İnvaziv aspergilloz: primer tedavide vorikonazol – '+NODOSE,ref:'asp2016'},{t:'Vorikonazolde terapötik ilaç düzeyi izlemi',ref:'asp2016'}],
+  izl:[['Kandidemide süre: metastatik odak yoksa kan kültürü negatifleşmesi ve semptomların düzelmesinden sonra 2 hafta','candida2016']]},
+ crbsi:{ddx:['Kateter ilişkili kan dolaşımı enfeksiyonu','Kateter kolonizasyonu / kontaminasyon','Çıkış yeri veya tünel enfeksiyonu','Süpüratif tromboflebit','İnfektif endokardit'],
+  tet:[['Eşzamanlı kateter ve periferik kan kültürü (pozitifleşme zaman farkı ≥2 saat KDE lehine)','crbsi2009'],['Endokardit veya trombüs şüphesinde ekokardiyografi / Doppler USG']],
+  tx:[{t:'Ampirik vankomisin (MRSA sıklığı yüksek merkezlerde) + hastanın durumuna ve yerel verilere göre gram-negatif kapsam – '+NODOSE,ref:'crbsi2009'},{t:'S. aureus, P. aeruginosa, mantar veya mikobakteri etkenli KDE\'de kalıcı kateterin çıkarılması',ref:'crbsi2009'},{t:'Koagülaz negatif stafilokokta kateter korunarak sistemik tedavi ± antibiyotik kilit tedavisi değerlendirilebilir',ref:'crbsi2009'}],
+  izl:[['Kateter korunuyorsa ve 72 saatlik uygun tedaviye rağmen bakteriyemi sürüyorsa kateterin çıkarılması','crbsi2009'],['Tedavi altında kontrol kan kültürleri']]},
+ mening:{ddx:['Bakteriyel menenjit','Viral menenjit (enterovirüs vb.)','HSV ensefaliti','Tüberküloz menenjiti','Fungal menenjit','Parameningeal odak / beyin apsesi'],
+  tet:[['Antibiyotik öncesi kan kültürü','mening2004'],['Lomber ponksiyon: BOS hücre sayımı, protein, glukoz (eşzamanlı kan glukozu), Gram boyama, kültür, PCR','mening2004'],['Kafa içi basınç artışı veya fokal nörolojik bulguda LP öncesi görüntüleme; antibiyotik geciktirilmez','mening2004']],
+  tx:[{t:'Ampirik tedavi (>1 ay): vankomisin + seftriakson veya sefotaksim – '+NODOSE,ref:'mening2004'},{t:'Deksametazon (Hib menenjitinde önerilir, pnömokokta değerlendirilebilir; ilk doz antibiyotikten 10–20 dk önce veya birlikte; antibiyotik verilmişse başlanmaz; yenidoğanda önerilmez)',d:{r:'IV',lo:0.15,per:'doz',u:'mg',div:4,freq:'6 saatte bir, 2–4 gün'},ref:'mening2004'},{t:'Etken ve duyarlılığa göre hedefe yönelik tedavi ve süre',ref:'mening2016'}],
+  ek:[['Meningokok şüphesinde etkin tedavinin ilk 24 saatinde damlacık izolasyonu','redbook'],['N. meningitidis / Hib\'de yakın temaslı kemoprofilaksisi','redbook'],['Bildirimi zorunlu hastalık bildirimi']]},
+ enceph:{ddx:['HSV ensefaliti','Enteroviral / diğer viral ensefalitler','Otoimmün ensefalit (anti-NMDAR vb.)','ADEM','Metabolik / toksik ensefalopati','Bakteriyel menenjit'],
+  tet:[['BOS HSV PCR ve enterovirüs PCR','enceph2008'],['Kraniyal MR','enceph2008'],['EEG','enceph2008']],
+  tx:[{t:'Ensefalit şüphesinde sonuç beklenmeden ampirik asiklovir – '+NODOSE,ref:'enceph2008'}],
+  izl:[['HSV ensefaliti şüphesi sürüyor ve ilk HSV PCR negatifse 3–7 gün içinde tekrar LP/PCR','enceph2008']]},
+ cap:{ddx:['Viral pnömoni (okul öncesi yaşta en sık)','Tipik bakteriyel pnömoni (S. pneumoniae)','Atipik pnömoni (M. pneumoniae)','S. aureus pnömonisi (nekrotizan pnömoni, ampiyem)','Aspirasyon pnömonisi','Tüberküloz (epidemiyolojik risk varsa)'],
+  tet:[['Nabız oksimetresi','cap2011'],['Yatan hastada akciğer grafisi (PA ve lateral)','cap2011'],['Orta-ağır yatan hastada kan kültürü; ayaktan aşılı hastada rutin önerilmez','cap2011'],['Plevral efüzyonda USG ve gerekirse plevral sıvı incelemesi','cap2011'],['İnfluenza ve diğer solunum virüsleri testi','cap2011']],
+  tx:[{t:'Ayaktan, tipik bakteriyel: amoksisilin',d:{r:'PO',lo:90,per:'gün',u:'mg',div:2,freq:'2 dozda',max:4000,maxPer:'gün'},ref:'cap2011'},{t:'Ayaktan alternatif: amoksisilin-klavulanat (amoksisilin bileşeni)',d:{r:'PO',lo:90,per:'gün',u:'mg',div:2,freq:'2 dozda',max:4000,maxPer:'gün'},ref:'cap2011'},{t:'Atipik etken şüphesi: azitromisin',d:{r:'PO',phases:[{lab:'1. gün',lo:10,per:'doz',u:'mg',max:500,maxPer:'doz',div:1},{lab:'2–5. gün',lo:5,per:'gün',u:'mg',div:1,max:250,maxPer:'gün'}]},ref:'cap2011'},{t:'Yatan, tam aşılı, düşük penisilin direnci: ampisilin',d:{r:'IV',lo:150,hi:200,per:'gün',u:'mg',div:4,freq:'6 saatte bir'},ref:'cap2011'},{t:'Yatan, tam aşılı: penisilin G (alternatif)',d:{r:'IV',lo:200000,hi:250000,per:'gün',u:'U',freq:'4–6 saatte bir'},ref:'cap2011'},{t:'Yatan, tam aşılı olmayan / yüksek direnç / ağır tablo: seftriakson',d:{r:'IV',lo:50,hi:100,per:'gün',u:'mg',freq:'12–24 saatte bir'},ref:'cap2011'},{t:'Yatan (seftriakson yerine): sefotaksim',d:{r:'IV',lo:150,per:'gün',u:'mg',div:3,freq:'8 saatte bir'},ref:'cap2011'},{t:'S. aureus/MRSA şüphesinde ekleme: vankomisin',d:{r:'IV',lo:40,hi:60,per:'gün',u:'mg',freq:'6–8 saatte bir'},ref:'cap2011'},{t:'S. aureus/MRSA şüphesinde (alternatif): klindamisin',d:{r:'IV',lo:40,per:'gün',u:'mg',freq:'6–8 saatte bir'},ref:'cap2011'}],
+  izl:[['Uygun tedavide 48–72 saat içinde klinik ve laboratuvar düzelme beklenir; yoksa yeniden değerlendirme','cap2011'],['Süre: en iyi çalışılmış süre 10 gün; daha kısa süre yeterli olabilir; MRSA gibi etkenlerde daha uzun gerekebilir','cap2011']],
+  ek:[['Viral etken şüphesinde etkene uygun damlacık/temas izolasyonu']]},
+ osteo:{ddx:['Akut hematojen osteomiyelit (S. aureus; <4 yaşta K. kingae)','Eşlik eden septik artrit','Malignite (Ewing sarkomu, lösemi)','Kronik rekürren multifokal osteomiyelit','Travma / stres kırığı','Orak hücre hastalığında Salmonella osteomiyeliti'],
+  tet:[['Tedavi öncesi kan kültürü','osteo2021'],['Başlangıçta düz grafi; ileri görüntülemede MR tercih edilir','osteo2021'],['Kemik veya apse örneğinden kültür (mümkünse tedavi öncesi)','osteo2021'],['<4 yaşta K. kingae PCR','osteo2021'],['CRP (ve ESH) ile yanıt izlemi','osteo2021']],
+  tx:[{t:'Ampirik tedavi S. aureus\'u kapsamalı; MSSA / düşük MRSA: sefazolin',d:{r:'IV',lo:100,hi:150,per:'gün',u:'mg',div:3,freq:'8 saatte bir',max:12000,maxPer:'gün'},ref:'osteo2021'},{t:'Alternatif (MSSA): nafsilin/oksasilin',d:{r:'IV',lo:100,hi:200,per:'gün',u:'mg',div:4,freq:'6 saatte bir',max:12000,maxPer:'gün'},ref:'osteo2021'},{t:'Klindamisin (yerel duyarlılık uygunsa)',d:{r:'IV',lo:30,hi:40,per:'gün',u:'mg',freq:'6–8 saatte bir',max:2700,maxPer:'gün'},ref:'osteo2021'},{t:'MRSA yüksek / ağır tablo: vankomisin',d:{r:'IV',lo:40,hi:60,per:'gün',u:'mg',freq:'6–8 saatte bir'},ref:'osteo2021'},{t:'Linezolid (<12 yaş)',d:{r:'IV/PO',lo:30,per:'gün',u:'mg',div:3,freq:'8 saatte bir',max:1200,maxPer:'gün'},ref:'osteo2021'},{t:'Linezolid (≥12 yaş)',d:{r:'IV/PO',lo:20,per:'gün',u:'mg',div:2,freq:'12 saatte bir',max:1200,maxPer:'gün'},ref:'osteo2021'},{t:'Oral ardışık: sefaleksin',d:{r:'PO',lo:75,hi:100,per:'gün',u:'mg',freq:'3–4 dozda',max:4000,maxPer:'gün'},ref:'osteo2021'},{t:'Oral ardışık: klindamisin',d:{r:'PO',lo:30,hi:40,per:'gün',u:'mg',freq:'3–4 dozda',max:1800,maxPer:'gün'},ref:'osteo2021'},{t:'Oral ardışık (duyarlı etken): amoksisilin',d:{r:'PO',lo:50,hi:100,per:'gün',u:'mg',div:3,freq:'8 saatte bir',max:4000,maxPer:'gün'},ref:'osteo2021'}],
+  izl:[['Klinik düzelme ve CRP düşüşüyle erken oral tedaviye geçiş','osteo2021'],['Komplike olmayan S. aureus AHO\'da toplam süre 3–4 hafta','osteo2021']]},
+ arth:{ddx:['Septik artrit (S. aureus; <4 yaşta K. kingae)','Geçici sinovit','Reaktif artrit','Juvenil idiyopatik artrit','Akut romatizmal ateş','Eşlik eden osteomiyelit'],
+  tet:[['Eklem sıvısı aspirasyonu: hücre sayımı, Gram boyama, kültür; <4 yaşta K. kingae PCR','arth2023'],['Kan kültürü','arth2023'],['Efüzyon için USG; eşlik eden osteomiyelit şüphesinde MR','arth2023']],
+  tx:[{t:'Ampirik tedavi S. aureus\'u (ve küçük çocukta K. kingae\'yı) kapsamalı – '+NODOSE,ref:'arth2023'},{t:'Cerrahi drenaj/irrigasyon gereksinimi ortopediyle birlikte (özellikle kalça)',ref:'arth2023'}],
+  izl:[['Komplike olmayan olguda kısa IV sonrası oral tedaviye geçiş; toplam süre çoğu olguda 10–14 gün','arth2023']]},
+ uti:{ddx:['Akut piyelonefrit','Sistit','Asemptomatik bakteriüri','Vulvovajinit / balanit','Ürolitiyazis'],
+  tet:[['İdrar tetkiki ve kateter veya suprapubik aspirasyonla idrar kültürü (torba idrarı kültür için uygun değil) – 2–24 ay','uti2011'],['Tanı: piyüri ve/veya bakteriüri + tek etkenle ≥50.000 CFU/mL','uti2011'],['Ateşli İYE\'de böbrek-mesane USG','uti2011'],['İlk ateşli İYE sonrası rutin VCUG önerilmez (USG anormalse veya tekrarlayan ateşli İYE\'de)','uti2011']],
+  tx:[{t:'Oral: amoksisilin-klavulanat',d:{r:'PO',lo:20,hi:40,per:'gün',u:'mg',div:3,freq:'3 dozda'},ref:'uti2011'},{t:'Oral: trimetoprim-sülfametoksazol (TMP)',d:{r:'PO',lo:6,hi:12,per:'gün',u:'mg',ul:'mg TMP',div:2,freq:'2 dozda'},ref:'uti2011'},{t:'Oral: sefiksim',d:{r:'PO',lo:8,per:'gün',u:'mg',div:1,freq:'tek doz'},ref:'uti2011'},{t:'Oral: sefuroksim aksetil',d:{r:'PO',lo:20,hi:30,per:'gün',u:'mg',div:2,freq:'2 dozda'},ref:'uti2011'},{t:'Oral: sefaleksin',d:{r:'PO',lo:50,hi:100,per:'gün',u:'mg',div:4,freq:'4 dozda'},ref:'uti2011'},{t:'Parenteral: seftriakson',d:{r:'IV/IM',lo:75,per:'gün',u:'mg',div:1,freq:'24 saatte bir'},ref:'uti2011'},{t:'Parenteral: sefotaksim',d:{r:'IV',lo:150,per:'gün',u:'mg',freq:'6–8 saatte bir'},ref:'uti2011'},{t:'Parenteral: gentamisin',d:{r:'IV',lo:7.5,per:'gün',u:'mg',div:3,freq:'8 saatte bir'},ref:'uti2011'}],
+  izl:[['Toplam tedavi süresi 7–14 gün','uti2011'],['Antibiyogram sonucuna göre tedavinin düzenlenmesi']]},
+ ssti:{ddx:['Selülit','Apse','İmpetigo','Nekrotizan fasiit (orantısız ağrı, hızlı ilerleme, sistemik toksisite)','Erizipel','Kontakt dermatit / ilaç reaksiyonu'],
+  tet:[['Apse drenaj materyalinden Gram boyama ve kültür','ssti2014'],['Pürülan olmayan selülitte rutin kan kültürü önerilmez (malignite, nötropeni, hayvan ısırığı, suya maruziyet hariç)','ssti2014'],['Nekrotizan enfeksiyon şüphesinde acil cerrahi değerlendirme','ssti2014']],
+  tx:[{t:'Apsede insizyon ve drenaj',ref:'ssti2014'},{t:'Sınırlı impetigo: mupirosin pomad günde 2 kez, 5 gün',ref:'ssti2014'},{t:'Yaygın impetigo / MSSA: sefaleksin',d:{r:'PO',lo:25,hi:50,per:'gün',u:'mg',freq:'3–4 dozda'},ref:'ssti2014'},{t:'Pürülan olmayan selülit (IV): sefazolin',d:{r:'IV',lo:33,per:'doz',u:'mg',div:3,freq:'8 saatte bir'},ref:'ssti2014'},{t:'Streptokokal selülit: penisilin',d:{r:'IV',lo:60000,hi:100000,per:'doz',u:'U',div:4,freq:'6 saatte bir'},ref:'ssti2014'},{t:'MRSA: vankomisin',d:{r:'IV',lo:40,per:'gün',u:'mg',div:4,freq:'4 dozda'},ref:'ssti2014'},{t:'MRSA (duyarlıysa): klindamisin IV',d:{r:'IV',lo:25,hi:40,per:'gün',u:'mg',div:3,freq:'3 dozda'},ref:'ssti2014'},{t:'MRSA (duyarlıysa): klindamisin oral',d:{r:'PO',lo:30,hi:40,per:'gün',u:'mg',div:3,freq:'3 dozda'},ref:'ssti2014'},{t:'MRSA (ayaktan): trimetoprim-sülfametoksazol (TMP)',d:{r:'PO',lo:8,hi:12,per:'gün',u:'mg',ul:'mg TMP'},ref:'ssti2014'},{t:'Nekrotizan enfeksiyon: piperasilin-tazobaktam (piperasilin) + vankomisin + klindamisin',d:{r:'IV',lo:60,hi:75,per:'doz',u:'mg',div:4,freq:'6 saatte bir'},ref:'ssti2014'},{t:'Nekrotizan enfeksiyonda klindamisin (kombinasyon bileşeni)',d:{r:'IV',lo:10,hi:13,per:'doz',u:'mg',div:3,freq:'8 saatte bir'},ref:'ssti2014'}],
+  izl:[['Selülitte önerilen süre 5 gün; 5. günde düzelme yoksa uzatılır','ssti2014']],
+  ek:[['MRSA\'da temas önlemleri']]},
+ mrsa:{ddx:['MRSA enfeksiyonu','MRSA kolonizasyonu'],
+  tet:[['MRSA bakteriyemisinde negatifleşmeyi gösteren kontrol kan kültürleri','mrsa2011'],['Kalıcı bakteriyemide odak araştırması (ekokardiyografi, görüntüleme)','mrsa2011']],
+  tx:[{t:'Kaynak kontrolü (drenaj, yabancı cisim/kateter çıkarılması)',ref:'mrsa2011'},{t:'Ağır invaziv MRSA enfeksiyonunda vankomisin – '+NODOSE,ref:'mrsa2011'}],
+  izl:[['Vankomisinde terapötik ilaç düzeyi izlemi (kurum protokolüne göre)']],
+  ek:[['Temas izolasyonu']]},
+ amr:{ddx:['Gerçek enfeksiyon','Kolonizasyon','Kontaminasyon'],
+  tet:[['Karbapenemaz tip tayini (KPC, OXA-48, NDM/MBL) – tedavi seçimi için','amr2024'],['Yeni ajanlar için duyarlılık testi (seftazidim-avibaktam vb.)','amr2024']],
+  tx:[{t:'ESBL üreten Enterobacterales (idrar yolu dışı): karbapenem – '+NODOSE,ref:'amr2024'},{t:'Karbapenem dirençli Enterobacterales (KPC / OXA-48): seftazidim-avibaktam – '+NODOSE,ref:'amr2024'},{t:'Metallo-β-laktamaz (NDM vb.): seftazidim-avibaktam + aztreonam veya sefiderokol – '+NODOSE,ref:'amr2024'},{t:'Tedavisi güç dirençli P. aeruginosa: seftolozan-tazobaktam, seftazidim-avibaktam, imipenem-relebaktam veya sefiderokol – '+NODOSE,ref:'amr2024'},{t:'Pediatrik dozlar için Red Book / ürün bilgisi; IDSA rehberi erişkin dozları içerir',ref:'redbook'}],
+  ek:[['Temas izolasyonu ve kohortlama'],['Enfeksiyon kontrol komitesine bildirim']]},
+ cdiff:{ddx:['C. difficile enfeksiyonu','Kolonizasyon (özellikle küçük çocukta)','Antibiyotik ilişkili ishal (C. difficile dışı)','Viral gastroenterit'],
+  tet:[['≤12 aylık bebekte rutin C. difficile testi önerilmez; 1–2 yaşta diğer nedenler dışlanmadan önerilmez','cdiff2017'],['Yalnız şekilsiz dışkı örneği test edilir','cdiff2017']],
+  tx:[{t:'Tetikleyici antibiyotiğin mümkünse kesilmesi',ref:'cdiff2017'},{t:'Çocukta ilk, ağır olmayan atak: metronidazol veya oral vankomisin – '+NODOSE,ref:'cdiff2017'},{t:'Ağır / fulminan atak: oral vankomisin (fulminanda ± IV metronidazol) – '+NODOSE,ref:'cdiff2017'}],
+  ek:[['Temas izolasyonu','cdiff2017'],['Salgın / hiperendemik durumda el hijyeninde sabun ve su','cdiff2017']]},
+ diar:{ddx:['Viral gastroenterit','Bakteriyel enterit (Salmonella, Shigella, Campylobacter)','STEC / hemolitik üremik sendrom riski','Paraziter enfeksiyon','C. difficile'],
+  tet:[['Ateş, kanlı ishal veya ağır tabloda dışkı kültürü / moleküler panel','diar2017'],['Kanlı ishalde Shiga toksin / STEC testi','diar2017']],
+  tx:[{t:'Oral rehidratasyon temel tedavi',ref:'diar2017'},{t:'STEC enfeksiyonunda antibiyotikten kaçınılması',ref:'diar2017'},{t:'Ampirik antibiyotik çoğu olguda gerekmez; <3 ay bebek, ateşli kanlı ishal / şigelloz şüphesi ve immünsüpresyonda değerlendirilir – '+NODOSE,ref:'diar2017'}],
+  ek:[['Temas önlemleri ve el hijyeni','diar2017'],['Bildirimi zorunlu etkenlerde bildirim']]},
+ phar:{ddx:['Viral farenjit','Grup A streptokok farenjiti','Enfeksiyöz mononükleoz (EBV)','Peritonsiller / retrofarengeal apse'],
+  tet:[['Hızlı antijen testi; çocukta negatifse boğaz kültürüyle doğrulama','phar2012'],['Viral bulgular (öksürük, burun akıntısı, ses kısıklığı, oral ülser) belirginse test önerilmez','phar2012'],['<3 yaşta risk faktörü yoksa rutin test önerilmez','phar2012']],
+  tx:[{t:'Penisilin V veya amoksisilin, 10 gün – '+NODOSE,ref:'phar2012'},{t:'Anafilaktik olmayan penisilin alerjisinde 1. kuşak sefalosporin (ör. sefaleksin) – '+NODOSE,ref:'phar2012'},{t:'Anafilaktik penisilin alerjisinde klindamisin, azitromisin veya klaritromisin – '+NODOSE,ref:'phar2012'}],
+  izl:[['Tedavi sonrası rutin kontrol testi önerilmez','phar2012']]},
+ febinf:{ddx:['İdrar yolu enfeksiyonu','Bakteriyemi','Bakteriyel menenjit','HSV enfeksiyonu (risk faktörü varsa)','Viral enfeksiyon'],
+  tet:[['İdrar tetkiki ve kültürü','febinf2021'],['Kan kültürü','febinf2021'],['İnflamatuvar belirteçler (prokalsitonin, MNS, CRP)','febinf2021'],['8–21 gün: LP yapılmalı; 22–28 gün: inflamatuvar belirteç anormalse LP; 29–60 gün: anormalse LP düşünülebilir','febinf2021']],
+  tx:[{t:'8–21 gün: hastane izlemi ve parenteral ampirik antibiyotik – '+NODOSE,ref:'febinf2021'}],
+  izl:[['Kültürler 24–36 saatte negatif ve bebek iyiyse antibiyotiğin kesilmesi','febinf2021']]},
+ eos:{ddx:['Erken başlangıçlı neonatal sepsis','Geçici takipne / solunum sıkıntısı (enfeksiyon dışı)','Perinatal asfiksi','Konjenital kalp hastalığı'],
+  tet:[['Kan kültürü (en az 1 mL)','eos2018'],['Risk değerlendirmesi: kategorik risk, sepsis risk hesaplayıcısı veya yakın klinik izlem','eos2018'],['CRP/hemogram tek başına başlama/kesme kararı için yetersiz','eos2018']],
+  tx:[{t:'Ampirik ampisilin + gentamisin – '+NODOSE,ref:'eos2018'}],
+  izl:[['Kan kültürü 36–48 saatte negatif ve klinik iyiyse antibiyotiklerin kesilmesi','eos2018']]},
+ sepsis:{ddx:['Bakteriyel sepsis','Toksik şok sendromu','Viral sepsis','MIS-C','Enfeksiyon dışı şok (kardiyojenik, hipovolemik)'],
+  tet:[['Antimikrobiyali geciktirmeden kan kültürü','ssc2020'],['Laktat','ssc2020'],['Phoenix sepsis skoru ile organ disfonksiyonu değerlendirmesi','phoenix2024']],
+  tx:[{t:'Septik şokta tanıdan sonraki ilk 1 saat, şoksuz sepsis ilişkili organ disfonksiyonunda 3 saat içinde antimikrobiyal',ref:'ssc2020'},{t:'Yoğun bakım olanağı olan merkezde sıvı bolusu (yanıt ve sıvı yüklenmesi bulgularına göre yeniden değerlendirerek)',d:{lo:10,hi:20,per:'doz',u:'mL',pl:'bolus',freq:'ilk saatte toplam 40–60 mL/kg\'a kadar'},ref:'ssc2020'},{t:'Sıvı resüsitasyonunda dengeli kristalloid tercihi',ref:'ssc2020'}]},
+ kawa:{ddx:['Kawasaki hastalığı (tam / inkomplet)','Viral enfeksiyon (adenovirüs vb.)','Skarlatina / GAS','MIS-C','Toksik şok sendromu','İlaç reaksiyonu / Stevens-Johnson'],
+  tet:[['Ekokardiyografi: tanıda, 1–2. hafta ve 4–6. hafta','kawa2017'],['Tam kan, CRP, ESH, albümin, ALT, idrar tetkiki (inkomplet KH algoritması)','kawa2017']],
+  tx:[{t:'Yüksek doz IVIG + aspirin – '+NODOSE,ref:'kawa2017'}]},
+ ie:{ddx:['İnfektif endokardit (doğal / protez kapak)','Kateter ilişkili bakteriyemi','Romatizmal kardit','Otoimmün hastalık'],
+  tet:[['Antibiyotik öncesi ayrı venipunktürlerle birden fazla kan kültürü','ie2015'],['Ekokardiyografi','ie2015']],
+  tx:[{t:'Etkene, kapak tipine ve duyarlılığa göre tedavi; kardiyoloji ve kalp cerrahisiyle ortak karar – '+NODOSE,ref:'ie2015'}]},
+ vacc:{tet:[['Aşı yanıtı/serolojik durumun değerlendirilmesi (gerekirse)','vacc2013']],
+  tx:[{t:'Yoğun immünsüpresyonda canlı aşılar kontrendike',ref:'vacc2013'},{t:'İnaktif aşılar uygulanabilir; yanıt azalmış olabilir',ref:'vacc2013'},{t:'Hane halkı temaslılarının uygun aşılarla aşılanması',ref:'vacc2013'}]},
+ tb:{ddx:['Akciğer tüberkülozu','Akciğer dışı tüberküloz','Latent tüberküloz enfeksiyonu','Nontüberküloz mikobakteri','Bakteriyel / fungal pnömoni'],
+  tet:[['Gastrik aspirat / balgam / dışkı: Xpert MTB/RIF Ultra, ARB, kültür','tb2022'],['Tüberkülin deri testi veya IGRA'],['Akciğer grafisi'],['HIV testi','tb2022']],
+  tx:[{t:'Ağır olmayan TB (3 ay–16 yaş): 4 aylık rejim (2HRZ(E)/2HR) – '+NODOSE,ref:'tb2022'},{t:'Standart 6 aylık rejim (2HRZE/4HR) – '+NODOSE,ref:'tb2022'}],
+  ek:[['Kaynak olgu ve temaslı taraması'],['Bildirimi zorunlu hastalık bildirimi']]},
+ rabies:{tet:[['Temas kategorisinin belirlenmesi','kuduz']],
+  tx:[{t:'Yaranın hemen bol su ve sabunla yıkanması',ref:'kuduz'},{t:'Riskli temasta kuduz aşısı ± kuduz immünglobulini (rehberdeki şemaya göre)',ref:'kuduz'},{t:'Tetanoz profilaksisinin değerlendirilmesi',ref:'kuduz'}],
+  ek:[['Hayvanın gözlem altına alınması ve bildirim','kuduz']]},
+ kkka:{ddx:['Kırım-Kongo kanamalı ateşi','Diğer kene ile bulaşan enfeksiyonlar','Sepsis / DİK','Leptospiroz','Trombositopeni yapan diğer nedenler'],
+  tet:[['KKKA PCR / seroloji (referans laboratuvar)','kkka2023'],['Tam kan (trombositopeni, lökopeni), ALT/AST, CK, LDH, koagülasyon','kkka2023']],
+  tx:[{t:'Destek tedavisi (sıvı, kan ürünleri)',ref:'kkka2023'},{t:'Ribavirin – rehberdeki endikasyon ve doz için kaynaktan doğrulayın',ref:'kkka2023'}],
+  ek:[['Kan ve vücut sıvılarına karşı standart + temas önlemleri; aerosol oluşturan işlemlerde solunum koruması','kkka2023'],['Bildirimi zorunlu hastalık bildirimi','kkka2023']]},
+ surg:{tx:[{t:'Profilaksi insizyondan önceki 60 dakika içinde',ref:'surg2013'},{t:'Çoğu işlemde profilaksi süresi 24 saati aşmamalı',ref:'surg2013'},{t:'İşleme uygun ajan seçimi – '+NODOSE,ref:'surg2013'}]},
+ cong:{ddx:['Konjenital CMV','Konjenital toksoplazmoz','Konjenital sifiliz','Neonatal HSV','Konjenital rubella','Perinatal HIV / HBV / HCV'],
+  tet:[['Ayrıntılı değerlendirme için "Konjenital enfeksiyon tanı asistanı" kullanılabilir']]}
+};
+function optList(topic){ const o=OPTS[topic]; if(!o) return []; const out=[];
+  OPT_CATS.forEach(([cat])=>{ (o[cat]||[]).forEach((x,i)=>{ const it=typeof x==='string'?{t:x}:Array.isArray(x)?{t:x[0],ref:x[1]}:x; out.push(Object.assign({id:topic+'.'+cat+'.'+i,topic,cat},it)); }); });
+  return out; }
+function optById(id){ const p=String(id||'').split('.'); return optList(p[0]).find(x=>x.id===id)||null; }
+const nf=(x,dec)=>{ const v=dec==null?(x>=10?Math.round(x):Math.round(x*10)/10):Number(x.toFixed(dec)); return v.toLocaleString('tr-TR',{maximumFractionDigits:2}); };
+function fmtAmt(x,u){ if(u==='U') return (Math.round(x/1000)*1000).toLocaleString('tr-TR'); if(u==='mL') return String(Math.round(x)); return nf(x); }
+function fmtMax(m,u,per){ return (u==='mg'&&m>=1000? nf(m/1000)+' g' : nf(m)+' '+u)+'/'+per; }
+function rng(a,b,f){ return b!=null&&b!==a? f(a)+'–'+f(b) : f(a); }
+function doseOne(d,w,u0){
+  const u=d.u||u0||'mg', ul=d.ul||u; const per=d.per||'gün';
+  const reg=rng(d.lo,d.hi,x=>x.toLocaleString('tr-TR',{maximumFractionDigits:3}))+' '+ul+'/kg'+(d.pl?' '+d.pl:'/'+per)+(d.freq?', '+d.freq:'')+(d.max?' (maks. '+fmtMax(d.max,u,d.maxPer||per)+')':'');
+  if(!(w>0)) return {reg,calc:''};
+  let dl,dh,pl,ph,cap=false; const hi=d.hi!=null?d.hi:d.lo;
+  const capd=(a,b,m)=>{ if(m&&b>m){ cap=true; b=m; if(a>m) a=m; } return [a,b]; };
+  if(per==='gün'){ dl=d.lo*w; dh=hi*w; if(d.maxPer!=='doz') [dl,dh]=capd(dl,dh,d.max); if(d.div){ pl=dl/d.div; ph=dh/d.div; if(d.maxPer==='doz') [pl,ph]=capd(pl,ph,d.max); } }
+  else { pl=d.lo*w; ph=hi*w; if(d.maxPer==='doz'||!d.maxPer) [pl,ph]=capd(pl,ph,d.maxPer==='doz'?d.max:null); if(d.div){ dl=pl*d.div; dh=ph*d.div; if(d.maxPer==='gün') [dl,dh]=capd(dl,dh,d.max); } }
+  const f=x=>fmtAmt(x,u); const parts=[];
+  if(d.pl){ parts.push(rng(pl,ph,f)+' '+ul+' '+d.pl); }
+  else { if(dl!=null&&per==='gün') parts.push(rng(dl,dh,f)+' '+ul+'/gün'); if(pl!=null&&!(per==='gün'&&d.div===1)) parts.push(rng(pl,ph,f)+' '+ul+'/doz'); if(dl!=null&&per==='doz'&&d.div>1) parts.push(rng(dl,dh,f)+' '+ul+'/gün'); }
+  return {reg,calc:parts.join(' = ')+(cap?' (maksimum doza sınırlandı)':'')};
+}
+function doseText(d,w){
+  if(!d) return '';
+  const W=parseFloat(String(w==null?'':w).replace(',','.'));
+  if(d.phases){ const ps=d.phases.map(p=>{ const r=doseOne(p,W); return p.lab+': '+r.reg+(r.calc?' → '+r.calc:''); }); return (d.r?d.r+' – ':'')+ps.join('; ')+(W>0?' ['+nf(W)+' kg]':' – ağırlık girilince hesaplanır'); }
+  const r=doseOne(d,W); return (d.r?d.r+' ':'')+r.reg+(r.calc?' → '+nf(W)+' kg: '+r.calc:' – ağırlık girilince hesaplanır');
+}
+function optText(o,w){ return o.d? o.t+' – '+doseText(o.d,w) : o.t; }
+// ===== OPTS END =====
+// ===== PARSER START =====
+const SECTIONS=[
+  {id:'reason',t:'Konsültasyon nedeni / soru',a:['konsültasyon nedeni','konsültasyon sebebi','konsültasyon sorusu','istem nedeni','konsültasyon isteme nedeni']},
+  {id:'history',t:'Öykü ve klinik seyir',a:['şikayeti','şikayet','yakınması','yakınma','öyküsü','öykü','hikayesi','hikaye','anamnez','klinik seyir']},
+  {id:'pmh',t:'Özgeçmiş ve altta yatan hastalık',a:['özgeçmişi','özgeçmiş','altta yatan hastalık','altta yatan hastalığı']},
+  {id:'vacc',t:'Aşı durumu',a:['aşı durumu','aşı öyküsü','aşıları']},
+  {id:'allergy',t:'İlaç alerjisi',a:['ilaç alerjisi','alerji öyküsü','alerjisi','alerji']},
+  {id:'epi',t:'Epidemiyolojik öykü',a:['epidemiyolojik öykü','epidemiyolojik öyküsü','temas öyküsü','seyahat öyküsü']},
+  {id:'risk',t:'Risk faktörleri / invaziv araçlar',a:['risk faktörleri','invaziv araçlar','invaziv girişimler']},
+  {id:'exam',t:'Fizik muayene ve vital bulgular',a:['fizik muayenesi','fizik muayene','muayenesinde','muayenede','vital bulgular','vital bulguları','vitaller','yaşamsal bulgular']},
+  {id:'labs',t:'Laboratuvar',a:['laboratuvar bulguları','laboratuvar','laboratuvarı','tahlilleri','tahliller','kan tetkikleri']},
+  {id:'micro',t:'Mikrobiyoloji',a:['mikrobiyoloji','kültür sonuçları','kültürler']},
+  {id:'imaging',t:'Görüntüleme',a:['görüntüleme','radyoloji','görüntülemesi']},
+  {id:'abx',t:'Antimikrobiyal tedavi',a:['antimikrobiyal tedavi','mevcut tedavisi','mevcut tedavi','almakta olduğu tedavi','antibiyotikleri','antibiyotik tedavisi','tedavisi','tedavi']},
+  {id:'assess',t:'Değerlendirme ve ayırıcı tanı',a:['değerlendirme','değerlendirmem','ön tanı','ayırıcı tanı']},
+  {id:'plan',t:'Öneriler',a:['önerilerim','öneriler','öneri']}
+];
+const SEC_BY_ID=Object.fromEntries(SECTIONS.map(s=>[s.id,s]));
+const HEADER_LIST=SECTIONS.flatMap(s=>s.a.map(a=>({a,id:s.id}))).sort((x,y)=>y.a.length-x.a.length);
+
+const LABS=[
+  {k:'wbc',n:'Lökosit',u:'/mm³',a:['beyaz kan hücresi','beyaz küre','lökosit','wbc','bk']},
+  {k:'neu',n:'Mutlak nötrofil',u:'/mm³',a:['mutlak nötrofil sayısı','mutlak nötrofil','nötrofil','anc','mns','ans']},
+  {k:'lym',n:'Lenfosit',u:'/mm³',a:['mutlak lenfosit','lenfosit']},
+  {k:'hb',n:'Hemoglobin',u:'g/dL',a:['hemoglobin','hgb','hb']},
+  {k:'plt',n:'Trombosit',u:'/mm³',a:['trombosit','platelet','plt']},
+  {k:'crp',n:'CRP',u:'',a:['c reaktif protein','c-reaktif protein','crp']},
+  {k:'pct',n:'Prokalsitonin',u:'ng/mL',a:['prokalsitonin','pct']},
+  {k:'esr',n:'Sedimantasyon',u:'mm/sa',a:['sedimantasyon','sedim','esr']},
+  {k:'alt',n:'ALT',u:'U/L',a:['alanin aminotransferaz','sgpt','alt']},
+  {k:'ast',n:'AST',u:'U/L',a:['aspartat aminotransferaz','sgot','ast']},
+  {k:'cr',n:'Kreatinin',u:'mg/dL',a:['kreatinin']},
+  {k:'bun',n:'Üre / BUN',u:'mg/dL',a:['üre','bun']},
+  {k:'alb',n:'Albümin',u:'g/dL',a:['albümin','albumin']},
+  {k:'na',n:'Sodyum',u:'mmol/L',a:['sodyum']},
+  {k:'k',n:'Potasyum',u:'mmol/L',a:['potasyum']},
+  {k:'lac',n:'Laktat',u:'mmol/L',a:['laktat']},
+  {k:'fer',n:'Ferritin',u:'ng/mL',a:['ferritin']},
+  {k:'ddim',n:'D-dimer',u:'',a:['d-dimer','d dimer','ddimer']},
+  {k:'fib',n:'Fibrinojen',u:'mg/dL',a:['fibrinojen']},
+  {k:'inr',n:'INR',u:'',a:['inr']},
+  {k:'il6',n:'IL-6',u:'pg/mL',a:['interlökin 6','interlökin-6','il-6','il 6']},
+  {k:'gm',n:'Galaktomannan',u:'indeks',a:['galaktomannan']},
+  {k:'bdg',n:'Beta-D-glukan',u:'pg/mL',a:['beta-d-glukan','beta d glukan']},
+  {k:'dbil',n:'Direkt bilirubin',u:'mg/dL',a:['direkt bilirubin']},
+  {k:'tbil',n:'Total bilirubin',u:'mg/dL',a:['total bilirubin','bilirubin']},
+  {k:'csfwbc',n:'BOS hücre',u:'/mm³',a:['bos hücre sayısı','bos hücre','bosta hücre','bos lökosit']},
+  {k:'csfprot',n:'BOS protein',u:'mg/dL',a:['bos proteini','bos protein','bosta protein']},
+  {k:'csfglu',n:'BOS glukoz',u:'mg/dL',a:['bos glukozu','bos glukoz','bosta glukoz','bos şekeri']},
+  {k:'glu',n:'Kan glukozu',u:'mg/dL',a:['kan glukozu','kan şekeri','glukoz']}
+];
+const LAB_ALIASES=LABS.flatMap(l=>l.a.map(a=>({a,l}))).sort((x,y)=>y.a.length-x.a.length);
+const LAB_BY_KEY=Object.fromEntries(LABS.map(l=>[l.k,l]));
+
+const DRUGS=[
+  ['Meropenem',['meropenem']],['İmipenem',['imipenem']],['Ertapenem',['ertapenem']],
+  ['Piperasilin-tazobaktam',['piperasilin-tazobaktam','piperasilin tazobaktam','pip-tazo','piptazo','tazocin']],
+  ['Sefepim',['sefepim','cefepime']],['Seftriakson',['seftriakson','ceftriaxone']],['Sefotaksim',['sefotaksim']],
+  ['Seftazidim-avibaktam',['seftazidim-avibaktam','seftazidim avibaktam']],['Seftazidim',['seftazidim']],['Sefuroksim',['sefuroksim']],['Sefazolin',['sefazolin']],
+  ['Ampisilin-sulbaktam',['ampisilin-sulbaktam','ampisilin sulbaktam']],['Ampisilin',['ampisilin']],
+  ['Amoksisilin-klavulanat',['amoksisilin-klavulanat','amoksisilin klavulanat','amoksiklav']],['Amoksisilin',['amoksisilin']],
+  ['Vankomisin',['vankomisin','vancomycin']],['Teikoplanin',['teikoplanin']],['Linezolid',['linezolid']],['Daptomisin',['daptomisin']],
+  ['Klindamisin',['klindamisin']],['Gentamisin',['gentamisin']],['Amikasin',['amikasin']],
+  ['Siprofloksasin',['siprofloksasin']],['Levofloksasin',['levofloksasin']],['Kolistin',['kolistin']],['Tigesiklin',['tigesiklin']],
+  ['Trimetoprim-sülfametoksazol',['trimetoprim-sülfametoksazol','trimetoprim sülfametoksazol','kotrimoksazol','tmp-smx','tmp smx']],
+  ['Metronidazol',['metronidazol']],['Azitromisin',['azitromisin']],['Klaritromisin',['klaritromisin']],
+  ['Flukonazol',['flukonazol']],['Vorikonazol',['vorikonazol']],['Posakonazol',['posakonazol']],['Kaspofungin',['kaspofungin']],['Mikafungin',['mikafungin']],['Anidulafungin',['anidulafungin']],
+  ['Lipozomal amfoterisin B',['lipozomal amfoterisin','amfoterisin b','amfoterisin']],
+  ['Asiklovir',['asiklovir']],['Gansiklovir',['gansiklovir']],['Valgansiklovir',['valgansiklovir']],['Oseltamivir',['oseltamivir']],
+  ['İzoniazid',['izoniazid']],['Rifampisin',['rifampisin','rifampin']]
+];
+const DRUG_ALIASES=DRUGS.flatMap(([n,a])=>a.map(x=>({a:x,n}))).sort((x,y)=>y.a.length-x.a.length);
+const ORGS=[
+  ['Escherichia coli',['escherichia coli','e. coli','e.coli','e coli']],['Klebsiella pneumoniae',['klebsiella pneumoniae','klebsiella']],
+  ['Pseudomonas aeruginosa',['pseudomonas aeruginosa','pseudomonas']],['Acinetobacter baumannii',['acinetobacter baumannii','acinetobacter']],
+  ['Enterobacter spp.',['enterobacter']],['Serratia marcescens',['serratia']],['Stenotrophomonas maltophilia',['stenotrophomonas']],
+  ['Staphylococcus aureus',['staphylococcus aureus','stafilokokus aureus','s. aureus','s aureus']],['Koagülaz negatif stafilokok',['koagülaz negatif stafilokok','koagülaz negatif','kns','konS']],
+  ['Enterococcus faecium',['enterococcus faecium','e. faecium']],['Enterococcus faecalis',['enterococcus faecalis','e. faecalis']],['Enterococcus spp.',['enterokok','enterococcus']],
+  ['Streptococcus pneumoniae',['streptococcus pneumoniae','pnömokok','s. pneumoniae']],['Streptococcus pyogenes',['streptococcus pyogenes','grup a streptokok','s. pyogenes']],['Streptococcus agalactiae',['streptococcus agalactiae','grup b streptokok']],
+  ['Candida auris',['candida auris']],['Candida parapsilosis',['candida parapsilosis']],['Candida albicans',['candida albicans']],['Candida spp.',['candida','kandida']],
+  ['Aspergillus spp.',['aspergillus']],['Salmonella spp.',['salmonella']],['Haemophilus influenzae',['haemophilus influenzae','hemofilus']],['Neisseria meningitidis',['neisseria meningitidis','meningokok']],
+  ['Clostridioides difficile',['clostridioides difficile','clostridium difficile','c. difficile']],['Mycobacterium tuberculosis',['mycobacterium tuberculosis','tüberküloz basili']]
+];
+const ORG_ALIASES=ORGS.flatMap(([n,a])=>a.map(x=>({a:x.toLowerCase(),n}))).sort((x,y)=>y.a.length-x.a.length);
+const SAMPLES=[['Kan',['kan kültürü','kan kültüründe','kan kültürlerinde','hemokültür']],['Kateter',['kateter kültürü','kateter ucu','kateterden alınan']],['İdrar',['idrar kültürü','idrar kültüründe','idrarda']],
+  ['BOS',['bos kültürü','bos kültüründe','bosta']],['Trakeal aspirat',['trakeal aspirat','endotrakeal aspirat','eta']],['Balgam',['balgam']],['Yara / apse',['yara kültürü','apse','abse','yara yeri']],
+  ['Dışkı',['dışkı','gaita']],['Eklem sıvısı',['eklem sıvısı']],['Plevral sıvı',['plevral sıvı']],['Boğaz',['boğaz kültürü']],['Rektal sürüntü',['rektal sürüntü','rektal sürüntüde']]];
+const RES_TOKENS=[['ESBL',/\besbl\b/],['Karbapenem direnci',/karbapene?m(e)? dirençli|karbapenem direnci/],['KPC',/\bkpc\b/],['OXA-48',/oxa[- ]?48/],['NDM',/\bndm\b/],['MRSA',/\bmrsa\b|metisiline? dirençli/],['VRE',/\bvre\b|vankomisine? dirençli/]];
+const IMG_RX=/(grafi|grafisi|usg|ultrason|ultrasonografi|tomografi|\bbt\b|\bmr\b|\bmrg\b|manyetik rezonans|\beko\b|ekokardiyografi|sintigrafi|pet-bt|pet bt)/;
+const RISK_TOKENS=[['Santral venöz kateter',/santral venöz kateter|santral kateter|\bcvk\b|hickman|broviac|picc/],['Port kateter',/\bport\b/],['Mekanik ventilasyon',/entübe|ventilatör|mekanik ventilasyon/],['VP şant',/\bşant\b/],['Üriner kateter',/üriner kateter|idrar sondası|foley/],['Dren',/\bdren\b/],['Trakeostomi',/trakeostomi/],['Gastrostomi',/gastrostomi|\bpeg\b/],['Total parenteral nütrisyon',/\btpn\b|parenteral beslenme/]];
+
+function lc(s){ return String(s||'').toLocaleLowerCase('tr-TR'); }
+const WORDCH='a-zçğıöşüâîû0-9';
+function escRx(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+function wordRx(alias,flags){ return new RegExp('(^|[^'+WORDCH+'])('+escRx(alias)+')(?=$|[^'+WORDCH+'])',flags||'g'); }
+
+// Konuşma metnini normalleştir: sesli noktalama komutları ve ondalık
+function normalizeSpeech(text){
+  let s=String(text||'').replace(/\r/g,'');
+  s=s.replace(/(\d)\s+virgül\s+(\d)/gi,'$1,$2');
+  s=s.replace(/(\d)\s+nokta\s+(\d)/gi,'$1.$2');
+  s=s.replace(/\s*\b(yeni satır|alt satır|yeni paragraf)\b\s*/gi,'\n');
+  s=s.replace(/\s*\biki nokta( üst üste)?\b\s*/gi,': ');
+  s=s.replace(/\s*\bnokta\b\s*/gi,'. ');
+  s=s.replace(/\s*\bvirgül\b\s*/gi,', ');
+  s=s.replace(/\s*\bsoru işareti\b\s*/gi,'? ');
+  s=s.replace(/(\d+)\s*bölü\s*(\d+)/gi,'$1/$2');
+  s=s.replace(/\byüzde\s*(\d+(?:[.,]\d+)?)/gi,'%$1');
+  s=s.replace(/[ \t]+/g,' ').replace(/ +\n/g,'\n').replace(/\n +/g,'\n');
+  return s.trim();
+}
+function capFirst(s){ s=s.trim(); return s? s.charAt(0).toLocaleUpperCase('tr-TR')+s.slice(1):s; }
+function parseNum(raw){
+  if(raw==null) return null; let s=String(raw).trim();
+  if(/^\d{1,3}(\.\d{3})+$/.test(s)) s=s.replace(/\./g,'');
+  s=s.replace(',','.'); const v=parseFloat(s); return isNaN(v)?null:v;
+}
+function fmtNum(v){ return v==null?'':String(v).replace('.',','); }
+
+// Bölümlere ayır: cümle/ifade başındaki başlık kelimeleri, ya da "X:" kalıbı
+function splitSections(text,defaultSec){
+  const out={}; let cur=defaultSec||'history';
+  const parts=splitSent(normalizeSpeech(text));
+  parts.forEach(p=>{
+    let body=p; const l=lc(p);
+    let hit=null;
+    const m=l.match(/^başlık\s+/); const off=m?m[0].length:0;
+    for(const h of HEADER_LIST){
+      if(l.startsWith(h.a,off)){
+        const rest=l.slice(off+h.a.length);
+        if(rest===''||/^[\s:,.\-–]/.test(rest)){ hit=h; body=p.slice(off+h.a.length).replace(/^[\s:,.\-–]+/,''); break; }
+      }
+    }
+    if(hit) cur=hit.id;
+    if(body){ (out[cur]=out[cur]||[]).push(body); }
+  });
+  Object.keys(out).forEach(k=>{ out[k]=out[k].map(capFirst).map(x=>/[.!?:]$/.test(x)?x:x+'.').join(' '); });
+  return out;
+}
+
+function extractLabs(text,date){
+  const s=lc(normalizeSpeech(text)); const found=[]; const used=[];
+  LAB_ALIASES.forEach(({a,l})=>{
+    const rx=new RegExp('(^|[^'+WORDCH+'])('+escRx(a)+')(?:\\s+(?:değeri|düzeyi|sayısı))?\\s*(?:[:=]\\s*)?(%\\s*)?(-?\\d+(?:[.,]\\d+)?)(\\s*bin\\b)?(?:\\s*(mg\\/dl|mg\\/l|g\\/dl|g\\/l|ng\\/ml|pg\\/ml|u\\/l|iu\\/l|mmol\\/l|\\/mm3|\\/mm³|mm\\/sa(?:at)?|indeks|%))?','g');
+    let m; while((m=rx.exec(s))){
+      const st=m.index+m[1].length, en=m.index+m[0].length;
+      if(used.some(([a1,b1])=>st<b1&&en>a1)) continue;
+      used.push([st,en]);
+      let v=parseNum(m[4]); if(v==null) continue; if(m[5]) v=v*1000;
+      let unit=m[6]? m[6].replace('mm3','mm³').replace(/^mg\/l$/,'mg/L').replace(/^mg\/dl$/,'mg/dL').replace(/^g\/dl$/,'g/dL').replace(/^ng\/ml$/,'ng/mL').replace(/^pg\/ml$/,'pg/mL').replace(/^u\/l$/,'U/L').replace(/^mmol\/l$/,'mmol/L') : l.u;
+      if(m[3]&&!m[6]) unit='%';
+      found.push({k:l.k,n:l.n,v,raw:fmtNum(v),u:unit,date:date||'',pos:st});
+    }
+  });
+  found.sort((x,y)=>x.pos-y.pos);
+  return {labs:found.map(({pos,...r})=>r), spans:used};
+}
+function extractVitals(text){
+  const s=lc(normalizeSpeech(text)); const v={};
+  let m;
+  if((m=s.match(/(ateş(?:i)?|vücut ısısı|vücut sıcaklığı|aksiller ısı)\s*[:=]?\s*(\d{2}(?:[.,]\d)?)/))){ const t=parseNum(m[2]); if(t>=34&&t<=43) v.temp=fmtNum(t); }
+  if((m=s.match(/(nabız|nabzı|kalp hızı|kalp tepe atımı)\s*[:=]?\s*(\d{2,3})/))) v.hr=m[2];
+  if((m=s.match(/(solunum sayısı|solunum hızı|solunum)\s*[:=]?\s*(\d{1,3})(?!\s*gün)/))) v.rr=m[2];
+  if((m=s.match(/(tansiyon|tansiyonu|kan basıncı|arteriyel basınç)\s*[:=]?\s*(\d{2,3})\s*[\/\-]\s*(\d{2,3})/))) v.bp=m[2]+'/'+m[3];
+  if((m=s.match(/(satürasyon(?:u)?|saturasyon|spo2|oksijen satürasyonu)\s*[:=]?\s*%?\s*(\d{2,3})/))){ const x=+m[2]; if(x<=100) v.spo2=String(x); }
+  return v;
+}
+function extractDemo(text){
+  const s=lc(normalizeSpeech(text)); const d={}; let m;
+  if((m=s.match(/(\d+(?:[.,]\d+)?)\s*(kg|kilogram)\b/))||(m=s.match(/(?:kilosu|ağırlığı|vücut ağırlığı)\s*[:=]?\s*(\d+(?:[.,]\d+)?)/))) d.weight=fmtNum(parseNum(m[1]));
+  if((m=s.match(/(\d+)\s*(yaşında|yaşındaki|yaş)\b/))) d.age=m[1]+' yaş';
+  else if((m=s.match(/(\d+)\s*(aylık|ay)\b(?!\s*(önce|sonra|süre))/))) d.age=m[1]+' ay';
+  else if((m=s.match(/(\d+)\s*(günlük)\b/))) d.age=m[1]+' gün';
+  if(/\b(kız|kız çocuğu|kadın)\b/.test(s)) d.sex='Kız'; else if(/\b(erkek)\b/.test(s)) d.sex='Erkek';
+  return d;
+}
+const ORD_RX=/(\d)\.(\s*)(?=(gün|günde|günü|günden|gününde|hafta|haftada|ay|ayda|saat|doz|kür|kez|sıra|basamak|derece)\b)/gi;
+function splitSent(t){ return t.replace(ORD_RX,'$1\u2024$2').split(/\n+|(?<=[.!?])\s+/).map(x=>x.replace(/\u2024/g,'.').trim()).filter(Boolean); }
+function sentences(text){ return splitSent(normalizeSpeech(text)); }
+function extractAbx(text){
+  const out=[]; const seen=new Set();
+  sentences(text).forEach(sent=>{
+    const s=lc(sent);
+    DRUG_ALIASES.forEach(({a,n})=>{
+      const rx=wordRx(a,''); const m=rx.exec(s); if(!m||seen.has(n)) return;
+      // aynı cümlede daha uzun bir takma ad (ör. seftazidim-avibaktam) zaten eşleştiyse atla
+      if(out.some(o=>o._sent===sent&&o._span&&m.index+m[1].length>=o._span[0]&&m.index+m[1].length<o._span[1])) return;
+      const st=m.index+m[1].length, after=s.slice(st,st+90), before=s.slice(Math.max(0,st-40),st);
+      const r={drug:n,dose:'',freq:'',day:'',status:'',note:capFirst(sent),_sent:sent,_span:[st,st+a.length]};
+      let x;
+      if((x=after.match(/(\d+(?:[.,]\d+)?)\s*(mg|ünite|u|ıu)\s*\/\s*kg(\s*\/\s*(doz|gün))?/))) r.dose=x[1].replace('.',',')+' '+x[2].replace('u','U')+'/kg'+(x[4]?'/'+x[4]:'');
+      if((x=after.match(/(\d+)\s*saatte\s*bir/))) r.freq=x[1]+' saatte bir'; else if((x=after.match(/günde\s*(\d+|bir|iki|üç|dört)\s*(kez|defa|doz)?/))) r.freq='günde '+x[1]+(x[2]?' '+x[2]:'');
+      if((x=after.match(/(\d+)\s*\.?\s*(?:gün(?:ü|ünde)?)\b/))||(x=before.match(/(\d+)\s*gündür/))||(x=after.match(/(\d+)\s*gündür/))) r.day=x[1];
+      if(/kesil|stop|bırakıl/.test(after.slice(0,60))) r.status='Kesildi'; else if(/başlan|eklen/.test(after.slice(0,60))) r.status='Başlandı'; else r.status='Devam';
+      seen.add(n); out.push(r);
+    });
+  });
+  return out.map(({_sent,_span,...r})=>r);
+}
+function extractMicro(text){
+  const out=[];
+  sentences(text).forEach(sent=>{
+    const s=lc(sent);
+    if(!/kültür|üredi|üreme|üremedi|izole edildi|pcr|hemokültür|antijen|serolo/.test(s)) return;
+    let sample=''; for(const [n,a] of SAMPLES){ if(a.some(x=>s.includes(x))){ sample=n; break; } }
+    const orgs=[]; ORG_ALIASES.forEach(({a,n})=>{ if(!orgs.includes(n)&&wordRx(a,'').test(s)&&!orgs.some(o=>o.startsWith(n.split(' ')[0])&&n.endsWith('spp.'))) orgs.push(n); });
+    const neg=/üreme(si)? (olmadı|yok)|üremedi|steril|negatif/.test(s);
+    const res=RES_TOKENS.filter(([,rx])=>rx.test(s)).map(([n])=>n);
+    out.push({sample,org:orgs.join(', '),result:neg&&!orgs.length?'Üreme yok / negatif':(orgs.length?'Üreme var':''),res:res.join(', '),raw:capFirst(sent)});
+  });
+  return out;
+}
+function extractImaging(text){ return sentences(text).filter(x=>IMG_RX.test(lc(x))).map(capFirst); }
+function extractRisks(text){ const s=lc(normalizeSpeech(text)); return RISK_TOKENS.filter(([,rx])=>rx.test(s)).map(([n])=>n); }
+
+// Ana fonksiyon: dikteyi yapılandır
+function parseDictation(text,opts){
+  opts=opts||{};
+  const norm=normalizeSpeech(text);
+  const secs=splitSections(norm,opts.defaultSec);
+  const res={sections:{},labs:[],vitals:{},demo:{},abx:[],micro:[],imaging:[],risks:[],summary:[]};
+  // laboratuvar ve mikrobiyoloji/görüntüleme bölümü metinleri tabloya gider, yalnız artan metin not olur
+  Object.entries(secs).forEach(([id,txt])=>{
+    if(id==='labs'){
+      const {labs,spans}=extractLabs(txt,opts.date); res.labs.push(...labs);
+      let rest=lc(txt); spans.slice().sort((a,b)=>b[0]-a[0]).forEach(([a,b])=>{ rest=rest.slice(0,a)+' '+rest.slice(b); });
+      rest=rest.replace(/[\s.,:;]+/g,' ').trim(); if(rest.replace(/[^a-zçğıöşü]/g,'').length>12) res.sections.labs=capFirst(rest)+'.';
+    } else if(id==='micro'){ const mic=extractMicro(txt); res.micro.push(...mic); if(!mic.length) res.sections.micro=txt; }
+    else if(id==='imaging'){ res.imaging.push(...sentences(txt).map(capFirst)); }
+    else res.sections[id]=txt;
+  });
+  // laboratuvar başlığı dışında söylenen değerler de tabloya
+  Object.entries(secs).forEach(([id,txt])=>{ if(id!=='labs'&&id!=='plan'&&id!=='assess'){ const {labs}=extractLabs(txt,opts.date); labs.forEach(l=>{ if(!res.labs.some(x=>x.k===l.k&&x.raw===l.raw)) res.labs.push(l); }); } });
+  Object.entries(secs).forEach(([id,txt])=>{ if(id!=='micro'&&id!=='plan'&&id!=='assess') extractMicro(txt).forEach(m=>{ if(!res.micro.some(x=>x.raw===m.raw)) res.micro.push(m); }); });
+  Object.entries(secs).forEach(([id,txt])=>{ if(id!=='imaging'&&id!=='plan'&&id!=='assess') extractImaging(txt).forEach(x=>{ if(!res.imaging.includes(x)) res.imaging.push(x); }); });
+  res.vitals=extractVitals(norm); res.demo=extractDemo(norm);
+  res.abx=extractAbx(Object.entries(secs).filter(([id])=>id!=='plan'&&id!=='assess').map(([,t])=>t).join('\n'));
+  res.risks=extractRisks(norm);
+  Object.entries(res.sections).forEach(([id])=>res.summary.push(SEC_BY_ID[id].t));
+  if(res.labs.length) res.summary.push('Laboratuvar tablosu: '+res.labs.map(l=>l.n+' '+l.raw).join(', '));
+  if(Object.keys(res.vitals).length) res.summary.push('Vital bulgular');
+  if(res.abx.length) res.summary.push('Antimikrobiyal: '+res.abx.map(a=>a.drug).join(', '));
+  if(res.micro.length) res.summary.push('Mikrobiyoloji: '+res.micro.length+' kayıt');
+  if(res.imaging.length) res.summary.push('Görüntüleme: '+res.imaging.length+' kayıt');
+  return res;
+}
+
+function detectTopics(text,TOPICS){
+  const s=' '+lc(text)+' '; const hits=[];
+  Object.entries(TOPICS).forEach(([k,t])=>{ const n=t.kw.filter(w=>new RegExp('(^|[^'+WORDCH+'])'+escRx(lc(w).trim())).test(s)).length; if(n) hits.push({k,n}); });
+  return hits.sort((a,b)=>b.n-a.n).map(h=>h.k);
+}
+
+// Yaş hesabı
+function ageFrom(birth,at){
+  if(!birth) return '';
+  const b=new Date(birth+'T12:00:00'), t=at?new Date(at+'T12:00:00'):new Date();
+  if(isNaN(b)||isNaN(t)||t<b) return '';
+  let m=(t.getFullYear()-b.getFullYear())*12+(t.getMonth()-b.getMonth()); if(t.getDate()<b.getDate()) m--;
+  const days=Math.round((t-b)/86400000);
+  if(days<31) return days+' günlük'; if(m<24) return m+' aylık'; return Math.floor(m/12)+' yaş'+(m%12?' '+(m%12)+' ay':'');
+}
+
+// Kimliksiz vaka özeti (Claude'a göndermek için)
+function buildAnonCase(c,p){
+  const L=[];
+  L.push('Çocuk enfeksiyon hastalıkları konsültasyonu (kimlik bilgileri çıkarılmıştır).');
+  L.push('Yaş: '+(ageFrom(p&&p.birth,c.date)||c.ageText||'belirtilmedi')+(p&&p.sex?' | Cinsiyet: '+p.sex:'')+(c.weight?' | Ağırlık: '+c.weight+' kg':'')+(c.ward?' | Servis: '+c.ward:''));
+  const order=['reason','history','pmh','vacc','allergy','epi','risk','exam'];
+  order.forEach(id=>{ const v=(c.sections||{})[id]; if(v&&v.trim()) L.push('\n'+SEC_BY_ID[id].t+': '+v.trim()); });
+  const vt=c.vitals||{}; const vl=[vt.temp&&'Ateş '+vt.temp+' °C',vt.hr&&'Nabız '+vt.hr+'/dk',vt.rr&&'Solunum '+vt.rr+'/dk',vt.bp&&'TA '+vt.bp+' mmHg',vt.spo2&&'SpO2 %'+vt.spo2].filter(Boolean);
+  if(vl.length) L.push('Vital bulgular: '+vl.join(', '));
+  if((c.labs||[]).length) L.push('\nLaboratuvar:\n'+c.labs.map(l=>'- '+(l.date?'['+l.date+'] ':'')+l.n+': '+l.raw+(l.u?' '+l.u:'')).join('\n'));
+  if((c.sections||{}).labs) L.push('Laboratuvar notu: '+c.sections.labs);
+  if((c.micro||[]).length) L.push('\nMikrobiyoloji:\n'+c.micro.map(m=>'- '+[m.sample,m.date,m.org,m.result,m.res&&('direnç: '+m.res)].filter(Boolean).join(' | ')+(m.raw?' ('+m.raw+')':'')).join('\n'));
+  if((c.imaging||[]).length) L.push('\nGörüntüleme:\n'+c.imaging.map(x=>'- '+x).join('\n'));
+  if((c.abx||[]).length) L.push('\nAntimikrobiyal tedavi:\n'+c.abx.map(a=>'- '+[a.drug,a.dose,a.freq,a.day&&(a.day+'. gün'),a.status].filter(Boolean).join(' | ')).join('\n'));
+  if((c.ddx||[]).filter(x=>x.t).length) L.push('\nKonsültanın ön ayırıcı tanı listesi:\n'+c.ddx.filter(x=>x.t).map(x=>'- '+x.t).join('\n'));
+  if((c.planItems||[]).filter(x=>x.t).length) L.push('\nŞu ana kadar seçilen öneriler:\n'+c.planItems.filter(x=>x.t).map(x=>'- ['+(x.cat||'Öneri')+'] '+x.t).join('\n'));
+  if(c.prevSummary) L.push('\nÖnceki konsültasyon özeti:\n'+c.prevSummary);
+  const ads=(c.addenda||[]).filter(a=>!a.deleted);
+  if(ads.length) L.push('\nEk notlar / rekonsültasyon:\n'+ads.map(a=>'- '+[a.date,a.time].filter(Boolean).join(' ')+' – '+(a.type||'Ek not')+': '+String(a.text||'').replace(/\s+/g,' ').trim()+((a.labs||[]).length?' | Lab: '+a.labs.map(l=>l.n+' '+l.raw+(l.u?' '+l.u:'')).join(', '):'')+((a.micro||[]).length?' | Mikrobiyoloji: '+a.micro.map(m=>[m.sample,m.org,m.res&&('direnç: '+m.res)].filter(Boolean).join(' ')).join('; '):'')+(a.plan?' | Öneri: '+String(a.plan).replace(/\s+/g,' '):'')).join('\n'));
+  return scrubIdentity(L.join('\n'),p);
+}
+// Serbest metinde geçen hasta adı ve protokol/kimlik numaralarını maskele
+function scrubIdentity(text,p){
+  let t=String(text||'');
+  if(p){
+    const parts=String(p.name||'').split(/\s+/).filter(w=>w.length>=2);
+    parts.forEach(w=>{ t=t.replace(new RegExp('(^|[^'+WORDCH+'])'+escRx(w)+'(?=$|[^'+WORDCH+'])','gi'),'$1[hasta]'); });
+    [p.protocol,p.tc].filter(Boolean).forEach(n=>{ t=t.split(String(n)).join('[no]'); });
+  }
+  t=t.replace(/\b[1-9]\d{10}\b/g,'[TC no]');
+  return t.replace(/(\[hasta\]\s*){2,}/g,'[hasta] ');
+}
+const CLAUDE_PROMPT='Sen çocuk enfeksiyon hastalıkları uzmanı olarak bu konsültasyonu yanıtla. Yalnızca güncel kılavuzlar ve hakemli literatür kullan (AAP Red Book, IDSA, PIDS, ESPID, ECIL, WHO, CDC, T.C. Sağlık Bakanlığı, PubMed). Her kaynağı web aramasıyla doğrula; bağlantı, PMID veya doz uydurma. Dozları verilen ağırlığa göre hesapla ve dayanağını belirt; doğrulayamadığın dozu yazma. Veri eksikse eksik olduğunu yaz. Yanıtı tam olarak şu beş başlıkla, Türkçe ve başlıklar altında her maddeyi ayrı satırda "- " ile ver (konsültan uygun olanları seçecek):\n\n## Değerlendirme\n(kısa klinik özet ve en olası tanı – düz metin)\n\n## Ayırıcı tanı\n- (her olası tanı ayrı madde, kısa gerekçesiyle)\n\n## Tedavi seçenekleri\n- (her seçenek ayrı madde: ilaç, yol, mg/kg doz ve hesaplanan doz, aralık, süre, hangi durumda tercih edileceği, kaynak adı)\n\n## Öneriler\n### Tetkik\n- ...\n### İzlem\n- ...\n### Enfeksiyon kontrolü\n- ...\n\n## Kaynaklar\n- [Yazar/kurum. Başlık. Dergi Yıl.](https://tam-bağlantı)\n\n--- VAKA ---\n';
+
+// Claude yanıtını içe aktar: düz metin (geriye uyumlu) + seçilebilir madde dizileri
+const PLAN_CAT_RX=[['Enfeksiyon kontrolü',/enfeksiyon kontrol|izolasyon|halk sağlığı|bildirim|temaslı|profilaksi/],['Tetkik',/tetkik|tanısal|inceleme|laboratuvar|görüntüleme/],['Tedavi',/tedavi|antibiyotik|antimikrobiyal|ilaç/],['İzlem',/izlem|takip|kontrol|süre/]];
+const lowTR=s=>String(s||'').toLocaleLowerCase('tr-TR');
+function guessCat(t,def){ const s=lowTR(t);
+  if(/izolasyon|temaslı|bildirim|kohort|el hijyen/.test(s)) return 'Enfeksiyon kontrolü';
+  if(/kültür|pcr|grafi|\busg\b|ultrason|\bbt\b|\bmr\b|ekokardiyografi|lomber ponksiyon|\blp\b|tetkik|bakılması|istenmesi|test|seroloji|galaktomannan|düzey(i)? (ölç|bak)/.test(s)) return 'Tetkik';
+  if(/mg\/kg|\bdoz|başlan|kesil|eklen|devam|değiştir|antibiyotik|tedavi|\biv\b|\bpo\b|oral/.test(s)) return 'Tedavi';
+  if(/izlem|takip|kontrol|tekrar|saat sonra|gün sonra|süre/.test(s)) return 'İzlem';
+  return def||'İzlem'; }
+function parseClaudeReply(text){
+  const t=String(text||'').replace(/\r/g,'');
+  const NB='(?![a-zçğıöşüA-ZÇĞİÖŞÜ])\\s*(?:\\*\\*)?\\s*:?\\s*(?:\\*\\*)?[ \\t]*(.*)$';
+  const heads=[{id:'ddx',n:'ayırıcı tanılar|ayırıcı tanı'},{id:'tx',n:'tedavi seçenekleri|tedavi önerileri|tedavi seçenekleri ve dozlar'},{id:'assess',n:'ön değerlendirme|değerlendirme'},{id:'plan',n:'öneriler|öneri'},{id:'refs',n:'kaynaklar|kaynakça|referanslar'}];
+  const find=(n,strict)=>{ const rx=new RegExp((strict?'^[ \\t]*(?:#{1,2}[ \\t]+|\\*\\*)[ \\t]*':'^[ \\t]*(?:#{1,4}[ \\t]*|\\*\\*)?[ \\t]*')+'(?:'+n+')'+NB,'im'); return rx.exec(t); };
+  const pos=[];
+  heads.forEach(h=>{ const m=find(h.n,true)||find(h.n,false); if(m&&!pos.some(q=>q.start===m.index)) pos.push({id:h.id,start:m.index,end:m.index+m[0].length,inl:(m[1]||'').trim()}); });
+  pos.sort((a,b)=>a.start-b.start);
+  const raw={}; pos.forEach((p,i)=>{ raw[p.id]=((p.inl?p.inl+'\n':'')+t.slice(p.end,i+1<pos.length?pos[i+1].start:t.length)).trim(); });
+  if(!pos.length) raw.assess=t.trim();
+  const out={assess:'',plan:'',refs:[],ddx:[],tx:[],planItems:[]};
+  const refTxt=raw.refs||''; const refs=[]; const seen=new Set();
+  const mdRx=/\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g; let m;
+  while((m=mdRx.exec(refTxt))){ if(!seen.has(m[2])){ seen.add(m[2]); refs.push({t:m[1].trim(),u:m[2],src:'claude'}); } }
+  refTxt.split('\n').forEach(line=>{ const u=line.match(/https?:\/\/[^\s)\]>]+/); if(u&&!seen.has(u[0])){ seen.add(u[0]); const txt=line.replace(u[0],'').replace(/^[\s\-*\d.)]+/,'').replace(/[\[\]()<>]/g,'').trim(); refs.push({t:txt||u[0],u:u[0],src:'claude'}); } });
+  const clean=s=>String(s||'').replace(/\*\*(.+?)\*\*/g,'$1').replace(/(^|[^*\w])\*([^*\n]+)\*(?=[^*\w]|$)/g,'$1$2').replace(/\[([^\]]+)\]\((https?:[^)]+)\)/g,'$1 ($2)').trim();
+  const items=(body,defCat)=>{ const res=[]; let cat=null; let curItem=null;
+    String(body||'').split('\n').forEach(line=>{ const L=line.replace(/\s+$/,''); if(!L.trim()){ curItem=null; return; }
+      const hm=L.match(/^\s*(?:#{3,6}\s*|\*\*)([^*#:]+?)(?:\*\*)?\s*:?\s*(?:\*\*)?\s*$/);
+      if(hm&&!/^\s*[-*•]\s/.test(L)){ const h=lowTR(hm[1].trim()); const f=PLAN_CAT_RX.find(([,rx])=>rx.test(h)); if(f){ cat=f[0]; curItem=null; return; } }
+      const indent=L.match(/^\s*/)[0].length;
+      const bm=L.match(/^\s*(?:[-*•]|\d+[.)])\s+(.*)$/);
+      const txt=bm?bm[1]:L.trim();
+      if(indent>=2&&curItem){ curItem.t+=' '+clean(txt); return; }
+      curItem={t:clean(txt),cat:defCat==null?null:(cat||guessCat(txt,defCat))}; res.push(curItem);
+    }); return res.filter(x=>x.t); };
+  out.assess=clean(raw.assess).replace(/^\s*[-*]\s+/gm,'• ');
+  out.ddx=items(raw.ddx,null).map(x=>({t:x.t}));
+  out.tx=items(raw.tx,'Tedavi').map(x=>({t:x.t,cat:'Tedavi'}));
+  out.planItems=items(raw.plan,'').map(x=>({t:x.t,cat:x.cat||guessCat(x.t)}));
+  out.plan=clean(raw.plan).replace(/^\s*[-*]\s+/gm,'• ');
+  out.refs=refs;
+  return out;
+}
+// ===== PARSER END =====
+// ===== DOCX START =====
+// Bağımlılıksız, çevrimdışı .docx üretici (OOXML + sıkıştırmasız ZIP)
+const CRC_TABLE=(()=>{ const t=new Uint32Array(256); for(let n=0;n<256;n++){ let c=n; for(let k=0;k<8;k++) c=c&1?0xEDB88320^(c>>>1):c>>>1; t[n]=c>>>0; } return t; })();
+function crc32(u8){ let c=0xFFFFFFFF; for(let i=0;i<u8.length;i++) c=CRC_TABLE[(c^u8[i])&0xFF]^(c>>>8); return (c^0xFFFFFFFF)>>>0; }
+function zipStore(files){ // files: [{name, data:Uint8Array}]
+  const enc=new TextEncoder(); const parts=[]; const central=[]; let offset=0;
+  const d=new Date(); const dt=((d.getFullYear()-1980)<<25)|((d.getMonth()+1)<<21)|(d.getDate()<<16)|(d.getHours()<<11)|(d.getMinutes()<<5)|(d.getSeconds()>>1);
+  const dosTime=dt&0xFFFF, dosDate=(dt>>>16)&0xFFFF;
+  files.forEach(f=>{
+    const name=enc.encode(f.name), data=f.data, crc=crc32(data);
+    const lh=new DataView(new ArrayBuffer(30));
+    lh.setUint32(0,0x04034b50,true); lh.setUint16(4,20,true); lh.setUint16(6,0x0800,true); lh.setUint16(8,0,true);
+    lh.setUint16(10,dosTime,true); lh.setUint16(12,dosDate,true); lh.setUint32(14,crc,true); lh.setUint32(18,data.length,true); lh.setUint32(22,data.length,true);
+    lh.setUint16(26,name.length,true); lh.setUint16(28,0,true);
+    parts.push(new Uint8Array(lh.buffer),name,data);
+    const ch=new DataView(new ArrayBuffer(46));
+    ch.setUint32(0,0x02014b50,true); ch.setUint16(4,20,true); ch.setUint16(6,20,true); ch.setUint16(8,0x0800,true); ch.setUint16(10,0,true);
+    ch.setUint16(12,dosTime,true); ch.setUint16(14,dosDate,true); ch.setUint32(16,crc,true); ch.setUint32(20,data.length,true); ch.setUint32(24,data.length,true);
+    ch.setUint16(28,name.length,true); ch.setUint16(30,0,true); ch.setUint16(32,0,true); ch.setUint16(34,0,true); ch.setUint16(36,0,true); ch.setUint32(38,0,true); ch.setUint32(42,offset,true);
+    central.push(new Uint8Array(ch.buffer),name);
+    offset+=30+name.length+data.length;
+  });
+  const cdSize=central.reduce((a,b)=>a+b.length,0);
+  const end=new DataView(new ArrayBuffer(22));
+  end.setUint32(0,0x06054b50,true); end.setUint16(8,files.length,true); end.setUint16(10,files.length,true); end.setUint32(12,cdSize,true); end.setUint32(16,offset,true);
+  const all=[...parts,...central,new Uint8Array(end.buffer)]; const total=all.reduce((a,b)=>a+b.length,0);
+  const out=new Uint8Array(total); let p=0; all.forEach(a=>{ out.set(a,p); p+=a.length; }); return out;
+}
+function xe(s){ return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;').replace(/[\u0000-\u0008\u000B\u000C\u000E-\u001F]/g,''); }
+
+// Belge modeli: blocks = [{h1:'..'},{h2:'..'},{p:[runs]|'metin'},{table:{head:[..],rows:[[..]],widths:[..]}},{bullets:[..]},{refs:[{t,u}]},{kv:[[k,v],..]}]
+// run: {t, b, i, link, color}
+function buildDocx(doc){
+  const enc=new TextEncoder(); const rels=[]; let rid=10;
+  const link=u=>{ const id='rId'+(rid++); rels.push('<Relationship Id="'+id+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/hyperlink" Target="'+xe(u)+'" TargetMode="External"/>'); return id; };
+  const run=(r)=>{
+    if(typeof r==='string') r={t:r};
+    const rpr=(r.b?'<w:b/>':'')+(r.i?'<w:i/>':'')+(r.color?'<w:color w:val="'+r.color+'"/>':'')+(r.sz?'<w:sz w:val="'+r.sz+'"/><w:szCs w:val="'+r.sz+'"/>':'')+(r.link?'<w:rStyle w:val="Hyperlink"/>':'');
+    const lines=String(r.t==null?'':r.t).split('\n');
+    const inner=lines.map((ln,i)=>(i?'<w:br/>':'')+'<w:t xml:space="preserve">'+xe(ln)+'</w:t>').join('');
+    const R='<w:r>'+(rpr?'<w:rPr>'+rpr+'</w:rPr>':'')+inner+'</w:r>';
+    return r.link? '<w:hyperlink r:id="'+link(r.link)+'" w:history="1">'+R+'</w:hyperlink>' : R;
+  };
+  const para=(runs,style,extra)=>'<w:p>'+((style||extra)?'<w:pPr>'+(style?'<w:pStyle w:val="'+style+'"/>':'')+(extra||'')+'</w:pPr>':'')+(Array.isArray(runs)?runs:[runs]).map(run).join('')+'</w:p>';
+  const W=9360; // içerik genişliği (twip)
+  const table=(t)=>{
+    const n=(t.head||t.rows[0]||[]).length||1; const widths=t.widths? t.widths.map(x=>Math.round(W*x)) : Array(n).fill(Math.floor(W/n));
+    const cell=(c,i,hdr)=>'<w:tc><w:tcPr><w:tcW w:w="'+widths[i]+'" w:type="dxa"/>'+(hdr?'<w:shd w:val="clear" w:color="auto" w:fill="FDE68A"/>':(t.zebra&&t.zebra.includes(i)?'':''))+'</w:tcPr>'+para(hdr?[{t:c,b:true,color:'7C2D12'}]:(Array.isArray(c)?c:[c==null?'':String(c)]),'TableText')+'</w:tc>';
+    const row=(r,hdr)=>'<w:tr>'+(hdr?'<w:trPr><w:tblHeader/></w:trPr>':'')+r.map((c,i)=>cell(c,i,hdr)).join('')+'</w:tr>';
+    return '<w:tbl><w:tblPr><w:tblW w:w="'+W+'" w:type="dxa"/><w:tblBorders><w:top w:val="single" w:sz="4" w:color="E5C9A8"/><w:left w:val="single" w:sz="4" w:color="E5C9A8"/><w:bottom w:val="single" w:sz="4" w:color="E5C9A8"/><w:right w:val="single" w:sz="4" w:color="E5C9A8"/><w:insideH w:val="single" w:sz="4" w:color="E5C9A8"/><w:insideV w:val="single" w:sz="4" w:color="E5C9A8"/></w:tblBorders><w:tblLayout w:type="fixed"/><w:tblCellMar><w:left w:w="80" w:type="dxa"/><w:right w:w="80" w:type="dxa"/></w:tblCellMar></w:tblPr><w:tblGrid>'+widths.map(w=>'<w:gridCol w:w="'+w+'"/>').join('')+'</w:tblGrid>'+(t.head?row(t.head,true):'')+t.rows.map(r=>row(r,false)).join('')+'</w:tbl>'+para('', 'Spacer');
+  };
+  let body='';
+  (doc.blocks||[]).forEach(b=>{
+    if(b.title) body+=para([{t:b.title}],'Title');
+    else if(b.h1) body+=para([{t:b.h1}],'Heading1');
+    else if(b.h2) body+=para([{t:b.h2}],'Heading2');
+    else if(b.p!=null){ const runs=typeof b.p==='string'?[{t:b.p}]:b.p; body+=para(runs,b.style||null); }
+    else if(b.bullets) b.bullets.forEach(x=>{ body+=para(typeof x==='string'?[{t:x}]:x,'ListBullet'); });
+    else if(b.table) body+=table(b.table);
+    else if(b.kv) body+=table({rows:b.kv.map(([k,v])=>[[{t:k,b:true,color:'7C2D12'}],[String(v==null?'':v)]]),widths:[0.3,0.7]});
+    else if(b.refs) b.refs.forEach((r,i)=>{ body+=para([{t:(i+1)+'. '},{t:r.t+' '},{t:r.u,link:r.u,color:'1B6EC2'}],'RefItem'); });
+  });
+  const hdrId='rId3', ftrId='rId4';
+  const sect='<w:sectPr><w:headerReference w:type="default" r:id="'+hdrId+'"/><w:footerReference w:type="default" r:id="'+ftrId+'"/><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1300" w:right="1273" w:bottom="1200" w:left="1273" w:header="560" w:footer="560" w:gutter="0"/></w:sectPr>';
+  const NS='xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"';
+  const documentXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:document '+NS+'><w:body>'+body+sect+'</w:body></w:document>';
+  const headerXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:hdr '+NS+'>'+
+    '<w:p><w:pPr><w:pStyle w:val="HeaderBand"/></w:pPr><w:r><w:t xml:space="preserve">'+xe(doc.header||'')+'</w:t></w:r></w:p>'+
+    (doc.header2?'<w:p><w:pPr><w:pStyle w:val="HeaderSub"/></w:pPr><w:r><w:t xml:space="preserve">'+xe(doc.header2)+'</w:t></w:r></w:p>':'')+'</w:hdr>';
+  const footerXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:ftr '+NS+'><w:p><w:pPr><w:pStyle w:val="FooterText"/></w:pPr><w:r><w:t xml:space="preserve">'+xe(doc.footer||'')+'  •  Sayfa </w:t></w:r><w:r><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:instrText xml:space="preserve"> PAGE </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:t>1</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r><w:r><w:t xml:space="preserve"> / </w:t></w:r><w:r><w:fldChar w:fldCharType="begin"/></w:r><w:r><w:instrText xml:space="preserve"> NUMPAGES </w:instrText></w:r><w:r><w:fldChar w:fldCharType="separate"/></w:r><w:r><w:t>1</w:t></w:r><w:r><w:fldChar w:fldCharType="end"/></w:r></w:p></w:ftr>';
+  const F='<w:rFonts w:ascii="Calibri" w:hAnsi="Calibri" w:cs="Calibri" w:eastAsia="Calibri"/>';
+  const st=(id,name,ppr,rpr,type)=>'<w:style w:type="'+(type||'paragraph')+'" w:styleId="'+id+'"><w:name w:val="'+name+'"/>'+(type==='character'?'':'<w:basedOn w:val="Normal"/>')+(ppr?'<w:pPr>'+ppr+'</w:pPr>':'')+(rpr?'<w:rPr>'+rpr+'</w:rPr>':'')+'</w:style>';
+  const stylesXml='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><w:styles xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'+
+    '<w:docDefaults><w:rPrDefault><w:rPr>'+F+'<w:sz w:val="20"/><w:szCs w:val="20"/><w:lang w:val="tr-TR"/></w:rPr></w:rPrDefault><w:pPrDefault><w:pPr><w:spacing w:after="80" w:line="264" w:lineRule="auto"/></w:pPr></w:pPrDefault></w:docDefaults>'+
+    '<w:style w:type="paragraph" w:default="1" w:styleId="Normal"><w:name w:val="Normal"/></w:style>'+
+    st('Title','Title','<w:shd w:val="clear" w:color="auto" w:fill="9A3412"/><w:spacing w:before="0" w:after="160"/><w:ind w:left="0"/>','<w:b/><w:color w:val="FFFFFF"/><w:sz w:val="30"/><w:szCs w:val="30"/>')+
+    st('Heading1','heading 1','<w:keepNext/><w:pBdr><w:bottom w:val="single" w:sz="12" w:space="2" w:color="F59E0B"/></w:pBdr><w:spacing w:before="240" w:after="100"/><w:outlineLvl w:val="0"/>','<w:b/><w:color w:val="C2410C"/><w:sz w:val="24"/><w:szCs w:val="24"/>')+
+    st('Heading2','heading 2','<w:keepNext/><w:spacing w:before="160" w:after="60"/><w:outlineLvl w:val="1"/>','<w:b/><w:color w:val="9A3412"/><w:sz w:val="21"/><w:szCs w:val="21"/>')+
+    st('ListBullet','List Bullet','<w:ind w:left="360" w:hanging="220"/><w:spacing w:after="40"/>','')+
+    st('TableText','Table Text','<w:spacing w:after="0" w:line="240" w:lineRule="auto"/>','<w:sz w:val="18"/><w:szCs w:val="18"/>')+
+    st('RefItem','Reference','<w:ind w:left="300" w:hanging="300"/><w:spacing w:after="60"/>','<w:sz w:val="18"/><w:szCs w:val="18"/>')+
+    st('Spacer','Spacer','<w:spacing w:after="60" w:line="120" w:lineRule="exact"/>','<w:sz w:val="8"/>')+
+    st('Note','Note','<w:shd w:val="clear" w:color="auto" w:fill="FFFBEB"/><w:spacing w:before="120"/>','<w:i/><w:color w:val="7C2D12"/><w:sz w:val="17"/><w:szCs w:val="17"/>')+
+    st('HeaderBand','Header Band','<w:shd w:val="clear" w:color="auto" w:fill="9A3412"/><w:spacing w:after="0"/><w:jc w:val="center"/>','<w:b/><w:color w:val="FFFFFF"/><w:sz w:val="18"/><w:szCs w:val="18"/>')+
+    st('HeaderSub','Header Sub','<w:shd w:val="clear" w:color="auto" w:fill="F59E0B"/><w:spacing w:after="0"/><w:jc w:val="center"/>','<w:b/><w:color w:val="7C2D12"/><w:sz w:val="16"/><w:szCs w:val="16"/>')+
+    st('FooterText','Footer Text','<w:jc w:val="center"/>','<w:color w:val="6B5A4E"/><w:sz w:val="15"/><w:szCs w:val="15"/>')+
+    '<w:style w:type="character" w:styleId="Hyperlink"><w:name w:val="Hyperlink"/><w:rPr><w:color w:val="1B6EC2"/><w:u w:val="single"/></w:rPr></w:style>'+
+    '</w:styles>';
+  const docRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/styles" Target="styles.xml"/>'+
+    '<Relationship Id="'+hdrId+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/header" Target="header1.xml"/>'+
+    '<Relationship Id="'+ftrId+'" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/footer" Target="footer1.xml"/>'+rels.join('')+'</Relationships>';
+  const ct='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/>'+
+    '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/><Override PartName="/word/styles.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.styles+xml"/>'+
+    '<Override PartName="/word/header1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.header+xml"/><Override PartName="/word/footer1.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.footer+xml"/>'+
+    '<Override PartName="/docProps/core.xml" ContentType="application/vnd.openxmlformats-package.core-properties+xml"/></Types>';
+  const rootRels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/><Relationship Id="rId2" Type="http://schemas.openxmlformats.org/package/2006/relationships/metadata/core-properties" Target="docProps/core.xml"/></Relationships>';
+  const now=new Date().toISOString().replace(/\.\d+Z$/,'Z');
+  const core='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><cp:coreProperties xmlns:cp="http://schemas.openxmlformats.org/package/2006/metadata/core-properties" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:dcterms="http://purl.org/dc/terms/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"><dc:title>'+xe(doc.docTitle||'Konsültasyon notu')+'</dc:title><dc:creator>'+xe(doc.author||'')+'</dc:creator><dcterms:created xsi:type="dcterms:W3CDTF">'+now+'</dcterms:created><dcterms:modified xsi:type="dcterms:W3CDTF">'+now+'</dcterms:modified></cp:coreProperties>';
+  return zipStore([
+    {name:'[Content_Types].xml',data:enc.encode(ct)},{name:'_rels/.rels',data:enc.encode(rootRels)},{name:'docProps/core.xml',data:enc.encode(core)},
+    {name:'word/document.xml',data:enc.encode(documentXml)},{name:'word/styles.xml',data:enc.encode(stylesXml)},{name:'word/_rels/document.xml.rels',data:enc.encode(docRels)},
+    {name:'word/header1.xml',data:enc.encode(headerXml)},{name:'word/footer1.xml',data:enc.encode(footerXml)}
+  ]);
+}
+// ===== DOCX END =====
+// ===== STORE START =====
+// Yerel arşiv: IndexedDB (tarayıcı) veya bellek (test). İsteğe bağlı AES-GCM şifreleme (PBKDF2-SHA256).
+const B64={ enc:u8=>{ let s=''; const a=new Uint8Array(u8); for(let i=0;i<a.length;i++) s+=String.fromCharCode(a[i]); return btoa(s); }, dec:b=>Uint8Array.from(atob(b),c=>c.charCodeAt(0)) };
+const KDF_ITER=310000;
+function idbAdapter(name){
+  let dbp=null;
+  const open=()=>dbp||(dbp=new Promise((res,rej)=>{ const r=indexedDB.open(name,1); r.onupgradeneeded=()=>{ const db=r.result;
+    if(!db.objectStoreNames.contains('patients')) db.createObjectStore('patients',{keyPath:'id'});
+    if(!db.objectStoreNames.contains('consults')){ const s=db.createObjectStore('consults',{keyPath:'id'}); s.createIndex('patientId','patientId'); }
+    if(!db.objectStoreNames.contains('meta')) db.createObjectStore('meta',{keyPath:'k'}); };
+    r.onsuccess=()=>res(r.result); r.onerror=()=>rej(r.error); }));
+  const tx=(store,mode,fn)=>open().then(db=>new Promise((res,rej)=>{ const t=db.transaction(store,mode); const s=t.objectStore(store); const out=fn(s); t.oncomplete=()=>res((typeof IDBRequest!=='undefined'&&out instanceof IDBRequest)?out.result:out); t.onerror=()=>rej(t.error); t.onabort=()=>rej(t.error); }));
+  return {
+    get:(st,id)=>tx(st,'readonly',s=>s.get(id)),
+    all:(st)=>tx(st,'readonly',s=>s.getAll()),
+    put:(st,o)=>tx(st,'readwrite',s=>{ s.put(o); return null; }),
+    del:(st,id)=>tx(st,'readwrite',s=>{ s.delete(id); return null; })
+  };
+}
+function memAdapter(){ const m={patients:new Map(),consults:new Map(),meta:new Map()}; const key=(st,o)=>st==='meta'?o.k:o.id; const cl=o=>o==null?o:JSON.parse(JSON.stringify(o));
+  return { get:async(st,id)=>cl(m[st].get(id)), all:async(st)=>[...m[st].values()].map(cl), put:async(st,o)=>{ m[st].set(key(st,o),cl(o)); }, del:async(st,id)=>{ m[st].delete(id); } }; }
+
+function makeStore(adapter,cryptoImpl){
+  const C=cryptoImpl||(typeof crypto!=='undefined'?crypto:null);
+  let key=null, cryptoMeta=null;
+  const enc=new TextEncoder(), dec=new TextDecoder();
+  async function deriveKey(pass,salt,iter){ const base=await C.subtle.importKey('raw',enc.encode(pass),'PBKDF2',false,['deriveKey']); return C.subtle.deriveKey({name:'PBKDF2',salt,iterations:iter,hash:'SHA-256'},base,{name:'AES-GCM',length:256},false,['encrypt','decrypt']); }
+  async function encObj(o,k){ const iv=C.getRandomValues(new Uint8Array(12)); const ct=await C.subtle.encrypt({name:'AES-GCM',iv},k||key,enc.encode(JSON.stringify(o))); return {iv:B64.enc(iv),data:B64.enc(new Uint8Array(ct))}; }
+  async function decObj(e,k){ const pt=await C.subtle.decrypt({name:'AES-GCM',iv:B64.dec(e.iv)},k||key,B64.dec(e.data)); return JSON.parse(dec.decode(pt)); }
+  const wrap=async(o,isConsult)=>{ if(!cryptoMeta) return o; const w={id:o.id,updatedAt:o.updatedAt,enc:await encObj(o)}; if(isConsult) w.patientId=o.patientId; return w; };
+  const unwrap=async(w)=>{ if(!w) return w; if(!w.enc) return w; if(!key) throw new Error('locked'); return decObj(w.enc); };
+  const api={
+    async init(){ const m=await adapter.get('meta','crypto'); cryptoMeta=m||null; return api.status(); },
+    status(){ return {encrypted:!!cryptoMeta, locked:!!cryptoMeta&&!key}; },
+    async unlock(pass){ if(!cryptoMeta) return true; const k=await deriveKey(pass,B64.dec(cryptoMeta.salt),cryptoMeta.iter); try{ const v=await decObj(cryptoMeta.check,k); if(v!=='aseah-ok') return false; key=k; return true; }catch(e){ return false; } },
+    lock(){ if(cryptoMeta) key=null; },
+    async setPassphrase(pass){ // şifrele veya parolayı değiştir
+      if(cryptoMeta&&!key) throw new Error('locked');
+      const ps=await adapter.all('patients'), cs=await adapter.all('consults');
+      const plainP=await Promise.all(ps.map(unwrap)), plainC=await Promise.all(cs.map(unwrap));
+      const salt=C.getRandomValues(new Uint8Array(16)); const k=await deriveKey(pass,salt,KDF_ITER);
+      const meta={k:'crypto',salt:B64.enc(salt),iter:KDF_ITER,check:await encObj('aseah-ok',k),since:new Date().toISOString()};
+      key=k; cryptoMeta=meta;
+      for(const p of plainP) await adapter.put('patients',await wrap(p,false));
+      for(const c of plainC) await adapter.put('consults',await wrap(c,true));
+      await adapter.put('meta',meta); return true;
+    },
+    async removePassphrase(){ if(!cryptoMeta) return; if(!key) throw new Error('locked');
+      const ps=await Promise.all((await adapter.all('patients')).map(unwrap)), cs=await Promise.all((await adapter.all('consults')).map(unwrap));
+      cryptoMeta=null; key=null; for(const p of ps) await adapter.put('patients',p); for(const c of cs) await adapter.put('consults',c); await adapter.del('meta','crypto'); },
+    async patients(){ return Promise.all((await adapter.all('patients')).map(unwrap)); },
+    async consults(){ return Promise.all((await adapter.all('consults')).map(unwrap)); },
+    async consultsOf(pid){ return (await api.consults()).filter(c=>c.patientId===pid); },
+    async savePatient(p){ p.updatedAt=new Date().toISOString(); await adapter.put('patients',await wrap(p,false)); return p; },
+    async saveConsult(c){ c.updatedAt=new Date().toISOString(); await adapter.put('consults',await wrap(c,true)); return c; },
+    async getMeta(k){ const m=await adapter.get('meta',k); return m?m.v:undefined; },
+    async setMeta(k,v){ await adapter.put('meta',{k,v}); },
+    // Yedek: kayıtlar depolandığı haliyle (şifreliyse şifreli) dışa aktarılır
+    async exportAll(){ return {app:'aseah-konsultasyon',format:1,exportedAt:new Date().toISOString(),crypto:cryptoMeta,patients:await adapter.all('patients'),consults:await adapter.all('consults')}; },
+    async importAll(b){
+      if(!b||b.app!=='aseah-konsultasyon') throw new Error('Geçerli bir konsültasyon arşivi yedeği değil.');
+      const localP=await adapter.all('patients'), localC=await adapter.all('consults');
+      const empty=!localP.length&&!localC.length;
+      if(b.crypto&&(!cryptoMeta||cryptoMeta.salt!==b.crypto.salt)){
+        if(empty&&!cryptoMeta){ cryptoMeta=b.crypto; key=null; await adapter.put('meta',b.crypto); }
+        else throw new Error('Yedek farklı bir parolayla şifrelenmiş. Önce bu cihazdaki arşivi yedekleyin; yedeği boş bir arşive yükleyin veya aynı parolayı kullanın.');
+      }
+      if(empty&&b.crypto){ for(const r of b.patients||[]) await adapter.put('patients',r); for(const r of b.consults||[]) await adapter.put('consults',r); return {added:(b.patients||[]).length+(b.consults||[]).length,updated:0,kept:0,needUnlock:!key}; }
+      if(cryptoMeta&&!key) throw new Error('locked');
+      const inc=async r=>r&&r.enc? decObj(r.enc) : r;
+      let added=0, updated=0, kept=0;
+      const merge=async(st,list,local)=>{ const L=new Map(); for(const x of local) L.set(x.id,await unwrap(x));
+        for(const r0 of list){ const nw=await inc(r0); const ex=L.get(nw.id);
+          if(!ex){ await adapter.put(st,await wrap(nw,st==='consults')); added++; }
+          else if((nw.updatedAt||'')>(ex.updatedAt||'')){
+            if(st==='consults'){ nw.history=(nw.history||[]).concat((ex.history||[]).filter(h=>!(nw.history||[]).some(x=>x.at===h.at))); if(!nw.history.some(h=>h.at===ex.updatedAt)) nw.history.push({at:ex.updatedAt,data:Object.assign({},ex,{history:undefined}),note:'Yedek birleştirme öncesi sürüm'}); }
+            await adapter.put(st,await wrap(nw,st==='consults')); updated++; }
+          else kept++; } };
+      await merge('patients',b.patients||[],localP); await merge('consults',b.consults||[],localC);
+      return {added,updated,kept,needUnlock:!!cryptoMeta&&!key};
+    }
+  };
+  return api;
+}
+function uid(){ return (typeof crypto!=='undefined'&&crypto.randomUUID)? crypto.randomUUID() : 'id-'+Date.now().toString(36)+'-'+Math.random().toString(36).slice(2,10); }
+// ===== STORE END =====
+
+// ======================= UYGULAMA =======================
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const todayISO=()=>{ const d=new Date(); return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0'); };
+const nowHM=()=>{ const d=new Date(); return String(d.getHours()).padStart(2,'0')+':'+String(d.getMinutes()).padStart(2,'0'); };
+const fmtD=s=>{ if(!s) return ''; const p=s.split('-'); return p.length===3? p[2]+'.'+p[1]+'.'+p[0] : s; };
+const fmtDT=iso=>{ if(!iso) return ''; const d=new Date(iso); return isNaN(d)?'':d.toLocaleString('tr-TR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'}); };
+const NOTE_SECS=['reason','history','pmh','vacc','allergy','epi','risk','exam'];
+const SEC_HINT={reason:'İsteyen hekimin sorusu',history:'Yakınma, ateş süresi/paterni, seyir',pmh:'Altta yatan hastalık, immünsüpresyon, önceki yatışlar',vacc:'Ulusal takvime göre tam/eksik; özel aşılar',allergy:'Özellikle antibiyotik alerjisi ve reaksiyon tipi',epi:'Temas, seyahat, hayvan/kene, çiğ süt, kreş',risk:'Santral kateter, şant, protez, cerrahi, ventilasyon',exam:'Genel durum ve sistem muayenesi; enfeksiyon odağı'};
+
+let pmCache='';
+let S=null, settings={}, patients=[], allConsults=[], curP=null, cur=null, saveT=null, undoSnap=null, lastParse=null;
+
+async function boot(){
+  S=makeStore(idbAdapter('aseah-konsultasyon'));
+  const st=await S.init();
+  if(st.locked){ showLock(); return; }
+  await afterUnlock();
+}
+async function afterUnlock(){
+  $('lock').classList.remove('show');
+  settings=(await S.getMeta('settings'))||{};
+  await reload();
+  renderAll();
+  startIdleLock();
+}
+async function reload(){ patients=(await S.patients()).filter(p=>!p.deleted); allConsults=await S.consults(); }
+function showLock(){ $('lock').classList.add('show'); $('lockErr').textContent=''; setTimeout(()=>$('lockPass').focus(),50); }
+$('bUnlock').onclick=async()=>{ const ok=await S.unlock($('lockPass').value); if(!ok){ $('lockErr').textContent='Parola yanlış.'; return; } $('lockPass').value=''; await afterUnlock(); };
+$('lockPass').addEventListener('keydown',e=>{ if(e.key==='Enter') $('bUnlock').click(); });
+let idleT=null;
+function startIdleLock(){ const reset=()=>{ clearTimeout(idleT); if(S.status().encrypted) idleT=setTimeout(async()=>{ await flushSave(); S.lock(); cur=null; curP=null; showLock(); },15*60*1000); }; ['click','keydown','pointermove'].forEach(e=>document.addEventListener(e,reset,{passive:true})); reset(); }
+
+function saveSettings(){ return S.setMeta('settings',settings); }
+function lastActivity(p){ const cs=allConsults.filter(c=>c.patientId===p.id&&!c.deleted); return cs.reduce((m,c)=>c.updatedAt>m?c.updatedAt:m,p.updatedAt||''); }
+
+function renderAll(){ renderTop(); renderBanners(); renderList(); renderMain(); }
+function renderTop(){
+  const st=S.status();
+  $('lockPill').className='pill '+(st.encrypted?'g':'m'); $('lockPill').textContent=st.encrypted?'Arşiv şifreli':'Arşiv şifresiz (yerel)';
+  $('verLine').textContent='Sürüm '+APP_VERSION+' · kütüphane '+RULES_DATE+' · kayıtlar yalnız bu cihazda';
+}
+function renderBanners(){
+  const b=[]; const n=allConsults.filter(c=>!c.deleted).length;
+  const lb=settings.lastBackup? new Date(settings.lastBackup):null;
+  if(n&&(!lb||(Date.now()-lb)>7*864e5)) b.push('<div class="banner">⚠ '+(lb?'Son yedek '+fmtDT(settings.lastBackup)+'.':'Henüz yedek alınmadı.')+' Kayıtlar yalnız bu tarayıcıda; tarayıcı verisi silinirse kaybolur. <button class="small" type="button" data-act="backup">Şimdi yedek al</button></div>');
+  if(!S.status().encrypted&&n) b.push('<div class="banner">🔒 Arşiv şifresiz. Ortak kullanılan bilgisayarda Ayarlar → "Arşivi parolayla şifrele" önerilir.</div>');
+  $('banners').innerHTML=b.join('');
+}
+function renderList(){
+  const q=($('q').value||'').toLocaleLowerCase('tr-TR');
+  const list=patients.filter(p=>!q||(p.name||'').toLocaleLowerCase('tr-TR').includes(q)||String(p.protocol||'').includes(q)).sort((a,b)=>lastActivity(b).localeCompare(lastActivity(a)));
+  $('plist').innerHTML=list.length? list.map(p=>{ const cs=allConsults.filter(c=>c.patientId===p.id&&!c.deleted); const dr=cs.some(c=>c.status!=='final');
+    return '<li data-pid="'+p.id+'" class="'+(curP&&curP.id===p.id?'on':'')+'"><div class="n">'+esc(p.name||'(adsız)')+'</div><div class="m">Prot. '+esc(p.protocol||'—')+' · '+cs.length+' konsültasyon'+(cs.length?' · son '+fmtD((cs.map(c=>c.date).sort().pop())||''):'')+(dr?' · <span class="pill">taslak</span>':'')+'</div></li>'; }).join('') : '<li style="cursor:default;color:var(--muted)">'+(q?'Eşleşen hasta yok.':'Arşivde hasta yok. "Yeni hasta" ile başlayın.')+'</li>';
+}
+$('q').addEventListener('input',renderList);
+$('plist').addEventListener('click',async e=>{ const li=e.target.closest('li[data-pid]'); if(!li) return; await flushSave(); curP=patients.find(p=>p.id===li.dataset.pid); const cs=consultsOfCur(); cur=cs.find(c=>c.status!=='final')||null; renderList(); renderMain(); });
+function consultsOfCur(){ return curP? allConsults.filter(c=>c.patientId===curP.id&&!c.deleted).sort((a,b)=>(b.date+b.time).localeCompare(a.date+a.time)) : []; }
+
+// ---------- Ana görünüm ----------
+function renderMain(){
+  const m=$('main');
+  if(!curP){ m.innerHTML='<div class="empty"><h2 style="color:var(--head)">Hasta seçin veya yeni hasta ekleyin</h2><p>Her hastanın konsültasyonları tarih sırasıyla arşivlenir; yeni konsültasyonda önceki not ve laboratuvar eğilimi otomatik gösterilir.</p><p class="hint">İş akışı: hasta → yeni konsültasyon → sesli dikte veya yazarak giriş → "Nota yerleştir" → kaynak ekle (rehber kütüphanesi, PubMed) → isterseniz kimliksiz vakayı Claude\'a gönderip yanıtı içe aktarın → Word veya PDF.</p></div>'; return; }
+  const cs=consultsOfCur(); const age=ageFrom(curP.birth);
+  let h='<div class="card"><h2>'+esc(curP.name||'(adsız)')+' <span class="pill m">Prot. '+esc(curP.protocol||'—')+'</span>'+(age?'<span class="pill">'+esc(age)+'</span>':'')+'<span class="sp"></span><button class="small" type="button" data-act="newConsult">Yeni konsültasyon</button></h2>'+
+    '<div class="grid2"><div><label for="p-name">Ad soyad</label><input id="p-name" data-p="name" value="'+esc(curP.name)+'"></div><div><label for="p-prot">Protokol no</label><input id="p-prot" data-p="protocol" value="'+esc(curP.protocol)+'"></div><div><label for="p-birth">Doğum tarihi</label><input id="p-birth" type="date" data-p="birth" value="'+esc(curP.birth)+'"></div><div><label for="p-sex">Cinsiyet</label><select id="p-sex" data-p="sex">'+['','Kız','Erkek'].map(x=>'<option'+(curP.sex===x?' selected':'')+'>'+x+'</option>').join('')+'</select></div></div>'+
+    '<div class="sec"><label>Konsültasyon geçmişi ('+cs.length+')</label>'+(cs.length?'<ul class="tl">'+cs.map(c=>'<li class="'+(cur&&cur.id===c.id?'on':'')+'"><span class="d">'+fmtD(c.date)+' '+esc(c.time||'')+'</span><span class="pill '+(c.status==='final'?'g':'')+'">'+(c.status==='final'?'Tamamlandı':'Taslak')+(c.version>1?' · s'+c.version:'')+'</span><span class="s">'+esc(((c.sections||{}).reason||(c.sections||{}).assess||'').slice(0,110))+'</span><button class="small ghost" type="button" data-open="'+c.id+'">Aç</button></li>').join('')+'</ul>':'<p class="hint">Henüz konsültasyon yok.</p>')+'</div>'+
+    '<div class="btns"><button class="ghost small" type="button" data-act="delPatient">Hastayı arşivden kaldır</button></div></div>';
+  if(cur) h+=renderEditor(cs);
+  m.innerHTML=h;
+  bindEditor();
+}
+function prevConsults(){ return consultsOfCur().filter(c=>c.id!==cur.id&&(c.date+c.time)<=(cur.date+cur.time)); }
+function renderEditor(cs){
+  const c=cur, ro=c.status==='final', R=ro?' readonly':'', D=ro?' disabled':'';
+  const prev=prevConsults(); const last=prev[0];
+  let h='<div class="sticky"><span class="pill '+(ro?'g':'')+'">'+(ro?'Tamamlandı '+fmtDT(c.finalizedAt):'Taslak')+(c.version>1?' · sürüm '+c.version:'')+'</span><span class="saved" id="savedInfo">'+(c.updatedAt?'Kaydedildi '+fmtDT(c.updatedAt):'')+'</span><span style="flex:1"></span>'+
+    '<button class="small" type="button" data-act="docx">Word (.docx)</button><button class="small" type="button" data-act="print">PDF / Yazdır</button><button class="small ghost" type="button" data-act="toClaude">Vakayı Claude\'a kopyala</button><button class="small ghost" type="button" data-act="fromClaude"'+D+'>Claude yanıtını içe aktar</button>'+
+    (ro?'<button class="small ghost" type="button" data-act="newVersion">Düzenle (yeni sürüm)</button>':'<button class="small" type="button" data-act="finalize">Tamamla</button>')+'</div>';
+  h+='<div class="card"><h2>Konsültasyon bilgileri</h2><div class="grid2">'+
+    fld('date','Tarih','date',c.date,R)+fld('time','Saat','time',c.time,R)+fld('ward','Servis / bölüm','text',c.ward,R)+fld('requester','İsteyen hekim / bölüm','text',c.requester,R)+
+    '<div><label for="f-urgency">Aciliyet</label><select id="f-urgency" data-f="urgency"'+D+'>'+['Rutin','Acil'].map(x=>'<option'+(c.urgency===x?' selected':'')+'>'+x+'</option>').join('')+'</select></div>'+fld('weight','Ağırlık (kg)','number',c.weight,R,'step="0.01" min="0"')+fld('consultant','Konsültan','text',c.consultant,R)+fld('ctitle','Unvan','text',c.ctitle,R)+'</div></div>';
+  if(!ro) h+='<div class="card"><h2>Sesli dikte veya serbest metin<span class="sp"></span><span class="mic"><span id="micState" class="hint"></span><button type="button" id="bMic" data-mic="dictBox" class="small">🎤 Dikteyi başlat</button></span></h2>'+
+    '<textarea id="dictBox" rows="6" placeholder="Konuşun veya yapıştırın. Örnek: &quot;Konsültasyon nedeni ... Öykü 6 yaşında erkek ... Fizik muayene ateş 38 virgül 7 nabız 140 ... Laboratuvar CRP 85 prokalsitonin 1 virgül 4 ... Kültürler kan kültüründe Klebsiella pneumoniae üredi ... Tedavi meropenem 3. gün&quot;">'+esc(c.dictation||'')+'</textarea><div class="interim" id="interim"></div>'+
+    '<div class="btns" style="align-items:center"><label for="defSec" style="margin:0">Başlık söylenmezse:</label><select id="defSec" style="width:auto">'+SECTIONS.filter(s=>!['labs','micro','imaging','abx'].includes(s.id)).map(s=>'<option value="'+s.id+'"'+(s.id==='history'?' selected':'')+'>'+s.t+'</option>').join('')+'</select><button type="button" data-act="parse">Nota yerleştir</button><button type="button" class="ghost" data-act="undo"'+(undoSnap?'':' disabled')+'>Son yerleştirmeyi geri al</button><button type="button" class="ghost" data-act="clearDict">Kutuyu temizle</button></div>'+
+    (lastParse?'<div class="sumbox">Yerleştirildi: '+esc(lastParse.join(' · '))+'</div>':'')+
+    '<details class="lib"><summary>Sesli komutlar</summary><p class="hint">Bölüm değiştirmek için cümleye bölüm adıyla başlayın: konsültasyon nedeni, öykü, özgeçmiş, aşı durumu, alerji, epidemiyolojik öykü, risk faktörleri, fizik muayene, laboratuvar, kültürler, görüntüleme, tedavi, değerlendirme, öneriler. Noktalama: "nokta", "virgül", "yeni satır", "iki nokta". Ondalık: "38 virgül 5". Tansiyon: "95 bölü 55". "45 bin" → 45000. Laboratuvar değerleri, vital bulgular, antibiyotikler (ad, doz, gün) ve kültür sonuçları tablolara ayrıca aktarılır; metin her zaman korunur, "geri al" ile son yerleştirme kaldırılabilir.</p></details></div>';
+  if(last){
+    h+='<div class="card"><h2>Önceki konsültasyon – '+fmtD(last.date)+' '+esc(last.time||'')+'<span class="sp"></span>'+(ro?'':'<button class="small ghost" type="button" data-act="carry">Kalıcı bilgileri bu nota aktar</button>')+'</h2><div class="prev">'+
+      ['reason','pmh','allergy','assess','plan'].filter(k=>(last.sections||{})[k]).map(k=>'<h3>'+SEC_BY_ID[k].t+'</h3><div class="blk">'+esc(last.sections[k])+'</div>').join('')+
+      ((last.ddx||[]).filter(x=>x.t).length?'<h3>Ayırıcı tanı</h3><div class="blk">'+esc(last.ddx.filter(x=>x.t).map(x=>'• '+x.t).join('\n'))+'</div>':'')+
+      ((last.planItems||[]).filter(x=>x.t).length?'<h3>Seçilen öneriler</h3><div class="blk">'+esc(last.planItems.filter(x=>x.t).map(x=>'• ['+x.cat+'] '+x.t).join('\n'))+'</div>':'')+
+      ((last.addenda||[]).filter(a=>!a.deleted).length?'<h3>Ek notlar</h3><div class="blk">'+esc(last.addenda.filter(a=>!a.deleted).map(a=>'• '+fmtD(a.date)+' '+(a.time||'')+' '+a.type+': '+String(a.text||'').replace(/\s+/g,' ').slice(0,200)).join('\n'))+'</div>':'')+
+      ((last.abx||[]).length?'<h3>Antimikrobiyal</h3><div class="blk">'+esc(last.abx.map(a=>[a.drug,a.dose,a.freq,a.day&&a.day+'. gün',a.status].filter(Boolean).join(' · ')).join('\n'))+'</div>':'')+
+      (prev.length>1?'<p class="hint">Bu hastanın toplam '+prev.length+' önceki konsültasyonu var; tamamı yukarıdaki geçmiş listesinden açılabilir.</p>':'')+'</div>'+trendHTML()+'</div>';
+  }
+  h+='<div class="card"><h2>Konsültasyon notu</h2>';
+  NOTE_SECS.forEach(id=>{ h+='<div class="sec"><label for="s-'+id+'">'+SEC_BY_ID[id].t+'</label>'+(id==='exam'?vitalsHTML(c,R):'')+'<textarea id="s-'+id+'" data-s="'+id+'" rows="'+(id==='history'||id==='exam'?4:2)+'" placeholder="'+esc(SEC_HINT[id]||'')+'"'+R+'>'+esc((c.sections||{})[id]||'')+'</textarea></div>'; });
+  h+='<div class="sec"><label>Laboratuvar</label>'+tableHTML('labs',[['n','Parametre',0.3],['raw','Sonuç',0.15],['u','Birim',0.15],['date','Tarih',0.2]],ro)+'<textarea data-s="labs" rows="2" placeholder="Laboratuvar notu (tabloya girmeyenler)"'+R+'>'+esc((c.sections||{}).labs||'')+'</textarea></div>';
+  h+='<div class="sec"><label>Mikrobiyoloji</label>'+tableHTML('micro',[['sample','Örnek',0.14],['date','Tarih',0.13],['org','Etken / sonuç',0.25],['res','Direnç',0.14],['raw','Açıklama',0.34]],ro)+'<textarea data-s="micro" rows="2" placeholder="Mikrobiyoloji notu"'+R+'>'+esc((c.sections||{}).micro||'')+'</textarea></div>';
+  h+='<div class="sec"><label for="s-imaging">Görüntüleme (her satır bir tetkik)</label><textarea id="s-imaging" data-img="1" rows="3"'+R+'>'+esc((c.imaging||[]).join('\n'))+'</textarea></div>';
+  h+='<div class="sec"><label>Antimikrobiyal tedavi</label>'+tableHTML('abx',[['drug','İlaç',0.22],['dose','Doz',0.16],['freq','Sıklık',0.16],['day','Gün',0.08],['start','Başlangıç',0.14],['status','Durum',0.12]],ro)+'<textarea data-s="abx" rows="2" placeholder="Önceki antimikrobiyaller, kolonizasyon, not"'+R+'>'+esc((c.sections||{}).abx||'')+'</textarea></div>';
+  h+='<div class="sec"><label for="s-assess">Değerlendirme</label><textarea id="s-assess" data-s="assess" rows="4"'+R+'>'+esc((c.sections||{}).assess||'')+'</textarea></div>';
+  h+=itemsHTML(ro);
+  h+='<div class="sec"><label for="s-plan">Ek öneri / serbest metin</label><textarea id="s-plan" data-s="plan" rows="3" placeholder="Seçeneklerde olmayan öneriler"'+R+'>'+esc((c.sections||{}).plan||'')+'</textarea></div></div>';
+  if(!ro) h+=optHTML();
+  h+=litHTML(ro);
+  h+=addHTML();
+  h+='<div class="card"><h2>Çıktı seçenekleri</h2><label class="chk"><input type="checkbox" data-o="prev"'+(c.opts&&c.opts.prev?' checked':'')+'> Önceki konsültasyon özetini belgeye ekle</label><label class="chk"><input type="checkbox" data-o="trend"'+(c.opts&&c.opts.trend?' checked':'')+'> Laboratuvar eğilim tablosunu belgeye ekle</label><label class="chk"><input type="checkbox" data-o="addenda"'+(!c.opts||c.opts.addenda!==false?' checked':'')+'> Ek notları (kültür sonucu / rekonsültasyon) ana belgeye ekle</label><label class="chk"><input type="checkbox" data-o="mask"'+(c.opts&&c.opts.mask?' checked':'')+'> Belgede hasta kimliğini maskele (eğitim/paylaşım için)</label>'+
+    '<p class="hint">PDF için "PDF / Yazdır"da hedef olarak "PDF olarak kaydet"i seçin. Word dosyası çevrimdışı oluşturulur ve kaynak bağlantıları tıklanabilir.</p><div class="btns"><button class="ghost small" type="button" data-act="delConsult">Bu konsültasyonu arşivden kaldır</button></div></div>';
+  return h;
+}
+function fld(f,lab,type,val,R,extra){ return '<div><label for="f-'+f+'">'+lab+'</label><input id="f-'+f+'" type="'+type+'" data-f="'+f+'" value="'+esc(val==null?'':val)+'"'+R+(extra?' '+extra:'')+'></div>'; }
+function vitalsHTML(c,R){ const v=c.vitals||{}; const f=(k,l)=>'<div><label for="v-'+k+'" style="font-weight:600">'+l+'</label><input id="v-'+k+'" data-v="'+k+'" value="'+esc(v[k]||'')+'"'+R+'></div>'; return '<div class="vit">'+f('temp','Ateş (°C)')+f('hr','Nabız (/dk)')+f('rr','Solunum (/dk)')+f('bp','TA (mmHg)')+f('spo2','SpO₂ (%)')+'</div>'; }
+function tableHTML(name,cols,ro){
+  const rows=cur[name]||[];
+  return '<div class="tblwrap"><table class="tbl"><thead><tr>'+cols.map(c=>'<th style="width:'+(c[2]*100)+'%">'+c[1]+'</th>').join('')+(ro?'':'<th></th>')+'</tr></thead><tbody>'+
+    rows.map((r,i)=>'<tr>'+cols.map(c=>'<td><input data-t="'+name+'" data-i="'+i+'" data-k="'+c[0]+'" value="'+esc(r[c[0]]||'')+'" aria-label="'+c[1]+'"'+(ro?' readonly':'')+(c[0]==='date'||c[0]==='start'?' placeholder="GG.AA.YYYY"':'')+'></td>').join('')+(ro?'':'<td><button class="x" type="button" data-del="'+name+'" data-i="'+i+'" aria-label="Satırı sil">×</button></td>')+'</tr>').join('')+
+    '</tbody></table></div>'+(ro?'':'<button class="small ghost" type="button" data-add="'+name+'">+ Satır</button>');
+}
+function trendData(){
+  const cs=consultsOfCur().slice().reverse(); const cols=[]; const rows={}; const own={};
+  const put=(l,c,owner,suffix,dflt,tm)=>{ let d=(l.date||dflt)+((!l.date||l.date===dflt)&&tm?' '+tm:'')+suffix; let n=2; while(own[d]&&own[d]!==owner) d=d.replace(/ \(\d+\)$/,'')+' ('+(n++)+')'; own[d]=owner; if(!cols.includes(d)) cols.push(d); const key=l.n+(l.u?' ('+l.u+')':''); (rows[key]=rows[key]||{})[d]=l.raw; };
+  cs.forEach(c=>{ (c.labs||[]).forEach(l=>put(l,c,c.id,'',fmtD(c.date),c.time));
+    (c.addenda||[]).filter(a=>!a.deleted).sort((a,b)=>((a.date||'')+(a.time||'')).localeCompare((b.date||'')+(b.time||''))).forEach(a=>(a.labs||[]).forEach(l=>put(l,c,c.id+a.id,' (ek)',fmtD(a.date),a.time))); });
+  if(cols.length<2) return null; return {cols:cols.slice(-6),rows};
+}
+function trendHTML(){
+  const t=trendData(); if(!t) return ''; const C=t.cols;
+  return '<div class="sec"><label>Laboratuvar eğilimi</label><div class="tblwrap"><table class="tbl ro"><thead><tr><th>Parametre</th>'+C.map(d=>'<th>'+esc(d)+'</th>').join('')+'</tr></thead><tbody>'+Object.entries(t.rows).map(([k,v])=>'<tr><td>'+esc(k)+'</td>'+C.map(d=>'<td>'+esc(v[d]||'')+'</td>').join('')+'</tr>').join('')+'</tbody></table></div></div>';
+}
+function trendModel(){ const t=trendData(); if(!t) return null; const C=t.cols; return {head:['Parametre',...C],rows:Object.entries(t.rows).map(([k,v])=>[k,...C.map(d=>v[d]||'')])}; }
+function allText(){ const c=cur; return [Object.values(c.sections||{}).join(' '),(c.addenda||[]).filter(a=>!a.deleted).map(a=>a.text+' '+(a.plan||'')).join(' '),(c.labs||[]).map(l=>l.n).join(' '),(c.micro||[]).map(m=>[m.org,m.res,m.raw].join(' ')).join(' '),(c.abx||[]).map(a=>a.drug).join(' '),(c.imaging||[]).join(' ')].join(' '); }
+function litHTML(ro){
+  const topics=detectTopics(allText(),TOPICS); const refs=cur.refs||[]; const has=u=>refs.some(r=>r.u===u);
+  const sug=LIB.filter(l=>l.k.some(k=>topics.includes(k)));
+  const q=cur.pmq!=null?cur.pmq:(topics.length?TOPICS[topics[0]].en:'');
+  let h='<div class="card" id="litCard"><h2>Kaynaklar ve literatür</h2>';
+  h+='<div class="sec"><label>Nota eklenen kaynaklar ('+refs.length+')</label>'+(refs.length?'<ul class="refl">'+refs.map((r,i)=>'<li><span class="src">'+esc({lib:'kütüphane',pubmed:'PubMed',manual:'el ile',claude:'Claude'}[r.src]||r.src||'')+'</span><span class="t">'+esc(r.t)+' <a href="'+esc(r.u)+'" target="_blank" rel="noopener noreferrer">'+esc(r.u)+'</a></span>'+(ro?'':'<button class="x" type="button" data-rdel="'+i+'" aria-label="Kaynağı kaldır">×</button>')+'</li>').join('')+'</ul>':'<p class="hint">Henüz kaynak eklenmedi. Aşağıdaki doğrulanmış rehberlerden seçin, PubMed\'de arayın veya bağlantı ekleyin.</p>')+'</div>';
+  if(!ro){
+    h+='<div class="sec"><label>Bu nota göre önerilen rehberler'+(topics.length?' – '+topics.map(k=>TOPICS[k].t).join(', '):'')+'</label>'+(sug.length?sug.map(l=>libRow(l,has(l.u))).join(''):'<p class="hint">Not metninde tanınan bir konu yok. Metni doldurdukça öneriler çıkar; tüm kütüphaneye aşağıdan bakabilirsiniz.</p>')+
+      '<details class="lib"><summary>Tüm doğrulanmış rehber kütüphanesi ('+LIB.length+')</summary>'+Object.entries(TOPICS).map(([k,t])=>{ const ls=LIB.filter(l=>l.k.includes(k)); return ls.length?'<p style="margin:8px 0 2px;font-weight:650;font-size:.82rem;color:var(--brown)">'+esc(t.t)+'</p>'+ls.map(l=>libRow(l,has(l.u))).join(''):''; }).join('')+'<p style="margin:8px 0 2px;font-weight:650;font-size:.82rem;color:var(--brown)">Genel</p>'+LIB.filter(l=>!l.k.length).map(l=>libRow(l,has(l.u))).join('')+'<p class="hint">Bağlantılar '+RULES_DATE+' tarihinde doğrulandı (* işaretliler 10.11.2026). Kılavuz güncellemelerini dönemsel olarak kontrol edin.</p></details></div>';
+    h+='<div class="sec"><label for="pmq">PubMed\'de ara (yalnız sorgu kelimeleri gönderilir, hasta verisi gönderilmez)</label><div class="btns" style="margin-top:0"><input id="pmq" style="flex:1;min-width:200px" value="'+esc(q)+'" placeholder="ör. febrile neutropenia children carbapenem"><select id="pmf" style="width:auto"><option value="">Tümü</option><option value="guide">Kılavuz / uzlaşı</option><option value="review">Derleme / meta-analiz</option></select><select id="pmy" style="width:auto"><option value="5">Son 5 yıl</option><option value="10">Son 10 yıl</option><option value="">Tüm yıllar</option></select><button type="button" data-act="pubmed">Ara</button></div><div id="pmRes">'+(pmCache||'')+'</div></div>';
+    h+='<div class="sec"><label>Kurum sitelerinde ara (yeni sekmede açılır)</label><div class="btns" style="margin-top:0">'+SEARCH_SITES.map(s=>'<button class="small ghost" type="button" data-site="'+s.id+'">'+esc(s.t)+'</button>').join('')+'</div><p class="hint">UpToDate, IDSA, ECIL, Red Book, SB, WHO ve CDC için arama sorgusu "PubMed\'de ara" kutusundaki kelimelerden yapılır. Açılan kaynağı doğruladıktan sonra aşağıdan ekleyin.</p></div>';
+    h+='<div class="sec"><label>Kaynağı el ile ekle</label><div class="grid2"><div><label for="mrId" style="font-weight:600">PMID, DOI veya bağlantı</label><input id="mrId" placeholder="ör. 36689694 veya https://..."></div><div style="grid-column:span 2"><label for="mrT" style="font-weight:600">Künye (PMID verilirse boş bırakılabilir)</label><input id="mrT" placeholder="Yazar. Başlık. Dergi Yıl."></div></div><div class="btns"><button class="small" type="button" data-act="addRef">Ekle</button></div></div>';
+  }
+  return h+'</div>';
+}
+function libRow(l,on){ return '<label class="chk"><input type="checkbox" data-lib="'+l.id+'"'+(on?' checked':'')+'> <span><b>'+esc(l.o)+(l.y?' '+l.y:'')+'</b> – '+esc(l.t)+' <a href="'+esc(l.u)+'" target="_blank" rel="noopener noreferrer">aç ↗</a></span></label>'; }
+
+// ---------- Ayırıcı tanı / öneri maddeleri ----------
+const SRC_L={claude:'Claude',opt:'seçenek',manual:'el ile'};
+function syncItems(c){ c=c||cur; (c.planItems||[]).forEach(it=>{ if(it.oid&&!it.ed){ const o=optById(it.oid); if(o&&o.d) it.t=optText(o,c.weight); } }); }
+function itemsHTML(ro){
+  const c=cur; c.ddx=c.ddx||[]; c.planItems=c.planItems||[]; syncItems();
+  const R=ro?' readonly':'';
+  const row=(kind,i,it)=>'<li><span class="src">'+esc(it.oid?'seçenek':(SRC_L[it.src]||'el ile'))+'</span><textarea rows="1" id="'+kind+'-'+it.id+'" data-'+kind+'="'+i+'" aria-label="Madde"'+R+'>'+esc(it.t||'')+'</textarea>'+(it.ref&&LIB.find(l=>l.id===it.ref)?'<a class="ref-a" href="'+esc(LIB.find(l=>l.id===it.ref).u)+'" target="_blank" rel="noopener noreferrer" title="'+esc(LIB.find(l=>l.id===it.ref).t)+'">kaynak ↗</a>':'')+(ro?'':'<button class="x" type="button" data-'+kind+'del="'+i+'" aria-label="Maddeyi nottan çıkar">×</button>')+'</li>';
+  let h='<div class="sec"><label>Ayırıcı tanı ('+c.ddx.length+')</label>'+(c.ddx.length?'<ul class="items">'+c.ddx.map((it,i)=>row('dx',i,it)).join('')+'</ul>':'<p class="hint">'+(ro?'Ayırıcı tanı listesi yok.':'Aşağıdaki "Öneri seçenekleri"nden işaretleyin, Claude yanıtından aktarın veya el ile ekleyin.')+'</p>')+(ro?'':'<button class="small ghost" type="button" data-dxadd="1">+ Tanı ekle</button>')+'</div>';
+  h+='<div class="sec"><label>Öneriler ('+c.planItems.length+')</label>';
+  PLAN_CATS.forEach(cat=>{ const its=c.planItems.map((it,i)=>[it,i]).filter(([it])=>(it.cat||'İzlem')===cat);
+    if(!its.length&&ro) return;
+    h+='<div class="pcat"><b>'+cat+'</b>'+(its.length?'<ul class="items">'+its.map(([it,i])=>row('pi',i,it)).join('')+'</ul>':'')+(ro?'':'<button class="small ghost" type="button" data-piadd="'+cat+'">+ ekle</button>')+'</div>'; });
+  if(!c.planItems.length&&ro) h+='<p class="hint">Yapılandırılmış öneri yok.</p>';
+  return h+'</div>';
+}
+function activeTopics(){ const det=detectTopics(allText(),TOPICS).filter(k=>OPTS[k]); const man=(cur.topics||[]).filter(k=>OPTS[k]); const off=cur.topicsOff||[]; const all=[...new Set([...det,...man])]; return {det,man,all,on:all.filter(k=>!off.includes(k))}; }
+const openT={};
+function optHTML(){
+  const c=cur; const T=activeTopics(); const W=parseFloat(String(c.weight||'').replace(',','.'));
+  const inNote=id=>(c.ddx||[]).some(x=>x.oid===id)||(c.planItems||[]).some(x=>x.oid===id);
+  let h='<div class="card" id="optCard"><h2>Öneri seçenekleri: ayırıcı tanı, tetkik, tedavi</h2>';
+  h+='<p class="hint">Konular not metninden otomatik tanınır; konu ekleyip çıkarabilirsiniz. İşaretlediğiniz madde nota eklenir, işareti kaldırırsanız nottan çıkar; nota eklenen maddeyi düzenleyebilir veya × ile silebilirsiniz. Dozlar yalnız kılavuz metninden doğrulanmış seçeneklerde verilir ve konsültasyondaki ağırlığa göre hesaplanır; "dozu kaynaktan doğrulayın" yazan seçeneklerde sayı verilmez.</p>';
+  if(!(W>0)) h+='<p class="err">Ağırlık girilmedi: doz hesaplanmaz (Konsültasyon bilgileri → Ağırlık).</p>';
+  h+='<div class="chips">'+T.all.map(k=>'<label class="chip'+(T.det.includes(k)?' auto':'')+'" title="'+(T.det.includes(k)?'Not metninden tanındı':'El ile eklendi')+'"><input type="checkbox" data-topic="'+k+'"'+(T.on.includes(k)?' checked':'')+'> '+esc(TOPICS[k].t)+'</label>').join('')+
+    '<select id="addTopic" style="width:auto;max-width:100%"><option value="">+ Konu ekle…</option>'+Object.keys(OPTS).filter(k=>k!=='genel'&&!T.all.includes(k)).map(k=>'<option value="'+k+'">'+esc(TOPICS[k].t)+'</option>').join('')+'</select></div>';
+  [...T.on,'genel'].forEach(k=>{ const o=OPTS[k]; const list=optList(k); const nSel=list.filter(x=>inNote(x.id)).length; const op=openT[k]!=null?openT[k]:(k!=='genel');
+    h+='<details class="lib" data-ot="'+k+'"'+(op?' open':'')+'><summary>'+esc(k==='genel'?o.t:TOPICS[k].t)+' <span class="pill m">'+nSel+'/'+list.length+' seçili</span></summary>';
+    OPT_CATS.forEach(([cat,lab])=>{ const its=list.filter(x=>x.cat===cat); if(!its.length) return;
+      h+='<p class="og">'+lab+'</p>'+its.map(x=>{ const L=x.ref&&LIB.find(l=>l.id===x.ref); return '<label class="chk"><input type="checkbox" data-opt="'+x.id+'"'+(inNote(x.id)?' checked':'')+'> <span>'+esc(optText(x,c.weight))+(L?' <a class="ref-a" href="'+esc(L.u)+'" target="_blank" rel="noopener noreferrer" title="'+esc(L.t)+'">'+esc(L.o+(L.y?' '+L.y:''))+' ↗</a>':'')+'</span></label>'; }).join(''); });
+    h+='</details>'; });
+  h+='<p class="hint">Seçenek kütüphanesi '+RULES_DATE+' tarihinde kılavuz metinlerinden derlendi. Öneriler karar desteğidir; hastaya özgü durum (alerji, böbrek fonksiyonu, yerel direnç, etkileşimler) klinisyence değerlendirilir.</p>';
+  return h+'</div>';
+}
+function addLibRef(id){ const l=LIB.find(x=>x.id===id); if(!l) return; cur.refs=cur.refs||[]; if(!cur.refs.some(r=>r.u===l.u)) cur.refs.push({t:l.t.replace(/\*$/,''),u:l.u,src:'lib'}); }
+function toggleOpt(id,on){ const o=optById(id); if(!o) return;
+  if(o.cat==='ddx'){ cur.ddx=cur.ddx||[]; if(on){ if(!cur.ddx.some(x=>x.oid===id)) cur.ddx.push({id:uid(),t:o.t,oid:id}); } else cur.ddx=cur.ddx.filter(x=>x.oid!==id); }
+  else { cur.planItems=cur.planItems||[]; if(on){ if(!cur.planItems.some(x=>x.oid===id)) cur.planItems.push({id:uid(),cat:CAT_LABEL[o.cat],t:optText(o,cur.weight),oid:id,ref:o.ref||''}); } else cur.planItems=cur.planItems.filter(x=>x.oid!==id); }
+  if(on&&o.ref) addLibRef(o.ref);
+  schedule(); rerenderKeep(); }
+
+// ---------- Ek notlar / rekonsültasyon ----------
+const AD_TYPES=['Kültür sonucu','Klinik değişiklik','Rekonsültasyon','Diğer'];
+function addHTML(){
+  const c=cur; const ads=(c.addenda||[]).filter(a=>!a.deleted).sort((a,b)=>((a.date||'')+(a.time||'')).localeCompare((b.date||'')+(b.time||''))); const d=c.adDraft;
+  let h='<div class="card" id="addCard"><h2>Ek notlar / Rekonsültasyon ('+ads.length+')<span class="sp"></span>'+(d?'':'<button class="small" type="button" data-act="adNew">+ Ek not ekle</button>')+'</h2>';
+  h+='<p class="hint">Kültür sonucu çıktığında veya klinik değiştiğinde bu konsültasyona tarihli ek not ekleyin. Tamamlanmış nota da eklenebilir; ana not değişmez, yeni sürüm oluşmaz. Ek nottaki laboratuvar değerleri ve kültür sonuçları metinden ayrıştırılır, laboratuvar değerleri eğilim tablosuna girer.</p>';
+  ads.forEach(a=>{ h+='<div class="adn"><div class="adh"><b>'+fmtD(a.date)+' '+esc(a.time||'')+'</b><span class="pill">'+esc(a.type)+'</span><span class="hint" style="margin:0">'+esc(a.author||'')+(a.editedAt?' · düzenlendi '+fmtDT(a.editedAt):'')+'</span><span style="flex:1"></span><button class="small" type="button" data-adword="'+a.id+'">Word</button><button class="small" type="button" data-adpdf="'+a.id+'">PDF</button><button class="small ghost" type="button" data-adedit="'+a.id+'"'+(d?' disabled':'')+'>Düzenle</button><button class="x" type="button" data-addel="'+a.id+'" aria-label="Ek notu kaldır">×</button></div>'+
+    (a.text?'<div class="blk">'+esc(a.text)+'</div>':'')+
+    ((a.labs||[]).length?'<div class="tblwrap"><table class="tbl ro"><thead><tr><th>Parametre</th><th>Sonuç</th><th>Birim</th></tr></thead><tbody>'+a.labs.map(l=>'<tr><td>'+esc(l.n)+'</td><td>'+esc(l.raw)+'</td><td>'+esc(l.u||'')+'</td></tr>').join('')+'</tbody></table></div>':'')+
+    ((a.micro||[]).length?'<div class="tblwrap"><table class="tbl ro"><thead><tr><th>Örnek</th><th>Etken / sonuç</th><th>Direnç</th></tr></thead><tbody>'+a.micro.map(m=>'<tr><td>'+esc(m.sample||'')+'</td><td>'+esc(m.org||m.raw||'')+'</td><td>'+esc(m.res||'')+'</td></tr>').join('')+'</tbody></table></div>':'')+
+    (a.plan?'<div class="blk"><b>Öneri:</b> '+esc(a.plan)+'</div>':'')+'</div>'; });
+  if(d){ h+='<div class="adform"><div class="grid2"><div><label for="ad-type">Tür</label><select id="ad-type" data-ad="type">'+AD_TYPES.map(x=>'<option'+(d.type===x?' selected':'')+'>'+x+'</option>').join('')+'</select></div><div><label for="ad-date">Tarih</label><input id="ad-date" type="date" data-ad="date" value="'+esc(d.date)+'"></div><div><label for="ad-time">Saat</label><input id="ad-time" type="time" data-ad="time" value="'+esc(d.time)+'"></div><div><label for="ad-author">Yazan</label><input id="ad-author" data-ad="author" value="'+esc(d.author||'')+'"></div></div>'+
+    '<label for="adText" style="display:flex;align-items:center;gap:8px">Ek not (sonuçlar, klinik değişiklik)<span style="flex:1"></span><button type="button" class="small" data-mic="adText">🎤 Dikte</button></label><textarea id="adText" data-ad="text" rows="5" placeholder="ör. Kan kültüründe MSSA üredi, oksasilin duyarlı. Ateşi 48 saattir yok. CRP 12">'+esc(d.text||'')+'</textarea><div class="interim" id="adInterim"></div>'+
+    '<label for="adPlan" style="display:flex;align-items:center;gap:8px">Öneri / tedavi değişikliği<span style="flex:1"></span><button type="button" class="small ghost" data-mic="adPlan">🎤 Dikte</button></label><textarea id="adPlan" data-ad="plan" rows="3" placeholder="ör. Vankomisin kesildi, sefazoline geçildi; toplam süre…">'+esc(d.plan||'')+'</textarea>'+
+    '<div class="btns"><button type="button" data-act="adSave">Ek notu kaydet</button><button type="button" class="ghost" data-act="adCancel">Vazgeç</button></div></div>'; }
+  if(ads.some(a=>(a.labs||[]).length)) h+=trendHTML();
+  return h+'</div>';
+}
+function adNew(){ cur.adDraft={type:'Kültür sonucu',date:todayISO(),time:nowHM(),author:[settings.consultant,settings.ctitle].filter(Boolean).join(', '),text:'',plan:''}; schedule(); rerenderKeep(); setTimeout(()=>{ const t=$('adText'); if(t){ t.focus(); t.scrollIntoView({block:'center'}); } },30); }
+function adCancel(){ if(cur.adDraft&&(cur.adDraft.text||cur.adDraft.plan)&&!confirm('Kaydedilmemiş ek not silinsin mi?')) return; stopMicIf(['adText','adPlan']); cur.adDraft=null; schedule(); rerenderKeep(); }
+function adSave(){
+  const d=cur.adDraft; if(!d) return; if(!String(d.text||'').trim()&&!String(d.plan||'').trim()){ alert('Ek not boş.'); return; }
+  stopMicIf(['adText','adPlan']);
+  const dateTR=fmtD(d.date); const r=parseDictation(d.text||'',{date:dateTR,defaultSec:'history'});
+  const labs=r.labs.map(l=>({k:l.k,n:l.n,raw:l.raw,u:l.u,date:l.date}));
+  const micro=r.micro.map(m=>({sample:m.sample,date:dateTR,org:[m.org,m.result].filter(Boolean).join(' – '),res:m.res,raw:m.raw}));
+  cur.addenda=cur.addenda||[];
+  const tidy=x=>normalizeSpeech(String(x||'')).trim().replace(/(^|[.!?]\s+|\n)([a-zçğıöşü])/g,(m,a,b)=>a+b.toLocaleUpperCase('tr-TR'));
+  const base={type:d.type,date:d.date,time:d.time,author:d.author,text:tidy(d.text),plan:tidy(d.plan),labs,micro};
+  if(d.id){ const a=cur.addenda.find(x=>x.id===d.id); if(a){ a.prev=(a.prev||[]).concat([{at:a.editedAt||a.at,text:a.text,plan:a.plan}]); Object.assign(a,base,{editedAt:new Date().toISOString()}); } }
+  else cur.addenda.push(Object.assign({id:uid(),at:new Date().toISOString()},base));
+  cur.adDraft=null; lastParse=null; schedule(); rerenderKeep();
+}
+function adEdit(id){ const a=(cur.addenda||[]).find(x=>x.id===id); if(!a) return; cur.adDraft={id:a.id,type:a.type,date:a.date,time:a.time,author:a.author,text:a.text,plan:a.plan}; schedule(); rerenderKeep(); }
+function adDel(id){ const a=(cur.addenda||[]).find(x=>x.id===id); if(!a||!confirm('Bu ek not kaldırılsın mı? (kayıtta "kaldırıldı" olarak saklanır)')) return; a.deleted=true; a.deletedAt=new Date().toISOString(); schedule(); rerenderKeep(); }
+
+// ---------- Düzenleyici olayları ----------
+function bindEditor(){
+  const m=$('main');
+  m.oninput=e=>{
+    const t=e.target;
+    if(t.dataset.p){ curP[t.dataset.p]=t.value; schedule(true); return; }
+    if(!cur) return;
+    if(t.id==='dictBox'){ cur.dictation=t.value; schedule(); return; }
+    if(t.id==='pmq'){ cur.pmq=t.value; return; }
+    if(t.dataset.ad&&cur.adDraft){ cur.adDraft[t.dataset.ad]=t.value; schedule(); return; }
+    if(cur.status==='final') return;
+    if(t.dataset.dx!=null){ const it=cur.ddx[+t.dataset.dx]; if(it){ it.t=t.value; it.ed=true; } schedule(); return; }
+    if(t.dataset.pi!=null){ const it=cur.planItems[+t.dataset.pi]; if(it){ it.t=t.value; it.ed=true; } schedule(); return; }
+    if(t.dataset.f){ cur[t.dataset.f]=t.value; if(t.dataset.f==='consultant') settings.consultant=t.value; if(t.dataset.f==='ctitle') settings.ctitle=t.value; schedule(); }
+    else if(t.dataset.s){ (cur.sections=cur.sections||{})[t.dataset.s]=t.value; schedule(); }
+    else if(t.dataset.v){ (cur.vitals=cur.vitals||{})[t.dataset.v]=t.value; schedule(); }
+    else if(t.dataset.t){ cur[t.dataset.t][+t.dataset.i][t.dataset.k]=t.value; schedule(); }
+    else if(t.dataset.img){ cur.imaging=t.value.split('\n').map(x=>x.trim()).filter(Boolean); schedule(); }
+  };
+  m.onchange=e=>{
+    const t=e.target;
+    if(t.dataset.p==='sex'||t.dataset.p==='birth'){ curP[t.dataset.p]=t.value; schedule(true); renderMain(); return; }
+    if(!cur) return;
+    if(t.dataset.ad==='type'&&cur.adDraft){ cur.adDraft.type=t.value; schedule(); return; }
+    if(cur.status!=='final'){
+      if(t.dataset.opt){ toggleOpt(t.dataset.opt,t.checked); return; }
+      if(t.dataset.topic){ const k=t.dataset.topic; cur.topicsOff=(cur.topicsOff||[]).filter(x=>x!==k); cur.topics=cur.topics||[]; if(!t.checked){ if(cur.topics.includes(k)) cur.topics=cur.topics.filter(x=>x!==k); else cur.topicsOff.push(k); } schedule(); rerenderKeep(); return; }
+      if(t.id==='addTopic'&&t.value){ const k=t.value; cur.topics=cur.topics||[]; if(!cur.topics.includes(k)) cur.topics.push(k); cur.topicsOff=(cur.topicsOff||[]).filter(x=>x!==k); openT[k]=true; schedule(); rerenderKeep(); return; }
+      if(t.dataset.f==='weight'){ syncItems(); document.querySelectorAll('textarea[data-pi]').forEach(el=>{ const it=cur.planItems[+el.dataset.pi]; if(it&&it.oid&&!it.ed) el.value=it.t; }); const oc=$('optCard'); if(oc){ oc.outerHTML=optHTML(); } schedule(); }
+    }
+    if(t.dataset.f==='urgency'){ cur.urgency=t.value; schedule(); }
+    if(t.dataset.o){ (cur.opts=cur.opts||{})[t.dataset.o]=t.checked; schedule(); }
+    if(t.dataset.lib){ const l=LIB.find(x=>x.id===t.dataset.lib); cur.refs=cur.refs||[]; if(t.checked){ if(!cur.refs.some(r=>r.u===l.u)) cur.refs.push({t:l.t.replace(/\*$/,''),u:l.u,src:'lib'}); } else cur.refs=cur.refs.filter(r=>r.u!==l.u); schedule(); refreshLit(); }
+    if(t.dataset.s) refreshLit();
+  };
+  m.onclick=async e=>{
+    const b=e.target.closest('button'); if(!b) return;
+    if(b.dataset.open){ await flushSave(); cur=allConsults.find(c=>c.id===b.dataset.open); undoSnap=null; lastParse=null; pmCache=''; renderMain(); window.scrollTo({top:0}); return; }
+    if(b.dataset.add){ cur[b.dataset.add]=cur[b.dataset.add]||[]; cur[b.dataset.add].push({}); schedule(); rerenderKeep(); return; }
+    if(b.dataset.del){ cur[b.dataset.del].splice(+b.dataset.i,1); schedule(); rerenderKeep(); return; }
+    if(b.dataset.mic){ toggleMic(b.dataset.mic); return; }
+    if(b.dataset.dxdel!=null){ cur.ddx.splice(+b.dataset.dxdel,1); schedule(); rerenderKeep(); return; }
+    if(b.dataset.pidel!=null){ cur.planItems.splice(+b.dataset.pidel,1); schedule(); rerenderKeep(); return; }
+    if(b.dataset.dxadd){ cur.ddx=cur.ddx||[]; const it={id:uid(),t:'',src:'manual'}; cur.ddx.push(it); schedule(); rerenderKeep(); const el=$('dx-'+it.id); if(el) el.focus(); return; }
+    if(b.dataset.piadd){ cur.planItems=cur.planItems||[]; const it={id:uid(),cat:b.dataset.piadd,t:'',src:'manual'}; cur.planItems.push(it); schedule(); rerenderKeep(); const el=$('pi-'+it.id); if(el) el.focus(); return; }
+    if(b.dataset.adword){ doAdDocx(b.dataset.adword); return; }
+    if(b.dataset.adpdf){ doAdPrint(b.dataset.adpdf); return; }
+    if(b.dataset.adedit){ adEdit(b.dataset.adedit); return; }
+    if(b.dataset.addel){ adDel(b.dataset.addel); return; }
+    if(b.dataset.rdel!=null){ cur.refs.splice(+b.dataset.rdel,1); schedule(); refreshLit(); return; }
+    if(b.dataset.site){ const s=SEARCH_SITES.find(x=>x.id===b.dataset.site); const q=($('pmq')&&$('pmq').value)||''; window.open(s.f(q),'_blank','noopener'); return; }
+    if(b.dataset.addpm){ const r=JSON.parse(decodeURIComponent(b.dataset.addpm)); cur.refs=cur.refs||[]; if(!cur.refs.some(x=>x.u===r.u)) cur.refs.push(r); schedule(); b.disabled=true; b.textContent='Eklendi'; pmCache=$('pmRes')?$('pmRes').innerHTML:pmCache; refreshLit(); return; }
+    const a=b.dataset.act; if(!a) return;
+    const acts={newConsult,delPatient,parse:doParse,undo:doUndo,clearDict,carry:doCarry,finalize:doFinalize,newVersion:doNewVersion,docx:doDocx,print:doPrint,toClaude:doToClaude,fromClaude:doFromClaude,pubmed:doPubmed,addRef:doAddRef,delConsult,backup:doBackup,adNew,adCancel,adSave};
+    if(acts[a]) acts[a]();
+  };
+  if(rec&&recOn) setMicUI(true);
+
+}
+$('main').addEventListener('toggle',e=>{ const d=e.target; if(d&&d.dataset&&d.dataset.ot) openT[d.dataset.ot]=d.open; },true);
+document.addEventListener('click',e=>{ const b=e.target.closest('[data-act="backup"]'); if(b&&!$('main').contains(b)) doBackup(); });
+function refreshLit(){ const el=$('litCard'); if(!el||!cur) return; const pmv=$('pmq')?$('pmq').value:null; const pf=$('pmf')?$('pmf').value:''; const py=$('pmy')?$('pmy').value:'5'; el.outerHTML=litHTML(cur.status==='final'); if(pmv!=null&&$('pmq')) $('pmq').value=pmv; if($('pmf')) $('pmf').value=pf; if($('pmy')) $('pmy').value=py; }
+function rerenderKeep(){ const y=window.scrollY; const a=document.activeElement&&document.activeElement.id; renderMain(); window.scrollTo(0,y); if(a&&$(a)) $(a).focus(); }
+function schedule(patientToo){ clearTimeout(saveT); if(patientToo) curP._dirty=true; saveT=setTimeout(flushSave,700); }
+async function flushSave(){
+  clearTimeout(saveT); saveT=null;
+  try{
+    if(curP&&curP._dirty){ delete curP._dirty; await S.savePatient(curP); }
+    if(cur){ await S.saveConsult(cur); const i=allConsults.findIndex(x=>x.id===cur.id); if(i<0) allConsults.push(cur); else allConsults[i]=cur; const si=$('savedInfo'); if(si) si.textContent='Kaydedildi '+fmtDT(cur.updatedAt); }
+    if(settings.consultant!==undefined) await saveSettings();
+    if(!settings.persistAsked&&navigator.storage&&navigator.storage.persist){ settings.persistAsked=true; settings.persisted=await navigator.storage.persist(); await saveSettings(); }
+  }catch(err){ if(String(err.message)==='locked') showLock(); else alert('Kaydedilemedi: '+err.message); }
+  renderList();
+}
+window.addEventListener('beforeunload',e=>{ if(saveT){ flushSave(); e.preventDefault(); e.returnValue=''; } });
+document.addEventListener('visibilitychange',()=>{ if(document.visibilityState==='hidden'&&saveT) flushSave(); });
+
+// ---------- Hasta ve konsültasyon işlemleri ----------
+$('bNewPatient').onclick=()=>{
+  dialog('Yeni hasta','<div class="grid2"><div><label for="np-name">Ad soyad</label><input id="np-name"></div><div><label for="np-prot">Protokol no</label><input id="np-prot" inputmode="numeric"></div><div><label for="np-birth">Doğum tarihi</label><input id="np-birth" type="date"></div><div><label for="np-sex">Cinsiyet</label><select id="np-sex"><option></option><option>Kız</option><option>Erkek</option></select></div></div><p class="hint">TC kimlik numarası yerine hastane protokol numarası kullanmanız önerilir. Aynı protokol numarasıyla kayıtlı hasta varsa o hasta açılır.</p><p class="err" id="np-err"></p>',
+  [['İptal',null,true],['Kaydet ve konsültasyon başlat',async()=>{
+    const name=$('np-name').value.trim(), prot=$('np-prot').value.trim();
+    if(!name&&!prot){ $('np-err').textContent='Ad veya protokol no girin.'; return false; }
+    const ex=prot&&patients.find(p=>String(p.protocol)===prot);
+    if(ex){ curP=ex; } else { curP={id:uid(),name,protocol:prot,birth:$('np-birth').value,sex:$('np-sex').value,createdAt:new Date().toISOString()}; await S.savePatient(curP); patients.push(curP); }
+    await newConsult(); return true; }]]);
+  setTimeout(()=>$('np-name').focus(),50);
+};
+async function newConsult(){
+  await flushSave();
+  const prev=consultsOfCur()[0];
+  cur={id:uid(),patientId:curP.id,date:todayISO(),time:nowHM(),status:'draft',version:1,urgency:'Rutin',ward:prev?prev.ward:'',requester:'',weight:prev?prev.weight:'',consultant:settings.consultant||'',ctitle:settings.ctitle||'',sections:{},vitals:{},labs:[],micro:[],imaging:[],abx:[],refs:[],ddx:[],planItems:[],addenda:[],topics:[],topicsOff:[],adDraft:null,opts:{prev:!!prev,trend:false,mask:false,addenda:true},history:[],createdAt:new Date().toISOString()};
+  await S.saveConsult(cur); allConsults.push(cur); undoSnap=null; lastParse=null;
+  renderList(); renderMain(); window.scrollTo({top:0});
+}
+async function delPatient(){ if(!confirm('Hasta ve konsültasyonları arşivden kaldırılsın mı? Kayıtlar silinmez, "Ayarlar → Kaldırılanlar"dan geri alınabilir.')) return; curP.deleted=true; curP.deletedAt=new Date().toISOString(); await S.savePatient(curP); patients=patients.filter(p=>p.id!==curP.id); curP=null; cur=null; renderAll(); }
+async function delConsult(){ if(!confirm('Bu konsültasyon arşivden kaldırılsın mı? Kayıt silinmez, "Ayarlar → Kaldırılanlar"dan geri alınabilir.')) return; cur.deleted=true; cur.deletedAt=new Date().toISOString(); await S.saveConsult(cur); cur=null; renderAll(); }
+async function doFinalize(){
+  if(cur.adDraft&&(cur.adDraft.text||cur.adDraft.plan)&&!confirm('Kaydedilmemiş ek not taslağı var. Yine de tamamlansın mı?')) return;
+  if(!(cur.sections||{}).assess&&!(cur.sections||{}).plan&&!(cur.planItems||[]).length&&!(cur.ddx||[]).length&&!confirm('Değerlendirme ve öneriler boş. Yine de tamamlansın mı?')) return;
+  cur.status='final'; cur.finalizedAt=new Date().toISOString(); if(!cur.consultant) cur.consultant=settings.consultant||''; await S.saveConsult(cur); renderAll();
+}
+async function doNewVersion(){
+  const snap=JSON.parse(JSON.stringify(cur)); delete snap.history;
+  cur.history=cur.history||[]; cur.history.push({at:cur.updatedAt,data:snap,note:'Sürüm '+(cur.version||1)});
+  cur.version=(cur.version||1)+1; cur.status='draft'; cur.finalizedAt=null; await S.saveConsult(cur); renderAll();
+}
+function doCarry(){
+  const last=prevConsults()[0]; if(!last) return; const s=cur.sections=cur.sections||{}; let n=0;
+  ['pmh','vacc','allergy','epi','risk'].forEach(k=>{ if(!s[k]&&last.sections&&last.sections[k]){ s[k]=last.sections[k]; n++; } });
+  (last.abx||[]).filter(a=>a.status!=='Kesildi').forEach(a=>{ if(!(cur.abx||[]).some(x=>x.drug===a.drug)){ cur.abx.push(Object.assign({},a,{note:'Önceki nottan'})); n++; } });
+  if(!cur.weight&&last.weight) cur.weight=last.weight;
+  lastParse=['Önceki nottan '+n+' alan aktarıldı (özgeçmiş, aşı, alerji, epidemiyoloji, risk, süren antimikrobiyaller)'];
+  schedule(); rerenderKeep();
+}
+
+// ---------- Dikteyi nota yerleştir ----------
+function doParse(){
+  const txt=$('dictBox').value; if(!txt.trim()) return;
+  undoSnap=JSON.stringify(cur);
+  const dateTR=fmtD(cur.date);
+  const r=parseDictation(txt,{date:dateTR,defaultSec:$('defSec').value});
+  const s=cur.sections=cur.sections||{};
+  Object.entries(r.sections).forEach(([k,v])=>{ s[k]=s[k]? s[k].replace(/\s+$/,'')+'\n'+v : v; });
+  r.labs.forEach(l=>{ cur.labs.push({k:l.k,n:l.n,raw:l.raw,u:l.u,date:l.date}); });
+  r.micro.forEach(m=>cur.micro.push({sample:m.sample,date:dateTR,org:[m.org,m.result].filter(Boolean).join(' – '),res:m.res,raw:m.raw}));
+  r.imaging.forEach(x=>{ if(!cur.imaging.includes(x)) cur.imaging.push(x); });
+  r.abx.forEach(a=>{ const ex=cur.abx.find(x=>x.drug===a.drug); const start=a.day?(()=>{ const d=new Date(cur.date+'T12:00:00'); d.setDate(d.getDate()-(+a.day-1)); return fmtD(d.toISOString().slice(0,10)); })():''; if(ex) Object.assign(ex,{dose:a.dose||ex.dose,freq:a.freq||ex.freq,day:a.day||ex.day,start:start||ex.start,status:a.status||ex.status}); else cur.abx.push({drug:a.drug,dose:a.dose,freq:a.freq,day:a.day,start,status:a.status}); });
+  const v=cur.vitals=cur.vitals||{}; Object.entries(r.vitals).forEach(([k,x])=>{ v[k]=x; });
+  if(r.demo.weight&&!cur.weight) cur.weight=r.demo.weight;
+  if(r.demo.sex&&!curP.sex){ curP.sex=r.demo.sex; curP._dirty=true; }
+  if(r.risks.length){ const add=r.risks.filter(x=>!(s.risk||'').toLocaleLowerCase('tr-TR').includes(x.toLocaleLowerCase('tr-TR'))); if(add.length) s.risk=(s.risk?s.risk+'\n':'')+add.join(', ')+'.'; }
+  cur.dictLog=cur.dictLog||[]; cur.dictLog.push({at:new Date().toISOString(),text:txt});
+  cur.dictation=''; lastParse=r.summary.length?r.summary:['Tanınan içerik yok; metin "'+SEC_BY_ID[$('defSec').value].t+'" bölümüne eklendi'];
+  schedule(true); rerenderKeep();
+}
+function doUndo(){ if(!undoSnap) return; const keepDict=($('dictBox')||{}).value; cur=JSON.parse(undoSnap); const lg=(cur.dictLog||[]); cur.dictation=keepDict||((lg[lg.length-1]||{}).text)||''; undoSnap=null; lastParse=['Son yerleştirme geri alındı; dikte metni kutuya geri kondu']; schedule(); rerenderKeep(); }
+function clearDict(){ if($('dictBox').value&&!confirm('Kutudaki metin silinsin mi?')) return; cur.dictation=''; $('dictBox').value=''; schedule(); }
+
+// ---------- Sesli dikte (Web Speech API) ----------
+let rec=null, recOn=false, recMode='', recTarget='dictBox';
+const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
+function setMicUI(on){
+  document.querySelectorAll('[data-mic]').forEach(b=>{ const act=on&&b.dataset.mic===recTarget; b.classList.toggle('rec',act); b.textContent=act?'■ Durdur':(b.dataset.mic==='dictBox'?'🎤 Dikteyi başlat':'🎤 Dikte'); });
+  const st=$('micState'); if(st) st.innerHTML=on&&recTarget==='dictBox'?'<span class="dot"></span> Dinleniyor ('+(recMode==='local'?'cihazda':'tarayıcı servisi')+')':'';
+  const ai=$('adInterim'); if(ai&&!on) ai.textContent='';
+  if(on&&recTarget!=='dictBox'&&ai&&!ai.textContent) ai.innerHTML='<span class="dot"></span> Dinleniyor ('+(recMode==='local'?'cihazda':'tarayıcı servisi')+')';
+}
+function stopMicIf(targets){ if(recOn&&targets.includes(recTarget)){ recOn=false; try{ rec.stop(); }catch(e){} setMicUI(false); } }
+async function toggleMic(target){
+  target=target||'dictBox';
+  if(recOn){ const same=recTarget===target; recOn=false; try{ rec.stop(); }catch(e){} setMicUI(false); if(same) return; await new Promise(r=>setTimeout(r,250)); }
+  recTarget=target;
+  if(!SR){ dialog('Sesli dikte bu tarayıcıda yok','<p>Bu tarayıcı konuşma tanıma arayüzünü desteklemiyor. İki seçenek:</p><ul><li>Chrome, Edge veya Safari kullanın.</li><li>İşletim sisteminin dikte özelliğini kullanın: metin kutusuna tıklayıp telefon klavyesindeki mikrofona dokunun; Windows\'ta <b>Win + H</b>, macOS\'ta <b>Fn</b> tuşuna iki kez basın. Söylediğiniz metin kutuya yazılır, sonra "Nota yerleştir"e basın.</li></ul>',[['Tamam',null,true]]); return; }
+  recMode='';
+  try{
+    const probe=new SR();
+    if('processLocally' in probe&&SR.available){
+      const st=await SR.available({langs:['tr-TR'],processLocally:true});
+      if(st==='available') recMode='local';
+      else if(st==='downloadable'||st==='downloading'){ if(confirm('Türkçe konuşma tanıma bu cihaza indirilebilir (bir kez, yaklaşık 60 MB). İndirilirse ses cihaz dışına çıkmadan çevrimdışı tanınır. İndirilsin mi?')){ const ok=await SR.install({langs:['tr-TR'],processLocally:true}); if(ok) recMode='local'; } }
+    }
+  }catch(e){}
+  if(recMode!=='local'&&!settings.cloudSpeechOk){
+    const ok=await new Promise(res=>dialog('Ses tanıma sunucuda yapılabilir','<p>Bu tarayıcıda Türkçe için cihaz içi tanıma kullanılamıyor. Devam ederseniz ses kaydınız <b>tarayıcı üreticisinin konuşma servisine</b> (Chrome/Edge\'de Google veya Microsoft, Safari\'de Apple) gönderilerek yazıya çevrilebilir.</p><p><b>Dikte ederken hastanın adını, TC/protokol numarasını ve tanımlayıcı bilgilerini söylemeyin.</b> Kimlik bilgilerini hasta kartına elle girin.</p><p class="hint">Alternatif: işletim sisteminin dikte özelliği (Win + H, macOS dikte, telefon klavyesi mikrofonu) – bu da çoğu cihazda sunucu kullanır.</p>',[['Vazgeç',()=>{res(false);return true;},true],['Anladım, devam et',()=>{res(true);return true;}]]));
+    if(!ok) return; settings.cloudSpeechOk=true; saveSettings();
+  }
+  rec=new SR(); rec.lang='tr-TR'; rec.continuous=true; rec.interimResults=true; if(recMode==='local') rec.processLocally=true;
+  rec.onresult=ev=>{ let interim=''; for(let i=ev.resultIndex;i<ev.results.length;i++){ const r=ev.results[i]; if(r.isFinal){ const box=$(recTarget); if(box&&cur){ const t=r[0].transcript.trim(); box.value=(box.value&&!/\n$/.test(box.value)?box.value+'\n':box.value)+t; if(recTarget==='dictBox') cur.dictation=box.value; else if(cur.adDraft) cur.adDraft[recTarget==='adText'?'text':'plan']=box.value; box.scrollTop=box.scrollHeight; schedule(); } } else interim+=r[0].transcript; } const it=$(recTarget==='dictBox'?'interim':'adInterim'); if(it) it.textContent=interim; };
+  rec.onerror=ev=>{ const m={'not-allowed':'Mikrofon izni verilmedi. Tarayıcının adres çubuğundaki izin simgesinden mikrofona izin verin.','service-not-allowed':'Konuşma servisi kullanılamıyor (dil paketi yok ya da kurum politikası engelliyor).','network':'Ağ hatası: sunucu tabanlı tanıma için internet gerekir.','no-speech':''}[ev.error]; if(m) { recOn=false; setMicUI(false); alert(m); } };
+  rec.onend=()=>{ if(recOn){ try{ rec.start(); }catch(e){ recOn=false; setMicUI(false); } } else setMicUI(false); const it=$(recTarget==='dictBox'?'interim':'adInterim'); if(it) it.textContent=''; };
+  try{ rec.start(); recOn=true; setMicUI(true); }catch(e){ alert('Dikte başlatılamadı: '+e.message); }
+}
+
+// ---------- Literatür ----------
+async function doPubmed(){
+  const q=$('pmq').value.trim(); if(!q) return; const out=$('pmRes'); out.innerHTML='<p class="hint">Aranıyor…</p>';
+  let term=q; const f=$('pmf').value, yrs=$('pmy').value;
+  if(f==='guide') term+=' AND (guideline[pt] OR practice guideline[pt] OR consensus development conference[pt])';
+  if(f==='review') term+=' AND (systematic review[pt] OR meta-analysis[pt] OR review[pt])';
+  const base='https://eutils.ncbi.nlm.nih.gov/entrez/eutils/';
+  let url=base+'esearch.fcgi?db=pubmed&retmode=json&retmax=12&sort=relevance&tool=aseah-konsultasyon&term='+encodeURIComponent(term);
+  if(yrs){ const y=new Date().getFullYear(); url+='&datetype=pdat&mindate='+(y-+yrs)+'&maxdate='+y; }
+  try{
+    const r1=await fetch(url); if(!r1.ok) throw new Error('HTTP '+r1.status); const j1=await r1.json(); const ids=(j1.esearchresult||{}).idlist||[];
+    if(!ids.length){ out.innerHTML='<p class="hint">Sonuç yok. Sorguyu genişletin veya filtreyi kaldırın.</p>'; return; }
+    const sum=await pmSummary(ids);
+    out.innerHTML='<p class="hint">'+((j1.esearchresult||{}).count||ids.length)+' sonuçtan ilk '+ids.length+' (alaka sırasına göre). Başlığa tıklayıp özeti PubMed\'de kontrol edin, sonra ekleyin.</p><ul class="res">'+sum.map(s=>'<li><span class="t"><a href="'+esc(s.u)+'" target="_blank" rel="noopener noreferrer">'+esc(s.title)+'</a><div class="j">'+esc(s.cite)+'</div></span><button class="small" type="button" data-addpm="'+encodeURIComponent(JSON.stringify({t:s.full,u:s.u,src:'pubmed'}))+'"'+((cur.refs||[]).some(r=>r.u===s.u)?' disabled>Eklendi':'>Ekle')+'</button></li>').join('')+'</ul>'; pmCache=out.innerHTML;
+  }catch(err){
+    out.innerHTML='<p class="err">PubMed\'e bu uygulamadan ulaşılamadı ('+esc(err.message||'bağlantı yok')+'). Çevrimdışı olabilirsiniz ya da ağ/tarayıcı izin vermiyor olabilir.</p><div class="btns"><button class="small ghost" type="button" data-site="pubmed">PubMed\'de yeni sekmede ara</button></div><p class="hint">Bulduğunuz makalenin PMID numarasını "Kaynağı el ile ekle" kutusuna yapıştırın.</p>';
+  }
+}
+async function pmSummary(ids){
+  const r=await fetch('https://eutils.ncbi.nlm.nih.gov/entrez/eutils/esummary.fcgi?db=pubmed&retmode=json&tool=aseah-konsultasyon&id='+ids.join(',')); if(!r.ok) throw new Error('HTTP '+r.status); const j=await r.json(); const res=j.result||{};
+  return ids.filter(id=>res[id]).map(id=>{ const a=res[id]; const au=(a.authors||[]).filter(x=>x.authtype==='Author').map(x=>x.name); const first=au.length?au[0]+(au.length>1?' ve ark.':''):''; const yr=(a.pubdate||'').slice(0,4); const title=(a.title||'').replace(/\.$/,'');
+    const cite=[first.replace(/\.$/,''),a.source,yr,a.volume?a.volume+(a.issue?'('+a.issue+')':'')+(a.pages?':'+a.pages:''):''].filter(Boolean).join('. ')+'. PMID '+id; return {title,cite,u:'https://pubmed.ncbi.nlm.nih.gov/'+id+'/',full:(first?first.replace(/\.$/,'')+'. ':'')+title+'. '+(a.source||'')+' '+yr+(a.volume?';'+a.volume+(a.pages?':'+a.pages:''):'')+'. PMID '+id}; });
+}
+async function doAddRef(){
+  const id=$('mrId').value.trim(); let t=$('mrT').value.trim(); if(!id) return;
+  let u=id, src='manual';
+  if(/^\d{5,9}$/.test(id)){ u='https://pubmed.ncbi.nlm.nih.gov/'+id+'/'; if(!t){ try{ const s=await pmSummary([id]); if(s[0]) t=s[0].full; src='pubmed'; }catch(e){} } if(!t) t='PMID '+id; }
+  else if(/^10\.\d{4,9}\//.test(id)) u='https://doi.org/'+id;
+  else if(!/^https?:\/\//.test(id)){ alert('PMID (yalnız rakam), DOI (10. ile başlar) veya http(s) bağlantısı girin.'); return; }
+  if(!t){ alert('Bu bağlantı için künye girin.'); return; }
+  cur.refs=cur.refs||[]; if(!cur.refs.some(r=>r.u===u)) cur.refs.push({t,u,src}); schedule(); refreshLit();
+}
+
+// ---------- Claude ile ----------
+function doToClaude(){
+  const c=Object.assign({},cur); const prev=prevConsults()[0];
+  if(prev&&c.opts&&c.opts.prev) c.prevSummary=fmtD(prev.date)+': '+planSummary(prev);
+  const txt=CLAUDE_PROMPT+buildAnonCase(c,curP);
+  dialog('Kimliksiz vaka – Claude\'a gönder','<p class="hint">Ad, protokol ve TC numarası otomatik maskelendi, doğum tarihi yaşa çevrildi. Göndermeden önce serbest metinde tanımlayıcı bilgi (yakın adı, adres, telefon) kalmadığını kontrol edin.</p><textarea id="clTxt" rows="16">'+esc(txt)+'</textarea>',
+   [['Kapat',null,true],['Panoya kopyala',async()=>{ const v=$('clTxt').value; try{ await navigator.clipboard.writeText(v); }catch(e){ $('clTxt').select(); document.execCommand('copy'); } alert('Kopyalandı. Claude sohbetine yapıştırın; gelen yanıtı "Claude yanıtını içe aktar" ile nota alın.'); return true; }]]);
+}
+let crParsed=null;
+function doFromClaude(){
+  crParsed=null;
+  dialog('Claude yanıtını içe aktar','<p class="hint">Claude\'un yanıtını tümüyle yapıştırıp "Ayrıştır"a basın. Değerlendirme, ayırıcı tanı, tedavi seçenekleri, öneriler ve kaynaklar madde madde listelenir; tümü işaretli gelir, uygun olmayanların işaretini kaldırın. Yalnız işaretliler nota eklenir.</p><textarea id="crTxt" rows="9" placeholder="Yanıtı buraya yapıştırın"></textarea><div class="btns"><button type="button" class="small" id="crParse">Ayrıştır</button></div><div id="crList"></div>',
+   [['İptal',null,true],['Seçilenleri nota ekle',()=>{ if(!crParsed){ crRender(); return false; } return crApply(); }]]);
+  $('crParse').onclick=crRender;
+}
+function crRender(){
+  const r=parseClaudeReply($('crTxt').value); crParsed=r; const L=$('crList');
+  if(!r.assess&&!r.ddx.length&&!r.tx.length&&!r.planItems.length&&!r.refs.length){ L.innerHTML='<p class="err">Yanıtta tanınan bölüm yok.</p>'; crParsed=null; return; }
+  const ck=(g,i,txt,extra)=>'<label class="chk"><input type="checkbox" checked data-cr="'+g+'" data-i="'+i+'"> <span style="flex:1;min-width:0">'+esc(txt)+'</span>'+(extra||'')+'</label>';
+  let h='';
+  if(r.assess) h+='<p class="og">Değerlendirme</p>'+ck('assess',0,r.assess.length>400?r.assess.slice(0,400)+'…':r.assess)+'<label class="chk" style="margin-left:24px"><input type="checkbox" id="crRep"> Mevcut değerlendirmenin yerine yaz (işaretsizse sonuna eklenir)</label>';
+  if(r.ddx.length) h+='<p class="og">Ayırıcı tanı ('+r.ddx.length+')</p>'+r.ddx.map((x,i)=>ck('ddx',i,x.t)).join('');
+  if(r.tx.length) h+='<p class="og">Tedavi seçenekleri ('+r.tx.length+')</p>'+r.tx.map((x,i)=>ck('tx',i,x.t)).join('');
+  if(r.planItems.length) h+='<p class="og">Öneriler ('+r.planItems.length+')</p>'+r.planItems.map((x,i)=>ck('plan',i,x.t,'<select data-crcat="'+i+'" style="width:auto;flex:0 0 auto;padding:2px 4px;font-size:.78rem" aria-label="Kategori">'+PLAN_CATS.map(c=>'<option'+(c===x.cat?' selected':'')+'>'+c+'</option>').join('')+'</select>')).join('');
+  if(r.refs.length) h+='<p class="og">Kaynaklar ('+r.refs.length+') – bağlantıları açıp doğrulayın</p>'+r.refs.map((x,i)=>ck('refs',i,x.t,' <a class="ref-a" href="'+esc(x.u)+'" target="_blank" rel="noopener noreferrer">aç ↗</a>')).join('');
+  h+='<div class="btns"><button type="button" class="small ghost" id="crAll">Tümünü seç</button><button type="button" class="small ghost" id="crNone">Hiçbirini seçme</button></div>';
+  L.innerHTML=h;
+  $('crAll').onclick=()=>L.querySelectorAll('input[data-cr]').forEach(x=>x.checked=true);
+  $('crNone').onclick=()=>L.querySelectorAll('input[data-cr]').forEach(x=>x.checked=false);
+}
+function crApply(){
+  const r=crParsed; const L=$('crList'); const on=(g,i)=>{ const x=L.querySelector('input[data-cr="'+g+'"][data-i="'+i+'"]'); return x&&x.checked; };
+  undoSnap=JSON.stringify(cur); const s=cur.sections=cur.sections||{}; cur.ddx=cur.ddx||[]; cur.planItems=cur.planItems||[]; cur.refs=cur.refs||[];
+  let nA=0,nD=0,nT=0,nP=0,nR=0;
+  if(r.assess&&on('assess',0)){ const rep=$('crRep')&&$('crRep').checked; s.assess=rep||!s.assess? r.assess : s.assess+'\n\n'+r.assess; nA=1; }
+  const has=(arr,t)=>arr.some(x=>String(x.t).trim()===String(t).trim());
+  r.ddx.forEach((x,i)=>{ if(on('ddx',i)&&!has(cur.ddx,x.t)){ cur.ddx.push({id:uid(),t:x.t,src:'claude'}); nD++; } });
+  r.tx.forEach((x,i)=>{ if(on('tx',i)&&!has(cur.planItems,x.t)){ cur.planItems.push({id:uid(),cat:'Tedavi',t:x.t,src:'claude'}); nT++; } });
+  r.planItems.forEach((x,i)=>{ if(on('plan',i)&&!has(cur.planItems,x.t)){ const sel=L.querySelector('select[data-crcat="'+i+'"]'); cur.planItems.push({id:uid(),cat:sel?sel.value:x.cat,t:x.t,src:'claude'}); nP++; } });
+  r.refs.forEach((x,i)=>{ if(on('refs',i)&&!cur.refs.some(y=>y.u===x.u)){ cur.refs.push(x); nR++; } });
+  lastParse=['Claude yanıtı: değerlendirme '+(nA?'✓':'–')+', '+nD+' ayırıcı tanı, '+nT+' tedavi seçeneği, '+nP+' öneri, '+nR+' kaynak eklendi. Dozları ve kaynak bağlantılarını kontrol edin.'];
+  schedule(); rerenderKeep(); return true;
+}
+function planSummary(x){ return [(x.sections||{}).assess,(x.ddx||[]).filter(d=>d.t).length?'Ayırıcı tanı: '+x.ddx.filter(d=>d.t).map(d=>d.t).join('; '):'',(x.planItems||[]).filter(p=>p.t).map(p=>p.t).join('; '),(x.sections||{}).plan].filter(Boolean).join(' | '); }
+
+// ---------- Belge modeli (Word ve PDF ortak) ----------
+function maskName(n){ return String(n||'').split(/\s+/).filter(Boolean).map(w=>w[0]+'.').join(' '); }
+function maskNo(n){ n=String(n||''); return n.length>4? n.slice(0,2)+'*'.repeat(n.length-4)+n.slice(-2) : (n?'**':''); }
+function buildModel(){
+  const c=cur, p=curP, mask=c.opts&&c.opts.mask; const s=c.sections||{}; const B=[];
+  B.push({title:'KONSÜLTASYON NOTU'});
+  const age=ageFrom(p.birth,c.date);
+  B.push({kv:[['Hasta',mask?maskName(p.name):p.name],['Protokol no',mask?maskNo(p.protocol):p.protocol],['Doğum tarihi / yaş',(mask?'':fmtD(p.birth))+(age?(mask?'':' – ')+age:'')],['Cinsiyet',p.sex||''],['Ağırlık',c.weight?c.weight+' kg':'belirtilmedi'],['Servis / bölüm',c.ward||''],['Konsültasyon isteyen',c.requester||''],['Tarih / saat',fmtD(c.date)+' '+(c.time||'')],['Aciliyet',c.urgency||'']].filter(r=>r[1]!=='')});
+  const sec=id=>{ if(s[id]&&s[id].trim()){ B.push({h1:SEC_BY_ID[id].t}); B.push({p:s[id].trim()}); } };
+  ['reason','history','pmh','vacc','allergy','epi','risk'].forEach(sec);
+  const v=c.vitals||{}; const vl=[v.temp&&'Ateş '+v.temp+' °C',v.hr&&'Nabız '+v.hr+'/dk',v.rr&&'Solunum '+v.rr+'/dk',v.bp&&'TA '+v.bp+' mmHg',v.spo2&&'SpO₂ %'+v.spo2].filter(Boolean);
+  if(vl.length||s.exam){ B.push({h1:SEC_BY_ID.exam.t}); if(vl.length) B.push({p:[{t:'Vital bulgular: ',b:true},{t:vl.join(', ')}]}); if(s.exam) B.push({p:s.exam.trim()}); }
+  const labs=(c.labs||[]).filter(l=>l.n||l.raw);
+  if(labs.length||s.labs){ B.push({h1:'Laboratuvar'}); if(labs.length) B.push({table:{head:['Parametre','Sonuç','Birim','Tarih'],rows:labs.map(l=>[l.n||'',l.raw||'',l.u||'',l.date||'']),widths:[0.4,0.2,0.2,0.2]}}); if(s.labs) B.push({p:s.labs}); }
+  if(c.opts&&c.opts.trend){ const tm=trendModel(); if(tm){ B.push({h2:'Laboratuvar eğilimi'}); B.push({table:tm}); } }
+  const mic=(c.micro||[]).filter(m=>m.sample||m.org||m.raw);
+  if(mic.length||s.micro){ B.push({h1:'Mikrobiyoloji'}); if(mic.length) B.push({table:{head:['Örnek','Tarih','Etken / sonuç','Direnç','Açıklama'],rows:mic.map(m=>[m.sample||'',m.date||'',m.org||'',m.res||'',m.raw||'']),widths:[0.14,0.13,0.24,0.14,0.35]}}); if(s.micro) B.push({p:s.micro}); }
+  if((c.imaging||[]).length){ B.push({h1:'Görüntüleme'}); B.push({bullets:c.imaging.map(x=>'• '+x)}); }
+  const abx=(c.abx||[]).filter(a=>a.drug);
+  if(abx.length||s.abx){ B.push({h1:'Antimikrobiyal tedavi'}); if(abx.length) B.push({table:{head:['İlaç','Doz','Sıklık','Gün','Başlangıç','Durum'],rows:abx.map(a=>[a.drug||'',a.dose||'',a.freq||'',a.day||'',a.start||'',a.status||'']),widths:[0.24,0.16,0.18,0.08,0.16,0.18]}}); if(s.abx) B.push({p:s.abx}); }
+  syncItems(c);
+  if(s.assess&&s.assess.trim()){ B.push({h1:'Değerlendirme'}); B.push({p:s.assess.trim()}); }
+  const ddx=(c.ddx||[]).filter(x=>x.t&&x.t.trim());
+  if(ddx.length){ B.push({h1:'Ayırıcı tanı'}); B.push({bullets:ddx.map(x=>'• '+x.t.trim())}); }
+  const pis=(c.planItems||[]).filter(x=>x.t&&x.t.trim());
+  if(pis.length||(s.plan&&s.plan.trim())){ B.push({h1:SEC_BY_ID.plan.t});
+    PLAN_CATS.forEach(cat=>{ const its=pis.filter(x=>(x.cat||'İzlem')===cat); if(its.length){ B.push({h2:cat}); B.push({bullets:its.map(x=>'• '+x.t.trim())}); } });
+    if(s.plan&&s.plan.trim()){ if(pis.length) B.push({h2:'Ek öneriler'}); const lines=s.plan.split('\n').map(x=>x.trim()).filter(Boolean); if(lines.every(x=>/^[•\-*\d]/.test(x))) B.push({bullets:lines.map(x=>'• '+x.replace(/^[•\-*]\s*/,''))}); else B.push({p:s.plan.trim()}); } }
+  const ads=(c.addenda||[]).filter(a=>!a.deleted).sort((a,b)=>((a.date||'')+(a.time||'')).localeCompare((b.date||'')+(b.time||'')));
+  if(ads.length&&(!c.opts||c.opts.addenda!==false)){ B.push({h1:'Ek notlar / Rekonsültasyon'}); ads.forEach(a=>addBlocks(B,a,true)); }
+  if(c.opts&&c.opts.prev){ const pr=prevConsults(); if(pr.length){ B.push({h1:'Önceki konsültasyonlar'}); B.push({bullets:pr.slice(0,5).map(x=>'• '+fmtD(x.date)+': '+planSummary(x).replace(/\s+/g,' ').slice(0,400))}); } }
+  if((c.refs||[]).length){ B.push({h1:'Kaynaklar'}); B.push({refs:c.refs.map(r=>({t:r.t,u:r.u}))}); }
+  B.push({p:[{t:'Konsültan: ',b:true},{t:[c.consultant,c.ctitle].filter(Boolean).join(', ')||'………………'}]});
+  B.push({p:[{t:'Not tarihi: ',b:true},{t:fmtD(c.date)+' '+(c.time||'')+(c.status==='final'?' · tamamlandı '+fmtDT(c.finalizedAt):' · TASLAK')+(c.version>1?' · sürüm '+c.version:'')}]});
+  B.push({p:'Bu not klinik karar desteği amacıyla hazırlanmıştır; tanı ve tedavi kararı hastayı izleyen hekimin değerlendirmesiyle verilir. İlaç dozlarını yaş, ağırlık ve böbrek/karaciğer fonksiyonuna göre doğrulayın. Kaynak bağlantıları not hazırlanırken eklenmiştir.',style:'Note'});
+  return {docTitle:'Konsültasyon notu – '+fmtD(c.date),author:c.consultant||'',header:'T.C. SAĞLIK BAKANLIĞI • ADANA ŞEHİR EĞİTİM VE ARAŞTIRMA HASTANESİ',header2:'ÇOCUK ENFEKSİYON HASTALIKLARI KLİNİĞİ – KONSÜLTASYON NOTU',footer:maskName(p.name)+' • Prot. '+maskNo(p.protocol)+' • klinik dışına paylaşılmamalıdır',blocks:B};
+}
+function addBlocks(B,a,inMain){
+  B.push(inMain?{h2:fmtD(a.date)+' '+(a.time||'')+' – '+a.type+(a.author?' ('+a.author+')':'')}:{h1:a.type});
+  if(a.text) B.push({p:a.text});
+  if((a.labs||[]).length) B.push({table:{head:['Parametre','Sonuç','Birim','Tarih'],rows:a.labs.map(l=>[l.n||'',l.raw||'',l.u||'',l.date||'']),widths:[0.4,0.2,0.2,0.2]}});
+  if((a.micro||[]).length) B.push({table:{head:['Örnek','Etken / sonuç','Direnç','Açıklama'],rows:a.micro.map(m=>[m.sample||'',m.org||'',m.res||'',m.raw||'']),widths:[0.16,0.28,0.18,0.38]}});
+  if(a.plan){ if(inMain) B.push({p:[{t:'Öneri: ',b:true},{t:a.plan}]}); else { B.push({h1:'Öneriler'}); B.push({p:a.plan}); } }
+}
+function buildAddModel(a){
+  const c=cur, p=curP, mask=c.opts&&c.opts.mask; const B=[]; const age=ageFrom(p.birth,a.date);
+  B.push({title:'KONSÜLTASYON EK NOTU – '+String(a.type||'').toLocaleUpperCase('tr-TR')});
+  B.push({kv:[['Hasta',mask?maskName(p.name):p.name],['Protokol no',mask?maskNo(p.protocol):p.protocol],['Yaş',age||''],['Ağırlık',c.weight?c.weight+' kg':''],['Servis / bölüm',c.ward||''],['Ana konsültasyon',fmtD(c.date)+' '+(c.time||'')+(c.requester?' – '+c.requester:'')],['Ek not tarihi',fmtD(a.date)+' '+(a.time||'')]].filter(r=>r[1]!=='')});
+  const s=c.sections||{}; const brief=[s.assess,(c.ddx||[]).filter(x=>x.t).length?'Ayırıcı tanı: '+c.ddx.filter(x=>x.t).map(x=>x.t).join('; '):''].filter(Boolean).join('\n');
+  if(brief){ B.push({h1:'Ana konsültasyondaki değerlendirme (özet)'}); B.push({p:brief.length>900?brief.slice(0,900)+'…':brief}); }
+  addBlocks(B,a,false);
+  if((c.refs||[]).length){ B.push({h1:'Kaynaklar'}); B.push({refs:c.refs.map(r=>({t:r.t,u:r.u}))}); }
+  B.push({p:[{t:'Yazan: ',b:true},{t:a.author||[c.consultant,c.ctitle].filter(Boolean).join(', ')||'………………'}]});
+  B.push({p:'Bu ek not, belirtilen tarihli konsültasyonun devamıdır; klinik karar desteği amacıyla hazırlanmıştır. İlaç dozlarını yaş, ağırlık ve böbrek/karaciğer fonksiyonuna göre doğrulayın.',style:'Note'});
+  return {docTitle:'Konsültasyon ek notu – '+fmtD(a.date),author:a.author||c.consultant||'',header:'T.C. SAĞLIK BAKANLIĞI • ADANA ŞEHİR EĞİTİM VE ARAŞTIRMA HASTANESİ',header2:'ÇOCUK ENFEKSİYON HASTALIKLARI KLİNİĞİ – KONSÜLTASYON EK NOTU',footer:maskName(p.name)+' • Prot. '+maskNo(p.protocol)+' • klinik dışına paylaşılmamalıdır',blocks:B};
+}
+async function doAdDocx(id){ const a=(cur.addenda||[]).find(x=>x.id===id); if(!a) return; await flushSave(); download(fileStem()+'_ek_'+a.date+'_'+String(a.time||'').replace(':','')+'.docx',buildDocx(buildAddModel(a)),'application/vnd.openxmlformats-officedocument.wordprocessingml.document'); }
+async function doAdPrint(id){ const a=(cur.addenda||[]).find(x=>x.id===id); if(!a) return; await flushSave(); $('printArea').innerHTML=modelHTML(buildAddModel(a)); const t=document.title; document.title=fileStem()+'_ek_'+a.date; window.print(); setTimeout(()=>{ document.title=t; },500); }
+function modelHTML(m){
+  const run=r=>{ if(typeof r==='string') r={t:r}; let t=esc(r.t); if(r.link) t='<a href="'+esc(r.link)+'">'+t+'</a>'; if(r.b) t='<b>'+t+'</b>'; if(r.i) t='<i>'+t+'</i>'; return t; };
+  let h='<div class="pb1">'+esc(m.header)+'</div><div class="pb2">'+esc(m.header2)+'</div>';
+  m.blocks.forEach(b=>{
+    if(b.title) h+='<div class="pt">'+esc(b.title)+'</div>';
+    else if(b.h1) h+='<h2>'+esc(b.h1)+'</h2>'; else if(b.h2) h+='<h3 style="color:#9A3412;font-size:10.5pt;margin:8px 0 3px">'+esc(b.h2)+'</h3>';
+    else if(b.p!=null) h+='<p'+(b.style==='Note'?' class="note"':'')+'>'+(typeof b.p==='string'?esc(b.p):b.p.map(run).join(''))+'</p>';
+    else if(b.bullets) h+='<ul>'+b.bullets.map(x=>'<li>'+esc(String(x).replace(/^•\s*/,''))+'</li>').join('')+'</ul>';
+    else if(b.kv) h+='<table>'+b.kv.map(([k,v])=>'<tr><td class="k">'+esc(k)+'</td><td>'+esc(v)+'</td></tr>').join('')+'</table>';
+    else if(b.table) h+='<table>'+(b.table.head?'<tr>'+b.table.head.map(x=>'<th>'+esc(x)+'</th>').join('')+'</tr>':'')+b.table.rows.map(r=>'<tr>'+r.map(x=>'<td>'+esc(x)+'</td>').join('')+'</tr>').join('')+'</table>';
+    else if(b.refs) h+='<ol>'+b.refs.map(r=>'<li>'+esc(r.t)+' <a href="'+esc(r.u)+'">'+esc(r.u)+'</a></li>').join('')+'</ol>';
+  });
+  return h+'<div class="ft">'+esc(m.footer)+'</div>';
+}
+function fileStem(){ const n=(cur.opts&&cur.opts.mask?maskName(curP.name):curP.name||'hasta').replace(/[^\wığüşöçİĞÜŞÖÇ.-]+/g,'_'); return 'konsultasyon_'+n+'_'+cur.date; }
+async function doDocx(){ await flushSave(); const bytes=buildDocx(buildModel()); download(fileStem()+'.docx',bytes,'application/vnd.openxmlformats-officedocument.wordprocessingml.document'); }
+async function doPrint(){ await flushSave(); $('printArea').innerHTML=modelHTML(buildModel()); const t=document.title; document.title=fileStem(); window.print(); setTimeout(()=>{ document.title=t; },500); }
+function download(name,data,type){ const blob=data instanceof Blob?data:new Blob([data],{type}); const a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=name; document.body.appendChild(a); a.click(); setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); },800); }
+
+// ---------- Yedek, ayarlar ----------
+async function doBackup(){ await flushSave(); const b=await S.exportAll(); const d=new Date(); const stamp=d.getFullYear()+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')+'-'+String(d.getHours()).padStart(2,'0')+String(d.getMinutes()).padStart(2,'0');
+  download('aseah-konsultasyon-yedek-'+stamp+'.json',JSON.stringify(b),'application/json'); settings.lastBackup=d.toISOString(); await saveSettings(); renderBanners(); }
+$('bBackup').onclick=doBackup;
+$('bSettings').onclick=async()=>{
+  const st=S.status(); const delP=(await S.patients()).filter(p=>p.deleted); const delC=allConsults.filter(c=>c.deleted);
+  let pers='bilinmiyor'; try{ if(navigator.storage&&navigator.storage.persisted) pers=(await navigator.storage.persisted())?'kalıcı (tarayıcı kendiliğinden silmez)':'kalıcı değil – düzenli yedek alın'; }catch(e){}
+  dialog('Ayarlar ve arşiv',
+   '<div class="grid2"><div><label for="st-c">Konsültan adı (varsayılan)</label><input id="st-c" value="'+esc(settings.consultant||'')+'"></div><div><label for="st-t">Unvan</label><input id="st-t" value="'+esc(settings.ctitle||'')+'" placeholder="ör. Çocuk Enfeksiyon Hastalıkları Uzmanı"></div></div>'+
+   '<h3 style="margin:14px 0 4px;color:var(--head)">Şifreleme</h3><p class="hint">'+(st.encrypted?'Arşiv AES-256 ile şifreli. 15 dakika işlem yapılmazsa kilitlenir. Parolayı unutursanız kayıtlar açılamaz; parolayı güvenli bir yerde saklayın.':'Arşiv şifresiz. Parola belirlerseniz tüm kayıtlar ve yedekler şifrelenir.')+'</p>'+
+   '<div class="grid2"><div><label for="st-p1">'+(st.encrypted?'Yeni parola':'Parola')+' (en az 8 karakter)</label><input id="st-p1" type="password" autocomplete="new-password"></div><div><label for="st-p2">Parola tekrar</label><input id="st-p2" type="password" autocomplete="new-password"></div></div>'+
+   '<div class="btns"><button type="button" class="small" id="st-enc">'+(st.encrypted?'Parolayı değiştir':'Arşivi parolayla şifrele')+'</button>'+(st.encrypted?'<button type="button" class="small ghost" id="st-lock">Şimdi kilitle</button><button type="button" class="small ghost" id="st-dec">Şifrelemeyi kaldır</button>':'')+'</div>'+
+   '<h3 style="margin:14px 0 4px;color:var(--head)">Yedek ve geri yükleme</h3><p class="hint">Son yedek: '+(settings.lastBackup?fmtDT(settings.lastBackup):'yok')+' · Depolama: '+pers+'. Yedek dosyası, arşiv şifreliyse şifreli iner. Geri yüklemede kayıtlar birleştirilir; aynı kaydın eski sürümü sürüm geçmişinde saklanır, hiçbir kayıt silinmez.</p>'+
+   '<div class="btns"><button type="button" class="small" id="st-bk">Yedek indir</button><button type="button" class="small ghost" id="st-rs">Yedekten geri yükle</button><input type="file" id="st-file" accept=".json,application/json" hidden></div>'+
+   '<h3 style="margin:14px 0 4px;color:var(--head)">Kaldırılanlar</h3>'+((delP.length||delC.length)?'<ul class="tl">'+delP.map(p=>'<li><span class="s">Hasta: '+esc(p.name)+' (prot. '+esc(p.protocol||'—')+')</span><button class="small ghost" type="button" data-rp="'+p.id+'">Geri al</button></li>').join('')+delC.map(c=>{ const p=patients.find(x=>x.id===c.patientId)||delP.find(x=>x.id===c.patientId)||{}; return '<li><span class="s">Konsültasyon: '+esc(p.name||'?')+' – '+fmtD(c.date)+'</span><button class="small ghost" type="button" data-rc="'+c.id+'">Geri al</button></li>'; }).join('')+'</ul>':'<p class="hint">Kaldırılan kayıt yok.</p>'),
+   [['Kapat',async()=>{ settings.consultant=$('st-c').value; settings.ctitle=$('st-t').value; await saveSettings(); return true; },true]]);
+  $('st-enc').onclick=async()=>{ const a=$('st-p1').value,b2=$('st-p2').value; if(a.length<8){ alert('Parola en az 8 karakter olmalı.'); return; } if(a!==b2){ alert('Parolalar eşleşmiyor.'); return; } if(!confirm('Parolayı unutursanız kayıtlar kurtarılamaz. Devam edilsin mi?')) return; await flushSave(); await S.setPassphrase(a); alert('Arşiv şifrelendi. Yeni bir yedek alınması önerilir (eski yedekler şifresizdir).'); $('dlg').close(); renderAll(); };
+  if($('st-lock')) $('st-lock').onclick=async()=>{ await flushSave(); S.lock(); cur=null; curP=null; $('dlg').close(); showLock(); };
+  if($('st-dec')) $('st-dec').onclick=async()=>{ if(!confirm('Şifreleme kaldırılsın mı? Kayıtlar bu cihazda şifresiz saklanacak.')) return; await S.removePassphrase(); $('dlg').close(); renderAll(); };
+  $('st-bk').onclick=doBackup; $('st-rs').onclick=()=>$('st-file').click();
+  $('st-file').onchange=e=>{ const f=e.target.files[0]; if(!f) return; const r=new FileReader(); r.onload=async()=>{ try{ const res=await S.importAll(JSON.parse(r.result)); $('dlg').close(); if(res.needUnlock){ alert('Yedek yüklendi ('+res.added+' kayıt). Arşiv şifreli; yedeğin parolasıyla kilidi açın.'); showLock(); return; } await reload(); renderAll(); alert('Geri yükleme tamam: '+res.added+' yeni, '+res.updated+' güncellenen, '+res.kept+' değişmeyen kayıt.'); }catch(err){ alert(err.message==='locked'?'Önce arşivin kilidini açın.':err.message); } }; r.readAsText(f); e.target.value=''; };
+  $('dlgB').querySelectorAll('[data-rp]').forEach(b=>b.onclick=async()=>{ const p=(await S.patients()).find(x=>x.id===b.dataset.rp); p.deleted=false; await S.savePatient(p); await reload(); $('dlg').close(); renderAll(); });
+  $('dlgB').querySelectorAll('[data-rc]').forEach(b=>b.onclick=async()=>{ const c=allConsults.find(x=>x.id===b.dataset.rc); c.deleted=false; await S.saveConsult(c); const p=(await S.patients()).find(x=>x.id===c.patientId); if(p&&p.deleted){ p.deleted=false; await S.savePatient(p); } await reload(); $('dlg').close(); renderAll(); });
+};
+
+// ---------- Genel iletişim kutusu ----------
+function dialog(title,body,buttons){
+  const d=$('dlg'); $('dlgT').textContent=title; $('dlgB').innerHTML=body; const f=$('dlgF'); f.innerHTML='';
+  (buttons||[]).forEach(([lab,fn,ghost])=>{ const b=document.createElement('button'); b.type='button'; b.textContent=lab; if(ghost) b.className='ghost'; b.onclick=async()=>{ if(fn){ const r=await fn(); if(r===false) return; } d.close(); }; f.appendChild(b); });
+  $('dlgX').onclick=()=>{ const g=(buttons||[]).find(x=>x[2]); if(g&&g[1]) g[1](); d.close(); };
+  if(!d.open) d.showModal();
+}
+
+// ---------- PWA ----------
+(function(){
+  let deferred=null;
+  window.addEventListener('beforeinstallprompt',e=>{ e.preventDefault(); deferred=e; $('installBtn').hidden=false; });
+  $('installBtn').onclick=async()=>{ if(!deferred) return; deferred.prompt(); await deferred.userChoice; deferred=null; $('installBtn').hidden=true; };
+  if('serviceWorker' in navigator&&location.protocol!=='file:'){
+    let waiting=null, asked=false, reloading=false;
+    navigator.serviceWorker.addEventListener('controllerchange',()=>{ if(!asked||reloading) return; reloading=true; location.reload(); });
+    navigator.serviceWorker.register('sw.js').then(reg=>{
+      const offer=w=>{ waiting=w; const div=document.createElement('div'); div.className='banner'; div.innerHTML='Yeni sürüm hazır. <button class="small" type="button">Kaydet ve yenile</button>'; div.querySelector('button').onclick=async()=>{ await flushSave(); asked=true; waiting.postMessage('SKIP_WAITING'); }; $('banners').prepend(div); };
+      if(reg.waiting&&navigator.serviceWorker.controller) offer(reg.waiting);
+      reg.addEventListener('updatefound',()=>{ const nw=reg.installing; nw.addEventListener('statechange',()=>{ if(nw.state==='installed'&&navigator.serviceWorker.controller) offer(nw); }); });
+    }).catch(()=>{});
+  }
+})();
+boot().catch(err=>{ $('main').innerHTML='<div class="empty"><h2>Arşiv açılamadı</h2><p class="err">'+esc(err.message)+'</p><p class="hint">Tarayıcının özel/gizli penceresinde veya site verisi engelliyken yerel arşiv kullanılamaz.</p></div>'; });
+</script>
+</body>
+</html>
